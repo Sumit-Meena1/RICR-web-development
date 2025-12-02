@@ -383,6 +383,7 @@ body {
     img {
       width: 200px;
       margin: 30px;
+      filter: grayscale(100%);
     }
   }
 }

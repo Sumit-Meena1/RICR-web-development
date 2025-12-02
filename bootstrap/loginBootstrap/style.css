@@ -1,0 +1,12 @@
+body {
+  font-family: "Poppins", sans-serif;
+  display: flex !important;
+  justify-content: space-around;
+}
+#log {
+  margin-top: 200px !important;
+  width: 30% !important;
+}
+#reg {
+  width: 30% !important;
+}

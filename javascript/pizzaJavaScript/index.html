@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset>
+        <h4>Pizza Order Form</h4>
+        <label for="First Name">First Name:</label>
+        <input type="text" name="First name" id="name"><br>
+        <br>
+        <label for="Last Name">Last Name:</label>
+        <input type="text" name="Last name" id="Last"><br>
+        <br>
+        <label for="email">Email Address:</label>
+        <input type="email" name="email" id="email"><br>
+        <br>
+        <label for="contact no">Contact Number:</label>
+        <input type="number" name="contact number" id="contact"><br>
+        <br>
+        <label for="date">Preferred Delivery Date:</label>
+        <input type="date" name="date" id="date"><br>
+        <br>
+        <label for="size">Size:</label><br>
+        <input type="radio" name="size" id="Small" value="Small"><span>Small</span>
+        <input type="radio" name="size" id="Medium" value="Medium"><span>Medium</span>
+        <input type="radio" name="size" id="Large" value="Large"><span>Large</span><br>
+        <br>
+        Flavor: <br>
+        <input type="checkbox" name="Hawaiian" id="Hawaiian" value="Hawaiian">
+        <label for="Hawaiian">Hawaiian (Php 150.00)</label> 
+        <select name="number" id="number">
+            <option value="1">1</option>
+            <option value="1">2</option>
+            <option value="1">3</option>
+        </select><br>
+        <input type="checkbox" name="pepperoni" id="pepperoni" value="pepperoni">
+        <label for="pepperoni">Pepperoni (Php 140.00)</label>
+        <select name="number" id="number">
+            <option value="1">1</option>
+            <option value="1">2</option>
+            <option value="1">3</option>
+        </select><br>
+        <input type="checkbox" name="vegetable" id="vegetable" value="vegetable">
+        <label for="vegetable">Vegetable (Php 130.00)</label>
+        <select name="number" id="number">
+            <option value="1">1</option>
+            <option value="1">2</option>
+            <option value="1">3</option>
+        </select><br>
+        <br>
+        <label for="Credit Card">Credit Card Number:</label>
+        <input type="number" name="Credit Card" id="Credit Card"><br>
+        <br>
+        <label for="Pin">Pin:</label><br>
+        <input type="number" name="Pin" id="Pin"><br>
+        <br>
+        <label for="Additional">Additional Note:</label><br>
+        <textarea name="Additional" id="Additional"></textarea><br>
+        <br>
+        <button id="OrderSubmit" onclick="submit()">Submit Order</button>
+
+       
+
+    </fieldset>
+</body>
+
+
+<script src="script.js"></script>
+</html>

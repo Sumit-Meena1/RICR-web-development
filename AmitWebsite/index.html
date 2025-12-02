@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ishika Car Care — Professional Car Servicing & Detailing</title>
+  <meta name="description" content="Ishika Car Care — Trusted servicing, washing, detailing and tyre & accessory sales. Book online or visit our workshop." />
+  <link rel="stylesheet" href="style.css">
+  <!-- Optional: Google Fonts (internet required) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#">
+        <div class="logo-mark" aria-hidden="true">
+          <!-- SVG logo mark -->
+          <svg width="46" height="46" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#1E88E5"/><stop offset="1" stop-color="#6fb1ff"/></linearGradient></defs>
+            <rect rx="10" width="64" height="64" fill="url(#g)"></rect>
+            <path d="M16 42 L25 27 L35 27 L44 42" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="22" cy="46" r="3.5" fill="#fff"/><circle cx="38" cy="46" r="3.5" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">Ishika Car Care</span>
+          <span class="brand-tag">Professional Service • Trusted Repairs</span>
+        </div>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <button id="nav-toggle" class="nav-toggle" aria-expanded="false" aria-controls="nav-list">
+          <span class="hamburger"></span>
+          <span class="sr-only">Open menu</span>
+        </button>
+        <ul id="nav-list" class="nav-list">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-cta">
+        <a href="tel:+917509337555" class="call-btn" aria-label="Call Ishika Car Care">Call Now</a>
+        <button class="btn-primary" id="book-now">Book Service</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main id="main">
+    <section class="hero" aria-label="Hero section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>Professional Car Servicing & Premium Detailing</h1>
+          <p class="lead">Trusted technicians • Transparent pricing • Genuine parts. Book online or walk-in — we keep you moving.</p>
+          <div class="hero-actions">
+            <button class="btn-primary" id="hero-book">Book Service</button>
+            <a class="btn-ghost" href="#services">Explore Services</a>
+          </div>
+
+          <ul class="trust-list" aria-hidden="false">
+            <li><strong>2 Lifts</strong><span>Quick Turnaround</span></li>
+            <li><strong>Genuine Parts</strong><span>Quality Guaranteed</span></li>
+            <li><strong>1 Year Workmanship</strong><span>Peace of Mind</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-media" aria-hidden="false">
+          <!-- placeholder image: developer should replace with real workshop photo -->
+          <div class="card-media">
+            <img src="https://via.placeholder.com/860x520?text=Ishika+Car+Care+Hero" alt="Ishika Car Care workshop interior" />
+            <div class="media-caption">Clean, modern workshop with dedicated bays</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section services" aria-label="Our services">
+      <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-sub">End-to-end car care — from quick oil changes to full detailing and tyre solutions.</p>
+
+        <div class="grid services-grid">
+          <article class="service-card">
+            <div class="icon">🛠</div>
+            <h3>Full Service</h3>
+            <p>Comprehensive inspection, oil change, filters, brakes, fluids, and safety check.</p>
+            <a class="card-link" href="#bookings">Book Now</a>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">✨</div>
+            <h3>Detailing & Polishing</h3>
+            <p>Ceramic coating, polishing, interior deep-clean, and paint protection packages.</p>
+            <a class="card-link" href="#bookings">View Packages</a>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">🛞</div>
+            <h3>Tyres & Wheels</h3>
+            <p>Tyre sales, balancing, alignment, alloy fitting and tubeless repairs.</p>
+            <a class="card-link" href="#shop">Shop Tyres</a>
+          </article>
+
+          <article class="service-card">
+            <div class="icon">🔋</div>
+            <h3>Battery & Electrical</h3>
+            <p>Battery testing & replacement, electronics, sensors, and AC servicing.</p>
+            <a class="card-link" href="#contact">Contact</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PACKAGES -->
+    <section id="packages" class="section packages" aria-label="Service packages">
+      <div class="container">
+        <h2 class="section-title">Popular Packages</h2>
+        <div class="grid packages-grid">
+          <div class="package">
+            <h3>Essential</h3>
+            <p class="price">₹799 <small>starting</small></p>
+            <ul>
+              <li>Oil & filter change</li>
+              <li>Basic inspection</li>
+              <li>1 Day Turnaround</li>
+            </ul>
+            <button class="btn-outline book-pack" data-pack="Essential">Book Essential</button>
+          </div>
+
+          <div class="package featured">
+            <span class="ribbon">Best Value</span>
+            <h3>Complete Care</h3>
+            <p class="price">₹2,499 <small>starting</small></p>
+            <ul>
+              <li>Full service + wash</li>
+              <li>Wheel alignment</li>
+              <li>Complimentary inspection report</li>
+            </ul>
+            <button class="btn-primary book-pack" data-pack="Complete Care">Book Complete Care</button>
+          </div>
+
+          <div class="package">
+            <h3>Premium Detail</h3>
+            <p class="price">₹5,999 <small>starting</small></p>
+            <ul>
+              <li>Ceramic coating</li>
+              <li>Interior shampoo & polish</li>
+              <li>Paint correction</li>
+            </ul>
+            <button class="btn-outline book-pack" data-pack="Premium Detail">Book Premium</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY / CAROUSEL -->
+    <section id="gallery" class="section gallery" aria-label="Gallery">
+      <div class="container">
+        <h2 class="section-title">Before & After</h2>
+        <div class="carousel" aria-roledescription="carousel" aria-label="Before and after gallery">
+          <button class="carousel-btn prev" aria-label="Previous slide">&lt;</button>
+          <div class="carousel-track">
+            <figure class="carousel-item"><img src="https://via.placeholder.com/900x560?text=Before+1" alt="Before cleaning"></figure>
+            <figure class="carousel-item"><img src="https://via.placeholder.com/900x560?text=After+1" alt="After cleaning"></figure>
+            <figure class="carousel-item"><img src="https://via.placeholder.com/900x560?text=Before+2" alt="Before polishing"></figure>
+            <figure class="carousel-item"><img src="https://via.placeholder.com/900x560?text=After+2" alt="After polishing"></figure>
+          </div>
+          <button class="carousel-btn next" aria-label="Next slide">&gt;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="section reviews" aria-label="Customer reviews">
+      <div class="container">
+        <h2 class="section-title">What Customers Say</h2>
+        <div class="grid reviews-grid">
+          <blockquote class="review">
+            <p>“Fast service, honest pricing — my Innova runs smoother. Highly recommend Ishika Car Care.”</p>
+            <cite>— Rajesh K.</cite>
+          </blockquote>
+
+          <blockquote class="review">
+            <p>“Professional team and spotless workshop. Ceramic coating was excellent.”</p>
+            <cite>— Priya S.</cite>
+          </blockquote>
+
+          <div class="review-cta">
+            <p>Want to leave a review? <a href="#contact">Contact us</a> or find us on Google.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact" aria-label="Contact">
+      <div class="container contact-grid">
+        <div class="contact-form-card">
+          <h2 class="section-title">Book a Service</h2>
+          <form id="booking-form" class="booking-form" aria-label="Booking form" novalidate>
+            <label for="cust-name">Full name</label>
+            <input id="cust-name" name="name" type="text" required placeholder="Your name" />
+
+            <label for="cust-phone">Phone</label>
+            <input id="cust-phone" name="phone" type="tel" inputmode="tel" pattern="[0-9\s\-\+]+" required placeholder="+91 9XXXXXXXXX" />
+
+            <label for="cust-vehicle">Vehicle model</label>
+            <input id="cust-vehicle" name="vehicle" type="text" placeholder="e.g. Toyota Innova Crysta" required />
+
+            <label for="service-select">Service</label>
+            <select id="service-select" name="service" required>
+              <option value="">-- Choose a service --</option>
+              <option>Full Service</option>
+              <option>Oil Change</option>
+              <option>Detailing & Polishing</option>
+              <option>Tyre & Wheel</option>
+            </select>
+
+            <label for="preferred-date">Preferred date</label>
+            <input id="preferred-date" name="date" type="date" required />
+
+            <label for="notes">Notes (optional)</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Any special requests or pickup address"></textarea>
+
+            <button type="submit" class="btn-primary submit-btn">Submit Booking</button>
+          </form>
+        </div>
+
+        <div class="contact-info">
+          <h3>Visit Us</h3>
+          <p><strong>Ishika Car Care</strong><br/>Near Industrial Area, YourCity, PIN - 123456</p>
+          <p><strong>Hours</strong><br/>Mon–Sat: 9:00 AM – 7:00 PM<br/>Sun: 9:00 AM – 2:00 PM</p>
+          <p><strong>Contact</strong><br/><a href="tel:+917509337555">+91 7509337555</a><br/><a href="mailto:info@ishikacarcare.com">info@ishikacarcare.com</a></p>
+          <div class="map-placeholder" aria-hidden="true">[Map Placeholder — embed Google Maps here]</div>
+
+          <div class="socials">
+            <a href="#" aria-label="Instagram">IG</a>
+            <a href="#" aria-label="Facebook">FB</a>
+            <a href="#" aria-label="WhatsApp">WA</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <h4>Ishika Car Care</h4>
+          <p>Professional Service • Trusted Repairs • Quality Parts</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#packages">Packages</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p><a href="tel:+917509337555">+91 7509337555</a><br/><a href="mailto:ishikautomobile@gmail.com">ishikautomobile@gmail.com</a></p>
+          <p class="small">© <span id="year"></span> Ishika Car Care. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- BOOKING MODAL (hidden) -->
+  <div class="modal-backdrop" id="modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Close booking form">&times;</button>
+      <h3 id="modal-title">Quick Book Service</h3>
+      <p class="muted">Fill a few details and we will call to confirm your appointment.</p>
+      <form id="modal-form" class="modal-form" novalidate>
+        <label for="m-name">Full name</label>
+        <input id="m-name" name="name" required />
+
+        <label for="m-phone">Phone</label>
+        <input id="m-phone" name="phone" pattern="[0-9\s\-\+]+" required />
+
+        <label for="m-service">Service</label>
+        <select id="m-service" name="service" required>
+          <option value="">Select</option>
+          <option>Full Service</option><option>Oil Change</option><option>Detailing</option>
+        </select>
+
+        <button type="submit" class="btn-primary">Request Callback</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
