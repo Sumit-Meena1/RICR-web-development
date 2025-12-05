@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
@@ -10,36 +10,124 @@
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="style.css">
-    
-</head>
-<body>
-    
-    <div id="bulb" style="width: 200px; height: 200px;" class="text-center align-content-center">
-        Bulb
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div
+      id="bulb"
+      style="width: 200px; height: 200px"
+      class="text-center align-content-center"
+    >
+      Bulb
     </div>
 
-
-    <br>
-    
-   
+    <br />
 
     <button onclick="on()">ON</button>
     <button onclick="of()">OFF</button>
 
-    <input type="color" name="color" id="color" onclick="user()">
+    <input type="color" name="color" id="color" onclick="user()" />
 
-
-
-     <div id="smartBulb" style="width: 200px; height: 200px;" class="text-center align-content-center on">
-        Bulb
+    <div
+      id="smartBulb"
+      style="width: 200px; height: 200px"
+      class="text-center align-content-center on"
+    >
+      Bulb
     </div>
-    <br>
+    <br />
 
+    <button onclick="SB_control()" id="sbbutton">ON</button>
+    <button onclick="SB_control2()" id="sbbutton">ON</button>
 
-    <button  onclick="SB_control()" id="sbbutton">ON</button>
-    <button  onclick="SB_control2()" id="sbbutton">ON</button>
+    <div
+    id="satrangi"
+      class="rounded-circle text-center"
+      style="border: 1px solid black; width: 200px; height: 200px"
+    >
+      Bulb
+    </div>
 
+    <div id="rainbow" class="d-flex">
+      <div
+        id="c1"
+        class="rounded-circle text-center mx-2"
+        style="
+          width: 30px;
+          height: 30px;
+          border: 1px solid #000;
+          background: pink;
+        "
+      >
+        c1
+      </div>
+      <div
+        id="c2"
+        class="rounded-circle text-center mx-2"
+        style="
+          width: 30px;
+          height: 30px;
+          border: 1px solid #000;background-color: red;
+        "
+      >
+        c2
+      </div>
+      <div
+        id="c3"
+        class="rounded-circle text-center mx-2"
+        style="
+          width: 30px;
+          height: 30px;
+          border: 1px solid #000000;background-color: green;
+        "
+      >
+        c3
+      </div>
+      <div
+        id="c4"
+        class="rounded-circle text-center mx-2"
+        style="
+          width: 30px;
+          height: 30px;
+          border: 1px solid #000;background-color: blue;
+        "
+      >
+        c4
+      </div>
+      <div
+        id="c5"
+        class="rounded-circle text-center mx-2"
+        style="
+          width: 30px;
+          height: 30px;
+          border: 1px solid #000;background-color: violet;
+        "
+      >
+        c5
+      </div>
+      <div
+        id="c6"
+        class="rounded-circle text-center mx-2"
+        style="
+          width: 30px;
+          height: 30px;
+          border: 1px solid #000;background-color: yellow;
+        "
+      >
+        c6
+      </div>
+      <div
+        id="c7"
+        class="rounded-circle text-center mx-2"
+        style="
+          width: 30px;
+          height: 30px;
+          border: 1px solid #000;background-color: gray;
+        "
+      >
+        c7
+      </div>
+    </div>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
@@ -47,5 +135,5 @@
       crossorigin="anonymous"
     ></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

@@ -36,3 +36,64 @@ function SB_control() {
 function SB_control2() {
   document.getElementById("smartBulb").classList.toggle("on");
 }
+
+document.getElementById("c1").addEventListener("mouseover", () => {
+  fillColour("pink");
+});
+
+document.getElementById("c1").addEventListener("mouseleave", () => {
+  fillColour("white");
+});
+
+document.getElementById("c2").addEventListener("mouseover", () => {
+  fillColour("red");
+});
+
+document.getElementById("c2").addEventListener("mouseleave", () => {
+  fillColour("white");
+});
+
+document.getElementById("c3").addEventListener("mouseover", () => {
+  fillColour("green");
+});
+
+document.getElementById("c3").addEventListener("mouseleave", () => {
+  fillColour("white");
+});
+
+document.getElementById("c4").addEventListener("mouseover", () => {
+  fillColour("blue");
+});
+
+document.getElementById("c4").addEventListener("mouseleave", () => {
+  fillColour("white");
+});
+
+document.getElementById("c5").addEventListener("mouseover", () => {
+  fillColour("violet");
+});
+
+document.getElementById("c5").addEventListener("mouseleave", () => {
+  fillColour("white");
+});
+
+document.getElementById("c6").addEventListener("mouseover", () => {
+  fillColour("yellow");
+});
+
+document.getElementById("c6").addEventListener("mouseleave", () => {
+  fillColour("white");
+});
+
+document.getElementById("c7").addEventListener("mouseover", () => {
+  fillColour("gray");
+});
+
+document.getElementById("c7").addEventListener("mouseleave", () => {
+  fillColour("white");
+});
+
+function fillColour(color) {
+  console.log(color);
+  document.getElementById("satrangi").style.backgroundColor = color;
+}
