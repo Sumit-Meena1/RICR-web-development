@@ -9,6 +9,7 @@ function addTask() {
     const l = document.createElement("li");
     l.classList.add("p-2", "d-flex", "align-item-center", "border-bottom");
 
+
     const d = document.createElement("div");
     d.classList.add("w-75");
     d.innerText = task;
@@ -27,3 +28,23 @@ function addTask() {
     document.getElementById("newtask").value = "";
   }
 }
+
+
+
+// {
+//     title: "Python Programming",
+//     level: "Intermediate",
+//     price: "$59",
+//   },
+//   {
+//     title: "Data Science",
+//     level: "Advanced",
+//     price: "$79",
+//   },
+
+
+// .course-container {
+//             display: flex;
+//             flex-wrap: wrap;
+//             gap: 20px;
+//         }

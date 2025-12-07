@@ -1,0 +1,28 @@
+.card {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+}
+
+.card:hover{
+    background-color: green;
+}
+
+.container
+{
+    display: flex;
+    gap: 20px;
+    margin-left: 400px;
+}
+#contact
+{
+    width: 800px;
+    margin-left: 600px;
+}
+#message
+{
+    margin-top: 50px;
+    width: 500px;
+}
+
