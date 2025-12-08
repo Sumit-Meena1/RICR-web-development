@@ -34,30 +34,97 @@ const statePositions = {
 
 const mapContainer = document.getElementById("mapContainer");
 const select = document.getElementById("stateSelect");
+const addAllBtn = document.getElementById("addAllBtn");
+const clearBtn = document.getElementById("clearBtn");
+const fallbackAudio = document.getElementById("flagAudioFallback");
+const FLAG_SRC =
+  "https://static.vecteezy.com/system/resources/thumbnails/028/233/959/small/flag-3d-rendering-icon-illustration-free-png.png";
+
+const SOUND_URL = fallbackAudio.src;
+
+async function initAudio() {
+  if (audioCtx) return;
+}
+
+
+
+
+function cssEscape(str) {
+  return str.replace(/["\\]/g, "\\$&");
+}
+
+function placeFlag(state) {
+  const pos = statePositions[state];
+  if (!pos) return;
+
+  if (document.querySelector(`.flag-wrapper[data-state="${cssEscape(state)}"]`))
+    return;
+
+  const wrapper = document.createElement("div");
+  wrapper.className = "flag-wrapper";
+  wrapper.style.left = pos.x + "%";
+  wrapper.style.top = pos.y + "%";
+  wrapper.setAttribute("data-state", state);
+
+  const flag = document.createElement("img");
+  flag.src = FLAG_SRC;
+  flag.className = "flag";
+
+  wrapper.appendChild(flag);
+  mapContainer.appendChild(wrapper);
+  playSound();
+}
+
+select.addEventListener("change", function () {
+  if (this.value) placeFlag(this.value);
+});
+
+addAllBtn.addEventListener("click", function () {
+  initAudio().finally(() => {
+    const states = Object.keys(statePositions);
+    states.forEach((s, i) => setTimeout(() => placeFlag(s), i * 40));
+  });
+});
+
+clearBtn.addEventListener("click", function () {
+  document.querySelectorAll(".flag-wrapper").forEach((el) => el.remove());
+});
+let audioUnlocked = false;
+let clickSound = new Audio("https://www.fesliyanstudios.com/play-mp3/387");
+
+document.body.addEventListener("click", () => {
+  if (!audioUnlocked) {
+    clickSound
+      .play()
+      .then(() => {
+        audioUnlocked = true;
+        console.log("Audio unlocked");
+      })
+      .catch(() => {});
+  }
+});
+
+function playFlagSound() {
+  if (audioUnlocked) clickSound.play();
+}
 
 select.addEventListener("change", function () {
   const state = this.value;
-
   const pos = statePositions[state];
 
   const wrapper = document.createElement("div");
   wrapper.className = "flag-wrapper";
   wrapper.style.left = pos.x + "%";
   wrapper.style.top = pos.y + "%";
+  wrapper.setAttribute("data-state", state);
 
   const flag = document.createElement("img");
   flag.src =
     "https://static.vecteezy.com/system/resources/thumbnails/028/233/959/small/flag-3d-rendering-icon-illustration-free-png.png";
   flag.className = "flag";
 
-  wrapper.setAttribute("data-state", state);
-
   wrapper.appendChild(flag);
   mapContainer.appendChild(wrapper);
+
+  playFlagSound();
 });
-
-
-
-
-
-  // if (!state || !statePositions[state]) return;

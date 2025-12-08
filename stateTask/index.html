@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>India Map State Flags</title>
-    <link rel="stylesheet" href="style.css">
-    
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    
     <div class="top-bar">
       <select id="stateSelect">
         <option value="">-- Select a State --</option>
@@ -42,14 +42,26 @@
         <option>Delhi</option>
         <option>Jammu & Kashmir</option>
       </select>
+
+      <button id="addAllBtn" class="btn">Add All</button>
+      <button id="clearBtn" class="btn" style="background: #dc3545">
+        Clear All
+      </button>
     </div>
 
     <div class="map-container" id="mapContainer">
       <img
         src="https://dms.mydukaan.io/original/jpeg/upload_file_service/a5e77d9b-b06d-4f6d-ab57-645685994b80/navneet-youva-political-map-india-10-sheets.jpg"
-        alt="India Map" 
+        alt="India Map"
       />
     </div>
+
+    <audio
+      id="flagAudioFallback"
+      preload="auto"
+      src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_655b1a3a66.mp3?filename=button-124476.mp3"
+    ></audio>
+    
 
     <script src="script.js"></script>
   </body>
