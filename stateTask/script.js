@@ -37,7 +37,6 @@ const select = document.getElementById("stateSelect");
 
 select.addEventListener("change", function () {
   const state = this.value;
-  if (!state || !statePositions[state]) return;
 
   const pos = statePositions[state];
 
@@ -56,3 +55,9 @@ select.addEventListener("change", function () {
   wrapper.appendChild(flag);
   mapContainer.appendChild(wrapper);
 });
+
+
+
+
+
+  // if (!state || !statePositions[state]) return;
