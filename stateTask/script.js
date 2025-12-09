@@ -80,11 +80,13 @@ addAllBtn.addEventListener("click", function () {
   initAudio().finally(() => {
     const states = Object.keys(statePositions);
     states.forEach((s, i) => setTimeout(() => placeFlag(s), i * 40));
+    clickSound.play();
   });
 });
 
 clearBtn.addEventListener("click", function () {
   document.querySelectorAll(".flag-wrapper").forEach((el) => el.remove());
+  clickSound.play();
 });
 let audioUnlocked = false;
 let clickSound = new Audio("https://www.fesliyanstudios.com/play-mp3/387");

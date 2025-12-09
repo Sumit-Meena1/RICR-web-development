@@ -5,12 +5,13 @@ body {
 }
 
 .top-bar {
-  background: white;
+  background: rgb(4, 247, 77);
   padding: 15px;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 2px 5px 20px black;
 }
 
 select {
@@ -30,16 +31,18 @@ select {
   font-size: 15px;
   border-radius: 6px;
   cursor: pointer;
+  box-shadow: 2px 5px 2px black;
 }
 
 .btn:hover {
-  background: #0056b3;
+  background: #f305d7;
 }
 
 .map-container {
   margin-top: 20px;
   position: relative;
   display: inline-block;
+  box-shadow: 2px 5px 20px rgb(18, 5, 248);
 }
 
 .map-container img {
