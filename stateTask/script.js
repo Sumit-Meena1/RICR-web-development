@@ -46,9 +46,6 @@ async function initAudio() {
   if (audioCtx) return;
 }
 
-
-
-
 function cssEscape(str) {
   return str.replace(/["\\]/g, "\\$&");
 }

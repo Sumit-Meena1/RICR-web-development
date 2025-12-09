@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -16,7 +16,32 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body style="background-color: antiquewhite;">
+   <div class="text-center mt-5">
+    <div class="text-center container w-25 rounded-5 shadow" style="border: 4px solid rgb(251, 7, 7); background-color: #18eaf5;">
+        <h1 class="fw-bold display-4 text-success shadow rounded-5 mt-3" style="border: 3px solid rgb(250, 4, 4); ">Age Calculator</h1>
+
+        <div class="text-center">
+            <label for="birth" class="fs-3 mt-5 mb-3 fw-bold">Enter Your Date Of Birth </label> <br>
+            <input type="date" name="birth" id="birth" class="fs-3 mb-5 form-control w-50" style="margin: 0px auto;">
+        </div>
+        <div>
+            <label for="current" class="fs-3 mt-5 mb-3 fw-bold">Enter Current Date</label> <br>
+            <input type="date" name="current" id="current" class="fs-3 mb-5 form-control w-50" style="margin: 0px auto;">
+        </div>
+        <div class="text-center my-5 ">
+            <button onclick="calculate()" class="btn btn-primary fw-bold fs-3 shadow" style="width: 200px; height: 60px;">Calculate</button>
+        </div>
+        <div class="text-center fw-bold fs-1 text-success mb-5">
+            
+
+        </div>
+    </div>
+   </div>
+
+
+
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
@@ -24,378 +49,5 @@
     ></script>
     <script src="script.js"></script>
   </body>
-</html> -->
-
-<<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>India Map State Flags</title>
-    <link rel="stylesheet" href="style.css" />
-
-    <style>
-      body {
-        margin: 0;
-        background: #f5f5f5;
-        text-align: center;
-      }
-
-      .top-bar {
-        background: white;
-        padding: 15px;
-        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
-        position: sticky;
-        top: 0;
-        z-index: 100;
-      }
-
-      select {
-        width: 300px;
-        padding: 10px;
-        font-size: 16px;
-        border-radius: 6px;
-        border: 1px solid #ccc;
-      }
-
-      .btn {
-        padding: 10px 15px;
-        margin-left: 10px;
-        background: #007bff;
-        border: none;
-        color: white;
-        font-size: 15px;
-        border-radius: 6px;
-        cursor: pointer;
-      }
-
-      .btn:hover {
-        background: #0056b3;
-      }
-
-      .map-container {
-        margin-top: 20px;
-        position: relative;
-        display: inline-block;
-      }
-
-      .map-container img {
-        width: 700px;
-        height: auto;
-        border-radius: 10px;
-      }
-
-      .flag {
-        position: absolute;
-        width: 30px !important;
-        height: 20px !important;
-        cursor: pointer;
-        transform: translate(-50%, -50%);
-        z-index: 10;
-      }
-
-      .flag-wrapper {
-        position: absolute;
-        transform: translate(-50%, -50%);
-        z-index: 20;
-      }
-
-      .flag-wrapper:hover::after {
-        content: attr(data-state);
-        position: absolute;
-        top: -22px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: black;
-        color: white;
-        padding: 2px 6px;
-        border-radius: 4px;
-        font-size: 12px;
-        white-space: nowrap;
-        z-index: 9999;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="top-bar">
-      <select id="stateSelect">
-        <option value="">-- Select a State --</option>
-        <option>Andhra Pradesh</option>
-        <option>Arunachal Pradesh</option>
-        <option>Assam</option>
-        <option>Bihar</option>
-        <option>Chhattisgarh</option>
-        <option>Goa</option>
-        <option>Gujarat</option>
-        <option>Haryana</option>
-        <option>Himachal Pradesh</option>
-        <option>Jharkhand</option>
-        <option>Karnataka</option>
-        <option>Kerala</option>
-        <option>Madhya Pradesh</option>
-        <option>Maharashtra</option>
-        <option>Manipur</option>
-        <option>Meghalaya</option>
-        <option>Mizoram</option>
-        <option>Nagaland</option>
-        <option>Odisha</option>
-        <option>Punjab</option>
-        <option>panducheri</option>
-        <option>Rajasthan</option>
-        <option>Sikkim</option>
-        <option>Tamil Nadu</option>
-        <option>Telangana</option>
-        <option>Tripura</option>
-        <option>Uttar Pradesh</option>
-        <option>Uttarakhand</option>
-        <option>West Bengal</option>
-        <option>Delhi</option>
-        <option>Jammu & Kashmir</option>
-      </select>
-
-      <!-- NEW BUTTONS -->
-      <button id="addAllBtn" class="btn">Add All</button>
-      <button id="clearBtn" class="btn" style="background: #dc3545">
-        Clear All
-      </button>
-    </div>
-
-    <div class="map-container" id="mapContainer">
-      <img
-        src="https://dms.mydukaan.io/original/jpeg/upload_file_service/a5e77d9b-b06d-4f6d-ab57-645685994b80/navneet-youva-political-map-india-10-sheets.jpg"
-        alt="India Map"
-      />
-    </div>
-
-    <!-- Keep an <audio> element as fallback (same mp3 link you used earlier) -->
-    <audio
-      id="flagAudioFallback"
-      preload="auto"
-      src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_655b1a3a66.mp3?filename=button-124476.mp3"
-    ></audio>
-
-    <script>
-      const statePositions = {
-        "Jammu & Kashmir": { x: 36, y: 20 },
-        "Himachal Pradesh": { x: 39, y: 26 },
-        Punjab: { x: 33, y: 28 },
-        Haryana: { x: 35, y: 33 },
-        Delhi: { x: 38, y: 34 },
-        Rajasthan: { x: 30, y: 38 },
-        "Uttar Pradesh": { x: 47, y: 39 },
-        Bihar: { x: 62, y: 42 },
-        Uttarakhand: { x: 44, y: 30 },
-        Gujarat: { x: 20, y: 45 },
-        "Madhya Pradesh": { x: 40, y: 47 },
-        Chhattisgarh: { x: 52, y: 50 },
-        Jharkhand: { x: 62, y: 46 },
-        "West Bengal": { x: 68, y: 48 },
-        Odisha: { x: 60, y: 53 },
-        Maharashtra: { x: 34, y: 54 },
-        Telangana: { x: 41, y: 60 },
-        "Andhra Pradesh": { x: 40, y: 67 },
-        Karnataka: { x: 31, y: 67 },
-        "Tamil Nadu": { x: 38, y: 75 },
-        panducheri: { x: 42, y: 74 },
-        Kerala: { x: 32, y: 77 },
-        Goa: { x: 25, y: 65 },
-        Assam: { x: 78, y: 40 },
-        Meghalaya: { x: 78, y: 42 },
-        Tripura: { x: 80, y: 46 },
-        Manipur: { x: 87, y: 43 },
-        Nagaland: { x: 88, y: 40 },
-        Mizoram: { x: 83, y: 47 },
-        "Arunachal Pradesh": { x: 86, y: 35 },
-        Sikkim: { x: 70, y: 37 },
-      };
-
-      const mapContainer = document.getElementById("mapContainer");
-      const select = document.getElementById("stateSelect");
-      const addAllBtn = document.getElementById("addAllBtn");
-      const clearBtn = document.getElementById("clearBtn");
-      const fallbackAudio = document.getElementById("flagAudioFallback");
-      const FLAG_SRC =
-        "https://static.vecteezy.com/system/resources/thumbnails/028/233/959/small/flag-3d-rendering-icon-illustration-free-png.png";
-
-      /* -------------------- Web Audio Setup --------------------
-   We'll create an AudioContext after the first user gesture,
-   fetch and decode the audio into a buffer, then play it via
-   AudioBufferSourceNode every time a flag is placed.
-*/
-      let audioCtx = null;
-      let soundBuffer = null;
-      const SOUND_URL = fallbackAudio.src; // same mp3 link you provided
-
-      // Create audio context and load the mp3 into buffer
-      async function initAudio() {
-        if (audioCtx) return;
-        try {
-          // Create AudioContext on user gesture
-          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-          // fetch the sound and decode
-          const resp = await fetch(SOUND_URL, { mode: "cors" });
-          const arrayBuffer = await resp.arrayBuffer();
-          soundBuffer = await audioCtx.decodeAudioData(arrayBuffer);
-          // unlocked if successful
-          // console.log("Sound buffer loaded");
-        } catch (err) {
-          // If anything fails, we'll fallback to <audio> cloning
-          audioCtx = null;
-          soundBuffer = null;
-          // console.warn("Web Audio load failed, will use fallback <audio>:", err);
-        }
-      }
-
-      // Attempt to unlock audio on a user gesture (one-time)
-      function oneTimeUnlock() {
-        const unlock = () => {
-          // initialize audio (this requires a user gesture)
-          initAudio().finally(() => {
-            // remove listeners after first gesture
-            window.removeEventListener("click", unlock);
-            window.removeEventListener("keydown", unlock);
-            select.removeEventListener("change", unlock);
-          });
-        };
-        window.addEventListener("click", unlock, { once: true });
-        window.addEventListener("keydown", unlock, { once: true });
-        select.addEventListener("change", unlock, { once: true });
-      }
-      oneTimeUnlock();
-
-      /* -------------------- Play Sound -------------------- */
-      function playSound() {
-        // If we have a decoded buffer and AudioContext available -> use it
-        if (audioCtx && soundBuffer) {
-          try {
-            const src = audioCtx.createBufferSource();
-            src.buffer = soundBuffer;
-            src.connect(audioCtx.destination);
-            src.start(0);
-          } catch (e) {
-            // fallback to audio element clone
-            playFallbackAudio();
-          }
-        } else {
-          // fallback to <audio> cloning
-          playFallbackAudio();
-        }
-      }
-
-      function playFallbackAudio() {
-        try {
-          const clone = fallbackAudio.cloneNode(true);
-          clone.volume = 0.9;
-          // attach to DOM briefly (not necessary but some browsers prefer)
-          clone.play().catch(() => {
-            // play might be blocked if no user gesture; fail silently
-          });
-        } catch (e) {
-          // silent
-        }
-      }
-
-      /* -------------------- Flag placement -------------------- */
-      function cssEscape(str) {
-        return str.replace(/["\\]/g, "\\$&");
-      }
-
-      function placeFlag(state) {
-        const pos = statePositions[state];
-        if (!pos) return;
-
-        // skip duplicates
-        if (
-          document.querySelector(
-            `.flag-wrapper[data-state="${cssEscape(state)}"]`
-          )
-        )
-          return;
-
-        const wrapper = document.createElement("div");
-        wrapper.className = "flag-wrapper";
-        wrapper.style.left = pos.x + "%";
-        wrapper.style.top = pos.y + "%";
-        wrapper.setAttribute("data-state", state);
-
-        const flag = document.createElement("img");
-        flag.src = FLAG_SRC;
-        flag.className = "flag";
-
-        wrapper.appendChild(flag);
-        mapContainer.appendChild(wrapper);
-
-        // Try to resume context if suspended (some browsers start suspended)
-        if (audioCtx && audioCtx.state === "suspended") {
-          audioCtx.resume().catch(() => {
-            /* ignore */
-          });
-        }
-
-        playSound();
-      }
-
-      /* -------------------- UI events -------------------- */
-      select.addEventListener("change", function () {
-        if (this.value) placeFlag(this.value);
-      });
-
-      // Add all with a small stagger so browser doesn't think it's autoplay spam
-      addAllBtn.addEventListener("click", function () {
-        // ensure audio initialization attempted (this click is a user gesture)
-        initAudio().finally(() => {
-          const states = Object.keys(statePositions);
-          states.forEach((s, i) => setTimeout(() => placeFlag(s), i * 40));
-        });
-      });
-
-      clearBtn.addEventListener("click", function () {
-        document.querySelectorAll(".flag-wrapper").forEach((el) => el.remove());
-      });
-      let audioUnlocked = false;
-      let clickSound = new Audio(
-        "https://www.fesliyanstudios.com/play-mp3/387"
-      );
-
-      document.body.addEventListener("click", () => {
-        if (!audioUnlocked) {
-          clickSound
-            .play()
-            .then(() => {
-              audioUnlocked = true;
-              console.log("Audio unlocked");
-            })
-            .catch(() => {});
-        }
-      });
-
-      // Play sound safely
-      function playFlagSound() {
-        if (audioUnlocked) clickSound.play();
-      }
-
-      // PLAY SOUND WHEN SELECTING A STATE
-      select.addEventListener("change", function () {
-        const state = this.value;
-        const pos = statePositions[state];
-
-        const wrapper = document.createElement("div");
-        wrapper.className = "flag-wrapper";
-        wrapper.style.left = pos.x + "%";
-        wrapper.style.top = pos.y + "%";
-        wrapper.setAttribute("data-state", state);
-
-        const flag = document.createElement("img");
-        flag.src =
-          "https://static.vecteezy.com/system/resources/thumbnails/028/233/959/small/flag-3d-rendering-icon-illustration-free-png.png";
-        flag.className = "flag";
-
-        wrapper.appendChild(flag);
-        mapContainer.appendChild(wrapper);
-
-        playFlagSound();
-      });
-    </script>
-
-    <script src="script.js"></script>
-  </body>
 </html>
+
