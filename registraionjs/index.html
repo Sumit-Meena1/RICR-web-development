@@ -21,27 +21,16 @@
     />
   </head>
   <body class="bg-light">
-    <header class="position-sticky top-0 z-3">
-      <div
-        class="container-fluid d-flex bg-primary px-3 py-1 justify-content-between"
-      >
-        <div class="d-flex gap-2">
-          <img
-            src="https://ricr.in/assets/home/assets/images/logo/logo-2.png"
-            alt=""
-            width="50px"
-            height="50px"
-            class="rounded-circle"
-          />
-          <h1 class="text-light">Registration Form</h1>
-        </div>
-        <button class="btn btn-info">Student Login</button>
-      </div>
-    </header>
+    <div
+      class="navbar bg-primary fs-1 d-flex justify-content-center mb-5 fw-bold text-light fixed-top text-center"
+    >
+      Registration Form
+    </div>
 
     <main>
       <div
-        class="container bg-white border border-primary rounded shadow p-3 mt-3"
+        class="container bg-white border border-primary rounded shadow p-3"
+        style="margin-top: 100px"
       >
         <div class="border border-dark p-3 p-5 position-relative">
           <span
@@ -51,7 +40,7 @@
             Personal Information
           </span>
 
-          <div class="d-grid gap-3">
+          <div class="d-grid gap-1">
             <div class="d-flex align-items-center">
               <label for="fullName" class="form-label w-25"
                 >Full Name : <sup class="text-danger fs-5">*</sup></label
@@ -62,8 +51,9 @@
                 id="fullName"
                 class="form-control"
                 required
-              />
+              /> 
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="nameError">required</span>
 
             <div class="d-flex align-items-center">
               <label for="email" class="form-label w-25"
@@ -77,6 +67,7 @@
                 required
               />
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="emailError">required</span>
 
             <div class="d-flex align-items-center">
               <label for="contact" class="form-label w-25"
@@ -90,6 +81,8 @@
                 required
               />
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="phoneError">required</span>
+
 
             <div class="d-flex align-items-center">
               <label for="dob" class="form-label w-25"
@@ -103,6 +96,7 @@
                 required
               />
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="dobError">required</span>
           </div>
         </div>
 
@@ -133,6 +127,7 @@
                 <option value="Other">Other</option>
               </select>
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="qlfError">required</span>
 
             <div class="d-flex align-items-center">
               <label for="grade" class="form-label w-25"
@@ -146,6 +141,7 @@
                 required
               />
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="grdError">required</span>
           </div>
         </div>
 
@@ -172,6 +168,7 @@
                 <option value="Other">Other</option>
               </select>
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="crsError">required</span>
 
             <div class="d-flex align-items-center">
               <label for="batch" class="form-label w-25"
@@ -218,6 +215,7 @@
                 /><span class="ms-2 me-4">Night</span>
               </div>
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="batchError">required</span>
 
             <div class="d-flex align-items-center">
               <label for="batch" class="form-label w-25"
@@ -264,6 +262,7 @@
                 /><span class="ms-2 me-4">6-7:30 PM</span>
               </div>
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="timeError">required</span>
           </div>
         </div>
         <div class="border border-dark p-3 p-5 position-relative mt-4">
@@ -287,6 +286,7 @@
                 required
               />
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="adrsError">required</span>
 
             <div class="d-flex align-items-center">
               <label for="city" class="form-label w-25"
@@ -300,6 +300,7 @@
                 required
               />
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="cityError">required</span>
 
             <div class="d-flex align-items-center">
               <label for="pinCode" class="form-label w-25"
@@ -313,6 +314,7 @@
                 required
               />
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="pinError">required</span>
           </div>
         </div>
 
@@ -331,8 +333,14 @@
                   >*</sup
                 ></label
               >
-              <input type="text" name="guardianName" class="form-control" id="guardianName" />
+              <input
+                type="text"
+                name="guardianName"
+                class="form-control"
+                id="guardianName"
+              />
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="grdNameError">required</span>
 
             <div class="d-flex align-items-center">
               <label for="Guardianctct" class="form-label w-25"
@@ -346,6 +354,7 @@
                 required
               />
             </div>
+            <span class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error" id="grdPhoneError">required</span>
           </div>
         </div>
 

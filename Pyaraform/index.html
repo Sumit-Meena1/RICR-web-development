@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div
+      class="navbar bg-primary text-center mb-5 align-content-center d-flex justify-content-center text-light fw-bold fs-1"
+    >
+      Form Validation
+    </div>
+    <div class="container my-5 py-5 rounded-4" style="border: 2px solid black">
+      <div class="my-4 fw-bold d-flex">
+        <label for="name" class="my-2 me-5">Name:</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          class="form-control"
+          placeholder="Enter Your Name"
+        />
+      </div>
+
+      <div class="my-4 fw-bold d-flex">
+        <label for="email" class="my-2 me-5">Email:</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          class="form-control"
+          placeholder="Enter Your Email"
+        />
+      </div>
+
+      <div class="my-4 fw-bold d-flex">
+        <label for="age" class="my-2 me-5">Age:</label>
+        <input
+          type="number"
+          name="age"
+          id="age"
+          class="form-control"
+          placeholder="Enter Your Age"
+        />
+      </div>
+      <div class="my-4 fw-bold d-flex">
+        <label for="phone" class="my-2" style="width: 150px">Phone No.:</label>
+        <input
+          type="number"
+          name="phone"
+          id="phone"
+          class="form-control"
+          placeholder="Enter Your Phone Number"
+        />
+      </div>
+
+      <div class="my-4 fw-bold d-flex">
+        <label for="dob" class="my-2" style="width: 150px"
+          >Date Of Birth:</label
+        >
+        <input
+          type="date"
+          name="dob"
+          id="dob"
+          class="form-control"
+          placeholder="Enter Your Date Of Birth"
+        />
+      </div>
+
+      <div class="container text-center">
+        <button class="btn btn-primary w-25 shadow fw-bold fs-5" onclick="submit()">
+          Submit
+        </button>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
