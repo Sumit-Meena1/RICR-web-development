@@ -440,17 +440,24 @@
                 <option value="News Paper">News Paper</option>
                 <option value="Other">Other</option>
               </select>
-            </div>
+            </div><span
+              class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error"
+              id="hearError"
+              >required</span
+            >
+            
 
             <div class="d-flex align-items-center">
               <label for="specialRequirments" class="form-label w-25"
-                >Feedback :<sup class="text-danger fs-5">*</sup>
+                >Special Requirment :<sup class="text-danger fs-5">*</sup>
               </label>
-              <textarea
-                name="specialRequirments"
-                id="specialRequirments"
-              ></textarea>
+              <input type="text" name="specialRequirments" id="specialRequirments" class="form-control">
             </div>
+            <span
+              class="d-flex justify-content-end float-end text-danger fs-6 mb-3 error"
+              id="spclError"
+              >required</span
+            >
           </div>
         </div>
         <button class="btn bg-success m-5" type="submit" onclick="submit()">

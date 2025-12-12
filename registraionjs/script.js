@@ -11,12 +11,14 @@ function submit() {
   const grade = document.getElementById("grade").value.trim();
 
   const crs = document.getElementById("course").value;
+  const spcl = document.getElementById("specialRequirments").value;
 
   const batchInputs = document.querySelectorAll('input[name="batch"]');
   let time = document.querySelector('input[name="timing"]:checked');
   let address = document.getElementById("ad1").value.trim();
   let city = document.getElementById("city").value.trim();
   let pin = document.getElementById("pinCode").value.trim();
+  const hear = document.getElementById("hear").value;
 
   batchInputs.forEach((box) => {
     box.addEventListener("change", () => {
@@ -182,11 +184,25 @@ function submit() {
   }else{
     document.getElementById("grdPhoneError").innerText = "";
   }
+
+  if (!hear) {
+    document.getElementById("hearError").innerText =
+      "Please select An Option";
+    valid = false;
+  }else{
+    document.getElementById("hearError").innerText = "";
+  }
+
+  if (!spcl) {
+    document.getElementById("spclError").innerText =
+      "Required";
+    valid = false;
+  }else{
+    document.getElementById("spclError").innerText = "";
+  }
+
   if (valid) {
     alert("Form submitted successfully!");
-  }
-  else{
-     alert("Check all Information");
   }
 }
 
