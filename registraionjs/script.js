@@ -16,7 +16,7 @@ function submit() {
   let time = document.querySelector('input[name="timing"]:checked');
   let address = document.getElementById("ad1").value.trim();
   let city = document.getElementById("city").value.trim();
-  let pin = document.getElementById("pin").value.trim();
+  let pin = document.getElementById("pinCode").value.trim();
 
   batchInputs.forEach((box) => {
     box.addEventListener("change", () => {
@@ -40,6 +40,8 @@ function submit() {
     document.getElementById("nameError").innerText =
       "Please Enter A Valid Name";
     valid = false;
+  } else {
+    document.getElementById("nameError").innerText = "";
   }
   if (!em) {
     document.getElementById("emailError").innerText = "Required";
@@ -48,6 +50,8 @@ function submit() {
     document.getElementById("emailError").innerText =
       "Please Enter A Valid Email";
     valid = false;
+  } else {
+    document.getElementById("emailError").innerText = "";
   }
 
   if (!cntct) {
@@ -57,11 +61,16 @@ function submit() {
     document.getElementById("phoneError").innerText =
       "Enter a 10-digit Indian mobile number";
     valid = false;
+  } else {
+    document.getElementById("phoneError").innerText = "";
   }
 
   if (!dob) {
     document.getElementById("dobError").innerText = "Required";
     valid = false;
+  }
+  else{
+    document.getElementById("dobError").innerText = "";
   }
   let birthDate = new Date(dob);
   let today = new Date();
@@ -82,6 +91,8 @@ function submit() {
     document.getElementById("qlfError").innerText =
       "Please select a qualification";
     valid = false;
+  }else{
+    document.getElementById("qlfError").innerText = "";
   }
   if (!grade) {
     document.getElementById("grdError").innerText = "Required";
@@ -93,59 +104,72 @@ function submit() {
     document.getElementById("grdError").innerText =
       "Please Enter A Valid Percentage Or Grade";
     valid = false;
+  }else{
+    document.getElementById("grdError").innerText = "";
   }
   if (!crs) {
     document.getElementById("crsError").innerText = "Please select a Course";
     valid = false;
+  }else{
+    document.getElementById("crsError").innerText = "";
   }
 
   if (!selected) {
     document.getElementById("batchError").innerText =
       "Please Select one Batch Timing";
     valid = false;
+  }else{
+    document.getElementById("batchError").innerText = "";
   }
   if (!time) {
     document.getElementById("timeError").innerText = "Please Select Timing";
     valid = false;
+  }else{
+    document.getElementById("timeError").innerText = "";
   }
 
   if (!address) {
-    document.getElementById("timeError").innerText =
-      "Please Enter Full Address";
+    document.getElementById("addressError").innerText = "Required";
     valid = false;
-  } else if (/^[A-Za-z0-9\s,./-]{5,100}$/.test(address)) {
-    document.getElementById("timeError").innerText =
+  } else if (!/^[A-Za-z0-9\s,./-]{5,100}$/.test(address)) {
+    document.getElementById("addressError").innerText =
       "Please Enter Correct Address";
     valid = false;
+  } else {
+    document.getElementById("addressError").innerText = "";
   }
 
   if (!city) {
-    document.getElementById("cityError").innerText =
-      "Please Enter Full Address";
+    document.getElementById("cityError").innerText = "Required";
     valid = false;
-  } else if (/^[A-Za-z\s]{2,30}$/.test(city)) {
+  } else if (!/^[A-Za-z\s]{2,30}$/.test(city)) {
     document.getElementById("cityError").innerText =
-      "Please Enter Full Address";
+      "Please Enter City Name Properly";
     valid = false;
+  } else {
+    document.getElementById("cityError").innerText = "";
   }
 
   if (!pin) {
-    document.getElementById("pinError").innerText = "Please Enter Pin Code";
+    document.getElementById("pinError").innerText = "Required";
     valid = false;
-  } else if (/^[A-Za-z\s]{2,30}$/.test(pin)) {
+  } else if (!/^[1-9][0-9]{5}$/.test(pin)) {
     document.getElementById("pinError").innerText =
-      "Please Enter Correct Pin Code";
+      "Please Enter Correct 6-Digit Pin Code";
     valid = false;
+  } else {
+    document.getElementById("pinError").innerText = "";
   }
 
   if (!grdName) {
-    document.getElementById("grdNameError").innerText =
-      "Please Enter Guardian Name";
+    document.getElementById("grdNameError").innerText = "Required";
     valid = false;
   } else if (!/^[A-Za-z ]+$/.test(grdName)) {
     document.getElementById("grdNameError").innerText =
       "Please Enter Full Guardian Name";
     valid = false;
+  }else{
+    document.getElementById("grdNameError").innerText = "";
   }
 
   if (!grdcntct) {
@@ -155,6 +179,14 @@ function submit() {
     document.getElementById("grdPhoneError").innerText =
       "Enter a 10-digit Indian mobile number";
     valid = false;
+  }else{
+    document.getElementById("grdPhoneError").innerText = "";
+  }
+  if (valid) {
+    alert("Form submitted successfully!");
+  }
+  else{
+     alert("Check all Information");
   }
 }
 
