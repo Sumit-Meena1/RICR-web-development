@@ -13,6 +13,10 @@ function submit() {
   const crs = document.getElementById("course").value;
 
   const batchInputs = document.querySelectorAll('input[name="batch"]');
+  let time = document.querySelector('input[name="timing"]:checked');
+  let address = document.getElementById("ad1").value.trim();
+  let city = document.getElementById("city").value.trim();
+  let pin = document.getElementById("pin").value.trim();
 
   batchInputs.forEach((box) => {
     box.addEventListener("change", () => {
@@ -24,6 +28,8 @@ function submit() {
     });
   });
   const selected = document.querySelector('input[name="batch"]:checked');
+  const grdName = document.getElementById("guardianName").value;
+  const grdcntct = document.getElementById("cntc").value;
 
   let valid = true;
 
@@ -97,10 +103,59 @@ function submit() {
     document.getElementById("batchError").innerText =
       "Please Select one Batch Timing";
     valid = false;
-    return;
+  }
+  if (!time) {
+    document.getElementById("timeError").innerText = "Please Select Timing";
+    valid = false;
   }
 
-  
+  if (!address) {
+    document.getElementById("timeError").innerText =
+      "Please Enter Full Address";
+    valid = false;
+  } else if (/^[A-Za-z0-9\s,./-]{5,100}$/.test(address)) {
+    document.getElementById("timeError").innerText =
+      "Please Enter Correct Address";
+    valid = false;
+  }
+
+  if (!city) {
+    document.getElementById("cityError").innerText =
+      "Please Enter Full Address";
+    valid = false;
+  } else if (/^[A-Za-z\s]{2,30}$/.test(city)) {
+    document.getElementById("cityError").innerText =
+      "Please Enter Full Address";
+    valid = false;
+  }
+
+  if (!pin) {
+    document.getElementById("pinError").innerText = "Please Enter Pin Code";
+    valid = false;
+  } else if (/^[A-Za-z\s]{2,30}$/.test(pin)) {
+    document.getElementById("pinError").innerText =
+      "Please Enter Correct Pin Code";
+    valid = false;
+  }
+
+  if (!grdName) {
+    document.getElementById("grdNameError").innerText =
+      "Please Enter Guardian Name";
+    valid = false;
+  } else if (!/^[A-Za-z ]+$/.test(grdName)) {
+    document.getElementById("grdNameError").innerText =
+      "Please Enter Full Guardian Name";
+    valid = false;
+  }
+
+  if (!grdcntct) {
+    document.getElementById("grdPhoneError").innerText = "Required";
+    valid = false;
+  } else if (!/^[6-9]\d{9}$/.test(grdcntct)) {
+    document.getElementById("grdPhoneError").innerText =
+      "Enter a 10-digit Indian mobile number";
+    valid = false;
+  }
 }
 
 function reset() {
