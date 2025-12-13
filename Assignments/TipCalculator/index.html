@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIP CALCULATOR</title>
+  </head>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+    crossorigin="anonymous"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+  />
+  <link rel="stylesheet" href="style.css" />
+  <body>
+    <div
+      class="text-center align-content-start d-flex justify-content-center mt-5"
+    >
+      <div
+        class="text-center w-50 rounded-4"
+        style="background-color: rgb(48, 15, 78)"
+      >
+        <div
+          class="text-center fs-2 rounded-top-circle w-50 mt-5 text-light fw-bold container"
+          style="background-color: rgb(252, 166, 38)"
+        >
+          TIP CALCULATOR
+        </div>
+        <div
+          class="rounded-3 text-center container w-50 mt-3"
+          style="background-color: antiquewhite"
+        >
+          <div class="pt-5 text-center">
+            <label for="billAmount" class="fs-3 fw-bold">Bill Amount</label>
+            <input
+              type="number"
+              placeholder="Amount to be payed"
+              name="billAmount"
+              id="billAmount"
+              class="form-control w-75 container"
+              style="border-bottom: 1px solid blue"
+            />
+          </div>
+
+          <div class="pt-5 text-center">
+            <label for="service" class="fs-3 fw-bold"
+              >How Was The Service</label
+            >
+            <select
+              id="service"
+              name="service"
+              class="form-control w-75 container"
+              style="border-bottom: 1px solid blue"
+            >
+              <option value="">Select</option>
+              <option value="25">25% - Top Notch</option>
+              <option value="20">20% - Excellent</option>
+              <option value="15">15% - Good</option>
+              <option value="10">10% - Bad</option>
+              <option value="5">5% - Worst</option>
+            </select>
+          </div>
+
+          <div class="pt-5 text-center">
+            <label for="people" class="fs-3 fw-bold"
+              >Total Number Of People</label
+            >
+            <input
+              type="number"
+              placeholder="Number Of People Sharing The Bill"
+              name="people"
+              id="people"
+              class="form-control w-75 container"
+              style="border-bottom: 1px solid blue"
+            />
+          </div>
+
+          <div class="text-center mt-5 mb-5">
+            <button
+              onclick="calculate()"
+              class="btn btn-primary w-50 shadow fw-bold fs-4"
+            >
+              Calculate
+            </button>
+          </div>
+
+          <div
+            class="text-center fs-2 fw-bold my-5 text-success"
+            id="result"
+          ></div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
