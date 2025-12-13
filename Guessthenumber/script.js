@@ -13,7 +13,7 @@ function submit() {
       "Submit To See If You Guess It Right!";
     document.getElementById("guess").value = "";
     btn.innerText = "Submit";
-    icon.innerText = "";
+    icon.innerText = "";  
     return;
   }
   if (!guess) {
