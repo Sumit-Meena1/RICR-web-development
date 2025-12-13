@@ -20,19 +20,19 @@ function calculate() {
 
   if (units <= 50) {
     slb1 = units;
-    chrg1 = parseFloat((units * 0.5).toFixed(2));
+    chrg1 = parseFloat((units * 0.5));
   } else if (units <= 200) {
     slb1 = 50;
     slb2 = units - 50;
-    chrg1 = parseFloat((50 * 0.5).toFixed(2));
-    chrg2 = parseFloat(((units - 50) * 0.75).toFixed(2));
+    chrg1 = parseFloat((50 * 0.5));
+    chrg2 = parseFloat(((units - 50) * 0.75));
   } else if (units <= 450) {
     slb1 = 50;
     slb2 = 150;
     slb3 = units - 200;
-    chrg1 = parseFloat((50 * 0.5).toFixed(2));
-    chrg2 = parseFloat((150 * 0.75).toFixed(2));
-    chrg3 = parseFloat(((units - 200) * 1.2).toFixed(2));
+    chrg1 = parseFloat((50 * 0.5));
+    chrg2 = parseFloat((150 * 0.75));
+    chrg3 = parseFloat(((units - 200) * 1.2));
   }
   else
   {
@@ -40,14 +40,18 @@ function calculate() {
     slb2 = 150;
     slb3 = 250;
     slb4 = units-450;
-    chrg1 = parseFloat((50 * 0.5).toFixed(2));
-    chrg2 = parseFloat((150 * 0.75).toFixed(2));
-    chrg3 = parseFloat((250 * 1.2).toFixed(2));
-    chrg4 = parseFloat(((units - 450)*1.50).toFixed(2));
+    chrg1 = parseFloat((50 * 0.5));
+    chrg2 = parseFloat((150 * 0.75));
+    chrg3 = parseFloat((250 * 1.2));
+    chrg4 = parseFloat(((units - 450)*1.50));
 
   }
 
-  let total = (chrg1+chrg2+chrg3+chrg4).toFixed(2);
+  let total = parseFloat(chrg1+chrg2+chrg3+chrg4);
+  let surcharge = parseFloat(total*0.20);
+  let final = total+surcharge;
+
+  document.getElementById("sl1")
 }
 
 // double bill  , subCharges;
