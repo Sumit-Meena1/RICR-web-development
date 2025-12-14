@@ -33,7 +33,11 @@ function calculate(){
 
 
         if(distance <=10){
-            
+            sl1 = distance;
+            ch1 = distance*11;
+        }else if(distance<=100){
+            sl1 = 10;
+            sl2 = (distance-10)*10;
         }
 
 
