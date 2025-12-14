@@ -37,8 +37,29 @@ function calculate(){
             ch1 = distance*11;
         }else if(distance<=100){
             sl1 = 10;
-            sl2 = (distance-10)*10;
+            sl2 = distance-10;
+            ch1 = 10*11;
+            ch2 = (sl2*10);
+        }else{
+            sl1 = 10;
+            sl2 = 90;
+            sl3 = distance-100;
+            ch1 = 10*11;
+            ch2 = 90*10;
+            ch3 = sl3*9;
         }
+        total = (ch1+ch2+ch3).toFixed(2);
+        document.getElementById("sl1").innerText = sl1;
+        document.getElementById("sl2").innerText = sl2;
+        document.getElementById("sl3").innerText = sl3;
+
+
+        document.getElementById("ch1").innerText = "Rs." + ch1;
+        document.getElementById("ch2").innerText = "Rs." +  ch2;
+        document.getElementById("ch3").innerText =  "Rs." + ch3;
+
+
+        document.getElementById("ttlcharg").innerText = "Rs." +  total;
 
 
 
