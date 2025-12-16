@@ -10,32 +10,15 @@ function calculate() {
     spin();
     document.getElementById("btn").disabled = false;
 
-
-    let {hra, da, gross} = grossSalary(salary); 
-
-    // document.getElementById("basic").innerText = "Rs. " + salary.toFixed(2);
-    // document.getElementById("hra").innerText = "Rs. " + hra.toFixed(2);
-    // document.getElementById("da").innerText = "Rs. " + da.toFixed(2);
-    // document.getElementById("gross").innerText = "Rs. " + gross;
-
-
+    let { hra, da, gross } = grossSalary(salary);
     setTimeout(() => {
-        document.getElementById("basic").innerText = " Rs. " + salary.toFixed(2);
-    document.getElementById("hra").innerText = " Rs. " + hra.toFixed(2);
-    document.getElementById("da").innerText = " Rs. " + da.toFixed(2);
-    document.getElementById("gross").innerText = " Rs. " + gross;
-    document.getElementById("done").innerText = "Gross Salary Calculated Successfully!!";
+      document.getElementById("basic").innerText = " Rs. " + salary.toFixed(2);
+      document.getElementById("hra").innerText = " Rs. " + hra.toFixed(2);
+      document.getElementById("da").innerText = " Rs. " + da.toFixed(2);
+      document.getElementById("gross").innerText = " Rs. " + gross;
+      document.getElementById("done").innerText =
+        "Gross Salary Calculated Successfully!!";
     }, 1000);
-
-
-
-
-
-
-
-
-
-
   }
 }
 function spin() {
@@ -48,17 +31,13 @@ function spin() {
   }, 1000);
 }
 
-
-function grossSalary(salary){
-    let hra = parseFloat(salary*0.20);
-    let da = parseFloat(salary*0.50);
-    let gross = (salary+hra+da).toFixed(2);
-    return {hra, da, gross};
-
+function grossSalary(salary) {
+  let hra = parseFloat(salary * 0.2);
+  let da = parseFloat(salary * 0.5);
+  let gross = (salary + hra + da).toFixed(2);
+  return { hra, da, gross };
 }
 
-function reset(){
-    window.location.reload();
+function reset() {
+  window.location.reload();
 }
-
-// Gross Salary Calculated Successfully!!

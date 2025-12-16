@@ -18,30 +18,59 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container text-center py-5 my-lg-5 rounded-5 w-50" style="background-color: rgb(188, 158, 81);">
-
-      <div class="rounded-top-5 w-50 container mt-5 py-3" style="background-color: aquamarine; border: 2px solid #000;">
-        <label for="salary" class="fs-4 fw-bold ">Enter Your Salary:</label>
-        <input type="number" name="salary" id="salary" placeholder=""Enter Your Basic Salary" class="container w-50 form-control">
-        <span class="fs-6 text-danger  fw-bold" id="error"></span>
+    <div
+      class="container text-center py-5 my-lg-5 rounded-5 w-50"
+      style="background-color: rgb(188, 158, 81)"
+    >
+      <div
+        class="rounded-top-5 w-50 container mt-5 py-3"
+        style="background-color: aquamarine; border: 2px solid #000"
+      >
+        <label for="salary" class="fs-4 fw-bold">Enter Your Salary:</label>
+        <input type="number" name="salary" id="salary" placeholder=""Enter Your
+        Basic Salary" class="container w-50 form-control">
+        <span class="fs-6 text-danger fw-bold" id="error"></span>
         <div class="container">
-          <button  id="btn" class="btn btn-primary shadow fw-bold fs-5 my-5" onclick="calculate()">Calculate Gross Salary</button>
-        <button class="btn btn-danger shadow fw-bold fs-5" onclick="reset()">Reset</button>
+          <button
+            id="btn"
+            class="btn btn-primary shadow fw-bold fs-5 my-5"
+            onclick="calculate()"
+          >
+            Calculate Gross Salary
+          </button>
+          <button class="btn btn-danger shadow fw-bold fs-5" onclick="reset()">
+            Reset
+          </button>
         </div>
 
         <div id="loader" class="container"></div>
       </div>
-      <div class="container mb-5 rounded-bottom-5 w-50 mt-2 py-5 text-start" style="background-color: aquamarine; border: 2px solid #000;">
-        <p class="my-2"><label for="basic" class="fs-5 fw-bold">Your Basic Salary:</label><span class="fs-5 fw-bold" id="basic">___</span></p>
-        <p class="my-2"><label for="hra" class="fs-5 fw-bold">Your HRA:</label><span class="fs-5 fw-bold" id="hra">___</span></p>
-        <p class="my-2"><label for="da" class="fs-5 fw-bold">Your DA:</label><span class="fs-5 fw-bold" id="da">___</span></p>
-        <p class="my-2"><label for="gross" class="fs-5 fw-bold">Your Total Gross Salary:</label><span class="fs-5 fw-bold" id="gross">___</span></p>
-        <p class="mt-5"><span class="fs-5 fw-bolder text-success" id="done"></span></p>
+      <div
+        class="container mb-5 rounded-bottom-5 w-50 mt-2 py-5 text-start"
+        style="background-color: aquamarine; border: 2px solid #000"
+      >
+        <p class="my-2">
+          <label for="basic" class="fs-5 fw-bold">Your Basic Salary:</label
+          ><span class="fs-5 fw-bold" id="basic">___</span>
+        </p>
+        <p class="my-2">
+          <label for="hra" class="fs-5 fw-bold">Your HRA:</label
+          ><span class="fs-5 fw-bold" id="hra">___</span>
+        </p>
+        <p class="my-2">
+          <label for="da" class="fs-5 fw-bold">Your DA:</label
+          ><span class="fs-5 fw-bold" id="da">___</span>
+        </p>
+        <p class="my-2">
+          <label for="gross" class="fs-5 fw-bold"
+            >Your Total Gross Salary:</label
+          ><span class="fs-5 fw-bold" id="gross">___</span>
+        </p>
+        <p class="mt-5">
+          <span class="fs-5 fw-bolder text-success" id="done"></span>
+        </p>
       </div>
-
     </div>
-
-
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
