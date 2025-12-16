@@ -2,20 +2,23 @@ function calculate() {
   let salary = Number(document.getElementById("salary").value.trim());
   if (!salary) {
     document.getElementById("error").innerText = "Please Enter Salary";
-  } else if (salary <= 0) {
+  } else if (salary < 0) {
     document.getElementById("error").innerText = "Please Enter Correct Salary";
   } else {
     document.getElementById("error").innerText = "";
     document.getElementById("btn").disabled = true;
     spin();
-    document.getElementById("btn").disabled = false;
 
     let { hra, da, gross } = grossSalary(salary);
     setTimeout(() => {
-      document.getElementById("basic").innerText = " Rs. " + salary.toFixed(2);
-      document.getElementById("hra").innerText = " Rs. " + hra.toFixed(2);
-      document.getElementById("da").innerText = " Rs. " + da.toFixed(2);
-      document.getElementById("gross").innerText = " Rs. " + gross;
+      document.getElementById("basic").innerText =
+        " Rs. " + salary.toLocaleString("en-IN");
+      document.getElementById("hra").innerText =
+        " Rs. " + hra.toLocaleString("en-IN");
+      document.getElementById("da").innerText =
+        " Rs. " + da.toLocaleString("en-IN");
+      document.getElementById("gross").innerText =
+        " Rs. " + gross.toLocaleString("en-IN");
       document.getElementById("done").innerText =
         "Gross Salary Calculated Successfully!!";
     }, 1000);
@@ -32,9 +35,9 @@ function spin() {
 }
 
 function grossSalary(salary) {
-  let hra = parseFloat(salary * 0.2);
-  let da = parseFloat(salary * 0.5);
-  let gross = (salary + hra + da).toFixed(2);
+  let hra = parseFloat(salary * 0.2).toFixed(2);
+  let da = parseFloat(salary * 0.5).toFixed(2);
+  let gross = (Number(salary) + Number(hra) + Number(da)).toFixed(2);
   return { hra, da, gross };
 }
 
