@@ -14,10 +14,18 @@
 </head>
 <body style="background-color: aqua;">
 
+  <div class="container my-5">
+      <div class="container d-flex fw-bold fs-3 text-center mb-5" style="margin-left: 300px;" >
+          Mark Attendance
+          <button class="btn btn-success fw-bold fs-5 mx-3 border-5" onclick="submit()">Submit</button> 
+          <button class="btn btn-primary fw-bold fs-5 mx-3 border-5" onclick="add()">Add Student</button> 
+          <button class="btn btn-secondary fw-bold fs-5 mx-3 border-5" onclick="take()">Take Attendance</button> 
+      </div>
+  </div>
     
       <div class="container text-center fw-bold w-50 my-5 py-5 rounded-4" style="background-color: blueviolet; border: 1px solid #000;">
         <label for="name" class="form-control text-light fw-bold fs-5 bg-transparent">Name</label>
-        <input type="text" name="name" id="name" placeholder="Enter Student Name" class="fw-bold fs-6 form-control">
+        <input type="text" name="name" id="name" placeholder="Enter Student Name" class="fw-bold fs-6 form-control my-3"><span id="error" class="float-end text-danger flex-grow-0"></span>
 
         <button class="btn btn-success fw-bold fs-5 mx-3 border-5 my-5" onclick="done()">Done</button>
       </div>
