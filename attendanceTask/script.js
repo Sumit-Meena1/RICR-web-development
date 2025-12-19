@@ -3,3 +3,8 @@ function submit(){
      document.getElementById("p").style.backgroundColor = "green";
 
 }
+
+
+function add(){
+    window.location.href = "add.html";
+}
