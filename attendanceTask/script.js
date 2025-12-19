@@ -8,3 +8,6 @@ function submit(){
 function add(){
     window.location.href = "add.html";
 }
+function done(){
+    window.location.href = "index.html";
+}
