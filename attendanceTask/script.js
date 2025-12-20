@@ -1,4 +1,3 @@
-
 function add() {
   window.location.href = "add.html";
 }
@@ -8,7 +7,18 @@ function take() {
 }
 
 function submit() {
+  let students = JSON.parse(localStorage.getItem("students")) || [];
+
+  // clear attendance
+  students = students.map((student) => ({
+    name: student.name,
+    status: "",
+  }));
+
+  localStorage.setItem("students", JSON.stringify(students));
+
   alert("Attendance Submitted Successfully!");
+  window.location.reload();
 }
 
 // -------- Add Student ----------
@@ -31,8 +41,6 @@ function done() {
 
   alert("Student Added Successfully!");
   nameInput.value = "";
-
-  window.location.href = "index.html";
 }
 function loadStudents() {
   const main = document.getElementById("main");
@@ -47,9 +55,6 @@ function loadStudents() {
     div.className = "d-flex justify-content-between align-content-center";
     div.style.borderBottom = "1px solid gainsboro";
 
-    const presentDisabled = student.status ? "disabled" : "";
-    const absentDisabled = student.status ? "disabled" : "";
-
     let pColor = "";
     let aColor = "";
 
@@ -62,51 +67,37 @@ function loadStudents() {
       <div class="d-flex w-75">
         <button class="w-25 btn mx-2 my-2 fw-bold fs-4 text-light"
           style="border:1px solid white; ${pColor}"
-          ${presentDisabled}
           onclick="markPresent(this, ${index})">P</button>
 
         <button class="w-25 btn my-2 fw-bold fs-4 text-light"
           style="border:1px solid white; ${aColor}"
-          ${absentDisabled}
           onclick="markAbsent(this, ${index})">A</button>
       </div>
     `;
-
     main.appendChild(div);
   });
 }
 
-
 function markPresent(btn, index) {
   let students = JSON.parse(localStorage.getItem("students"));
-
-  // prevent re-click
-  if (students[index].status) return;
 
   students[index].status = "P";
   localStorage.setItem("students", JSON.stringify(students));
 
+  // UI update
   btn.style.backgroundColor = "green";
-  btn.disabled = true;
-
-  // disable Absent button
-  btn.nextElementSibling.disabled = true;
+  btn.nextElementSibling.style.backgroundColor = "";
 }
 
 function markAbsent(btn, index) {
   let students = JSON.parse(localStorage.getItem("students"));
 
-  // prevent re-click
-  if (students[index].status) return;
-
   students[index].status = "A";
   localStorage.setItem("students", JSON.stringify(students));
 
+  // UI update
   btn.style.backgroundColor = "red";
-  btn.disabled = true;
-
-  // disable Present button
-  btn.previousElementSibling.disabled = true;
+  btn.previousElementSibling.style.backgroundColor = "";
 }
 
 
