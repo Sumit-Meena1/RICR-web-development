@@ -51,11 +51,11 @@ function loadStudents() {
       <p class="w-100 text-light fs-4">${student.name}</p>
 
       <div class="d-flex w-75">
-        <button class="w-25 btn mx-2 my-2 fw-bold fs-4 text-light"
+        <button class="w-25 btn mx-2 my-2 fw-bold fs-4 text-light" id="pr"
           style="border:1px solid white"
           onclick="markPresent(${index})">P</button>
 
-        <button class="w-25 btn my-2 fw-bold fs-4 text-light"
+        <button class="w-25 btn my-2 fw-bold fs-4 text-light ab" id="ab"
           style="border:1px solid white"
           onclick="markAbsent(${index})">A</button>
       </div>
@@ -69,12 +69,15 @@ function markPresent(index) {
   let students = JSON.parse(localStorage.getItem("students"));
   students[index].status = "P";
   localStorage.setItem("students", JSON.stringify(students));
+  document.getElementById("pr").style.backgroundColor = "green";
+
 }
 
 function markAbsent(index) {
   let students = JSON.parse(localStorage.getItem("students"));
   students[index].status = "A";
   localStorage.setItem("students", JSON.stringify(students));
+  document.getElementById("ab").style.backgroundColor = "red";
 }
 
 window.onload = loadStudents;
