@@ -10,12 +10,12 @@ async function getWeather()
     const data = await res.json();
 
     document.getElementById("weatherData").innerHTML = `
-        <div>
+        <div class=" rounded-3 p-5" style="border: 1px solid white;">
             <p>Temperature : ${(data.main.temp - 273.14).toFixed(2)} C </p>
             <p>Humidity : ${data.main.humidity}% </p>
             <p>Description : ${data.weather[0].description} </p>
         </div>
-        <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png" alt="weatherIcon">
+        <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png" alt="weatherIcon" class=" rounded-3 text-light" style="border: 1px solid white;">
     `
 
 
