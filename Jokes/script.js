@@ -4,6 +4,7 @@ async function newJoke(){
 
     document.getElementById("setup").innerText = data.setup;
     document.getElementById("punchline").innerText = data.punchline;
+    document.getElementById("photo").innerText = "";
     
 
 }
