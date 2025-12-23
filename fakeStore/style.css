@@ -8,3 +8,16 @@ a:active {
 {
     height: 100vh;
 }
+.card
+{
+    height: 500px;
+    width: 400px;
+}
+
+#pdcol{
+    width: 100% !important;
+    height: 500px !important;
+}
+.chight{
+    height: 300px;
+}
