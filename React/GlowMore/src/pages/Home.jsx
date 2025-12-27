@@ -4,7 +4,7 @@ const Home = ()=>
     return
     (
         <>
-        <div className="text-black ">This is my Home Page</div>
+        <div className="text-black bg-green-700 h-5">This is my Home Page</div>
         </>
     );
 }
