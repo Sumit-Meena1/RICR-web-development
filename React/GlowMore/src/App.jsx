@@ -1,11 +1,23 @@
 import React from "react";
+import { BrowserRouter, Route, Routes} from "react-router-dom";
+import Head from "./components/Head";
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import About from "./pages/About";
 
 const App = () => {
   return (
     <>
+      <BrowserRouter>
+      <Head/>
 
-      <div className="p-3.5  m-['3.3']"></div>
-      <div className="bg-red-500" >App</div>
+      <Routes>
+      <Route path="/" element={<Home/>} />
+      <Route path="/about" element={<About/>} />
+
+      </Routes>
+     <Footer/>
+      </BrowserRouter>
     </>
   );
 };
