@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <>
       <div className="d-flex bg-primary p-2 text-light align-items-center justify-content-between">
-        <h3>My Website</h3>
+        <h3>My MackUp</h3>
         <div className="d-flex gap-3">
             <Link to={"/"} className="text-decoration-none text-light">Home</Link>
             <Link to={"/about"} className="text-decoration-none text-light">About</Link>
