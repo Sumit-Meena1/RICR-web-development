@@ -10,9 +10,6 @@ import About from "./pages/About";
 import Products from "./pages/Product";
 import Contact from "./pages/Contact";
 function App() {
-  let a = 5;
-  let b = 4;
-  console.log(a + b);
 
   return (
     <>
