@@ -3,25 +3,32 @@ const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const handleClearForm = ()=>
-  {
+  const [isLoading, setIsLoading] = useState("");
+
+  const handleClearForm = () => {
     setEmail("");
     setMessage("");
     setName("");
   };
 
-  
-  const handleSubmit = (e)=>
-  {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-        name,
-        email,
-        message,
+    setIsLoading(true);
+    try {
+      const res = await fetch("");
+      setTimeout(() => {
+        const data = {
+          name,
+          email,
+          message,
+        };
+      }, 5000);
+    } catch (error) {
+      console.log(error.message);
+    } finally {
+      setIsLoading(false);
     }
-    console.log(data);
     handleClearForm();
-    
   };
 
   return (
@@ -70,9 +77,9 @@ const Contact = () => {
 
         <div className="justify-center my-5 text-center align-middle">
           <button type="submit" className="btn btn-primary mx-5">
-            Submit
+            {isLoading ? "Loading" : "Submit"}
           </button>
-          <button type="reset"  className="btn btn-danger">
+          <button type="reset" className="btn btn-danger">
             Clear
           </button>
         </div>
