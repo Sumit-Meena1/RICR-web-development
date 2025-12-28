@@ -1,10 +1,10 @@
 import React from "react";
 const Footer = () => {
-  return (
+   return(
     <>
-      <div className="fw-bold text-success">This is My Footer For GlowMore </div>
+    <div className="bg-lime-600 text-black text-balance mt-60">Get Your Glow From@GlowMore234 2025</div>
     </>
-  );
+   )
 };
 
 export default Footer;
