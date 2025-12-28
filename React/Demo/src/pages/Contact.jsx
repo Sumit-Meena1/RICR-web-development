@@ -14,8 +14,9 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsLoading(true);
+
     try {
-      const res = await fetch("");
+      const res = await fetch("https://official-joke-api.appspot");
       setTimeout(() => {
         const data = {
           name,
@@ -46,6 +47,7 @@ const Contact = () => {
             onChange={(e) => setName(e.target.value)}
             placeholder="Enter Your Name"
             className="text-primary"
+            required
           />
         </div>
         <div>
@@ -60,6 +62,7 @@ const Contact = () => {
             value={email}
             className="text-primary"
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div>
@@ -71,6 +74,7 @@ const Contact = () => {
             className="text-primary"
             id="message"
             value={message}
+            required
             onChange={(e) => setMessage(e.target.value)}
           ></textarea>
         </div>
