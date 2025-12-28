@@ -9,6 +9,8 @@ const Contact = () => {
     setMessage("");
     setName("");
   };
+
+  
   const handleSubmit = (e)=>
   {
     e.preventDefault();
