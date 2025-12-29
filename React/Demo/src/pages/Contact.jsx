@@ -1,40 +1,55 @@
 import React, { useState } from "react";
 const Contact = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  // const [name, setName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [message, setMessage] = useState("");
+
+
+
+
+
+
+
   const [isLoading, setIsLoading] = useState("");
 
-  const handleClearForm = () => {
-    setEmail("");
-    setMessage("");
-    setName("");
+  const [contact, setContact] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setContact((prev) => ({ ...prev, [name]: value }));
+     console.log(prev);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
 
-    try {
-      const res = await fetch("https://official-joke-api.appspot");
-      setTimeout(() => {
-        const data = {
-          name,
-          email,
-          message,
-        };
-      }, 5000);
-    } catch (error) {
-      console.log(error.message);
-    } finally {
-      setIsLoading(false);
-    }
-    handleClearForm();
+    const handleClearForm = () => {
+    contact.email("");
+    contact.message("");
+    contact.name("");
   };
+ 
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setIsLoading(true);
+
+  //   try {
+  //     const res = await fetch("https://official-joke-api.appspot");
+
+  //   } catch (error) {
+  //     console.log(error.message);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  //   handleClearForm();
+  // };
 
   return (
     <div className="container justify-center align-middle text-center border bg-warning my-5 border-black rounded-4 w-50 py-5">
-      <form onReset={handleClearForm} onSubmit={handleSubmit}>
+      <form onReset={handleClearForm}>
         <div>
           <label htmlFor="name" className="mx-3 my-2">
             Enter Your Name
@@ -43,8 +58,9 @@ const Contact = () => {
             type="text"
             name="name"
             id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={contact.name}
+            // onChange={(e) => setName(e.target.value)}
+            onChange={handleChange}
             placeholder="Enter Your Name"
             className="text-primary"
             required
@@ -55,13 +71,13 @@ const Contact = () => {
             Enter Your Email
           </label>
           <input
-            type="text"
+            type="email"
             name="email"
             id="email"
             placeholder="Enter Your  Email"
-            value={email}
+            value={contact.email}
             className="text-primary"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleChange}
             required
           />
         </div>
@@ -73,9 +89,9 @@ const Contact = () => {
             name="message"
             className="text-primary"
             id="message"
-            value={message}
+            value={contact.message}
             required
-            onChange={(e) => setMessage(e.target.value)}
+            onChange={handleChange}
           ></textarea>
         </div>
 
