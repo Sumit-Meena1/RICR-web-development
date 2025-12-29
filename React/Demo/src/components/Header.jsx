@@ -10,6 +10,8 @@ const Header = () => {
             <Link to={"/about"} className="text-decoration-none text-light">About</Link>
             <Link to={"/product"} className="text-decoration-none text-light">Products</Link>
             <Link to={"/contact"} className="text-decoration-none text-light">Contacts</Link>
+            <Link to={"/login"} className="text-decoration-none text-light">LogIn</Link>
+            <Link to={"/signup"} className="text-decoration-none text-light">SignUp</Link>
         </div>
       </div>
     </>

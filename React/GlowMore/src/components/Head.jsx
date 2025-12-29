@@ -19,6 +19,12 @@ const Head = () => {
           <Link to={"/contact"} className="text-decoration-none">
             Contact
           </Link>
+          <Link to={"/login"} className="text-decoration-none text-light">
+            LogIn
+          </Link>
+          <Link to={"/signup"} className="text-decoration-none text-light">
+            SignUp
+          </Link>
         </div>
       </div>
     </>

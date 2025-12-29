@@ -9,24 +9,25 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./pages/About";
 import Products from "./pages/Product";
 import Contact from "./pages/Contact";
+import LogIn from "./pages/LogIn";
+import SignUp from "./pages/SignUp";
 function App() {
-
   return (
     <>
-     <BrowserRouter>
-     <Header/>
+      <BrowserRouter>
+        <Header />
 
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/product" element={<Products />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<LogIn/>} />
+          <Route path="/signup" element={<SignUp/>} />
+        </Routes>
 
-     <Routes>
-      <Route path="/" element={<Home/>} />
-      <Route path="/about" element={<About/>} />
-      <Route path="/product" element={<Products/>} />
-      <Route path="/contact" element={<Contact/>} />
-     </Routes>
-
-
-     <Footer/>
-     </BrowserRouter>
+        <Footer />
+      </BrowserRouter>
     </>
   );
 }
