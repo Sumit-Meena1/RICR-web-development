@@ -26,9 +26,9 @@ const Contact = () => {
 
 
     const handleClearForm = () => {
-    contact.email("");
-    contact.message("");
-    contact.name("");
+    contact.name: "",
+    contact.email: "",
+    contact.message: "",
   };
  
 
