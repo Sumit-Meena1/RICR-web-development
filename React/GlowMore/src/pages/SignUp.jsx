@@ -40,6 +40,7 @@ const SignUp = () => {
               placeholder="Enter Your Name"
               onChange={handleChange}
               className="mx-5  border border-blue-900 rounded-2xl p-3 "
+              required
             />
           </div>
           <div className="my-3">
@@ -52,6 +53,7 @@ const SignUp = () => {
               placeholder="Enter Your Email"
               onChange={handleChange}
               className="mx-5 border border-blue-900 rounded-2xl p-3  "
+              required
             />
           </div>
           <div className="my-3">
@@ -64,6 +66,7 @@ const SignUp = () => {
               placeholder="Enter Your password"
               onChange={handleChange}
               className="mx-5 border border-blue-900 rounded-2xl p-3  "
+              required
             />
           </div>
           <div className="my-3">
