@@ -29,7 +29,11 @@ const SignUp = () => {
   return (
     <>
       <div className="text-center flex justify-center border border-black my-5 py-5 bg-amber-200">
-        <form onSubmit={handleSubmit} onReset={handleClearForm} className="w-75 border rounded-2xl py-5">
+        <form
+          onSubmit={handleSubmit}
+          onReset={handleClearForm}
+          className="w-75 border rounded-2xl py-5"
+        >
           <div className="my-3">
             <label htmlFor="name">Enter Your Name:</label>
             <input

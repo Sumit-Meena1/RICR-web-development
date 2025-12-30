@@ -25,11 +25,11 @@ const Contact = () => {
   };
 
 
-    const handleClearForm = () => {
-    contact.name: "",
-    contact.email: "",
-    contact.message: "",
-  };
+  //   const handleClearForm = () => {
+  //   contact.name: "",
+  //   contact.email: "",
+  //   contact.message: "",
+  // };
  
 
   // const handleSubmit = async (e) => {
