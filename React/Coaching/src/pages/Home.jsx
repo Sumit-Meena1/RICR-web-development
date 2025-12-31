@@ -1,24 +1,81 @@
-import React from "react";
+import React, { useState } from "react";
 const Home = () => {
+  const [personal, setPersonal] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    dob: "",
+    qlf: "",
+    grd: "",
+    crs: "",
+    btch: [],
+    adrs: "",
+    city: "",
+    pin: "",
+    grdName: "",
+    grdphone: "",
+    hear: "",
+    spcl: "",
+  });
 
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    if (type === "checkbox") {
+      let temp = personal.btch;
+      if (checked) {
+        temp.push(value);
+        setPersonal((previousData) => ({ ...previousData, [name]: temp }));
+      } else {
+        temp = Object.values(temp); //Convert to Array
+        temp = temp.filter((word) => word !== value); //Remove the Undersired Value
+        setPersonal((previousData) => ({ ...previousData, [name]: temp }));
+      }
+    } else {
+      setPersonal((previousData) => ({ ...previousData, [name]: value }));
+    }
+  };
+  const handleClearForm = () => {
+    setPersonal({
+      fullName: "",
+      email: "",
+      phone: "",
+      dob: "",
+      qlf: "",
+      grd: "",
+      crs: "",
+      btch: [],
+      adrs: "",
+      city: "",
+      pin: "",
+      grdName: "",
+      grdphone: "",
+      hear: "",
+      spcl: "",
+    });
+  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      console.log(personal);
+    } catch (error) {
+      console.log(error.message);
+    }
+    handleClearForm();
+  };
 
-
-
-
-    
   return (
     <>
-      <div className="flex justify-center text-3xl text-green-500 mb-5">
-        Registartion Form
-      </div>
-      <div className="border rounded-2xl border-amber-400">
-        <div>
-          <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4 py-5">
-            Personal Information
-          </span>
-          <div className=" flex justify-center">
-            <form className="">
+      <form action="" onSubmit={handleSubmit}>
+        <div className="flex justify-center text-3xl text-green-500 mb-5">
+          Registartion Form
+        </div>
+        <div className="border rounded-2xl border-amber-400">
+          <div>
+            <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4 py-5">
+              Personal Information
+            </span>
+            <div className=" flex justify-center">
               <div>
                 <div className="inline-block">
                   <label htmlFor="fullName">Full Name:</label>
@@ -26,8 +83,8 @@ const Home = () => {
                     type="text"
                     name="fullName"
                     id="fullName"
-                    //   value={contactData.fullName}
-                    //   onChange={handleChange}
+                    value={personal.fullName}
+                    onChange={handleChange}
                     placeholder="Enter your Name"
                     className="text-primary mx-5 border rounded-2xl border-amber-500  py-3 px-3 my-2"
                     required
@@ -40,8 +97,8 @@ const Home = () => {
                     type="email"
                     name="email"
                     id="email"
-                    //   value={contactData.email}
-                    //   onChange={handleChange}
+                    value={personal.email}
+                    onChange={handleChange}
                     placeholder="Enter your Email"
                     className="text-primary mx-5 border rounded-2xl border-amber-500   px-3 py-3 my-2"
                     required
@@ -55,8 +112,8 @@ const Home = () => {
                   type="number"
                   name="phone"
                   id="phone"
-                  //   value={contactData.phone}
-                  //   onChange={handleChange}
+                  value={personal.phone}
+                  onChange={handleChange}
                   placeholder="Enter your phone"
                   className="text-primary mx-5 border rounded-2xl px-3 border-amber-500   py-3 my-2"
                   required
@@ -69,29 +126,29 @@ const Home = () => {
                   type="date"
                   name="dob"
                   id="dob"
-                  //   value={contactData.city}
-                  //   onChange={handleChange}
+                  value={personal.dob}
+                  onChange={handleChange}
                   className="text-primary mx-5 border rounded-2xl border-amber-500 px-3 py-3 my-2"
                   required
                 />
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="border rounded-2xl border-amber-400 my-5 py-5">
-        <div>
-          <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
-            Academic Details
-          </span>
-          <div className=" flex justify-center">
-            <form className="">
+        <div className="border rounded-2xl border-amber-400 my-5 py-5">
+          <div>
+            <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
+              Academic Details
+            </span>
+            <div className=" flex justify-center">
               <div className="inline-block">
                 <label htmlFor="qlf">Qualification :</label>
                 <select
                   name="qlf"
                   id="qlf"
+                  onChange={handleChange}
+                  value={personal.qlf}
                   className="text-primary mx-5 border rounded-2xl border-amber-500   px-3 py-3 my-2"
                   required
                 >
@@ -111,31 +168,31 @@ const Home = () => {
                   type="number"
                   name="grd"
                   id="grd"
-                  //   value={contactData.email}
-                  //   onChange={handleChange}
+                  value={personal.grd}
+                  onChange={handleChange}
                   placeholder="Enter your Grade"
                   className="text-primary mx-5 border rounded-2xl border-amber-500   px-3 py-3 my-2"
                   required
                 />
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="border rounded-2xl border-amber-400 my-5 py-5">
-        <div>
-          <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
-            Course Information
-          </span>
-          <div className=" flex justify-center">
-            <form className="">
+        <div className="border rounded-2xl border-amber-400 my-5 py-5">
+          <div>
+            <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
+              Course Information
+            </span>
+            <div className=" flex justify-center">
               <div className="inline-block">
                 <label htmlFor="crs">course :</label>
 
                 <select
                   name="crs"
                   id="crs"
+                  onChange={handleChange}
+                  value={personal.crs}
                   className="text-primary mx-5 border rounded-2xl border-amber-500   px-3 py-3 my-2"
                   required
                 >
@@ -160,6 +217,7 @@ const Home = () => {
                     value="morning"
                     class="form-check-input"
                     required
+                    checked={Object.values(personal.btch).includes("morning")}
                   />
                   <span class="ms-2 me-4">Morning</span>
                 </div>
@@ -170,6 +228,7 @@ const Home = () => {
                     id="evening"
                     value="evening"
                     class="form-check-input"
+                    checked={Object.values(personal.btch).includes("evening")}
                     required
                   />
                   <span class="ms-2 me-4">Evening</span>
@@ -181,6 +240,7 @@ const Home = () => {
                     id="afternoon"
                     value="afternoon"
                     class="form-check-input"
+                    checked={Object.values(personal.btch).includes("afternoon")}
                     required
                   />
                   <span class="ms-2 me-4">Afternoon</span>
@@ -192,31 +252,30 @@ const Home = () => {
                     id="night"
                     value="night"
                     class="form-check-input"
+                    checked={Object.values(personal.btch).includes("night")}
                     required
                   />
                   <span class="ms-2 me-4">Night</span>
                 </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="border rounded-2xl border-amber-400 my-5 py-5">
-        <div>
-          <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
-            Address
-          </span>
-          <div className=" flex justify-center">
-            <form className="">
+        <div className="border rounded-2xl border-amber-400 my-5 py-5">
+          <div>
+            <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
+              Address
+            </span>
+            <div className=" flex justify-center">
               <div className="inline-block">
                 <label htmlFor="adrs">Address:</label>
                 <input
                   type="text"
                   name="adrs"
                   id="adrs"
-                  //   value={contactData.fullName}
-                  //   onChange={handleChange}
+                  value={personal.adrs}
+                  onChange={handleChange}
                   placeholder="Enter your Address"
                   className="text-primary mx-5 border rounded-2xl border-amber-500  py-3 px-3 my-2"
                   required
@@ -229,8 +288,8 @@ const Home = () => {
                   type="text"
                   name="city"
                   id="city"
-                  //   value={contactData.fullName}
-                  //   onChange={handleChange}
+                  value={personal.city}
+                  onChange={handleChange}
                   placeholder="Enter your City"
                   className="text-primary mx-5 border rounded-2xl border-amber-500  py-3 px-3 my-2"
                   required
@@ -243,33 +302,31 @@ const Home = () => {
                   type="number"
                   name="pin"
                   id="pin"
-                  //   value={contactData.email}
-                  //   onChange={handleChange}
+                  value={personal.pin}
+                  onChange={handleChange}
                   placeholder="Enter your Pin Code"
                   className="text-primary mx-5 border rounded-2xl border-amber-500   px-3 py-3 my-2"
                   required
                 />
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="border rounded-2xl border-amber-400 my-5 py-5">
-        <div>
-          <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
-            Guardian Details
-          </span>
-          <div className=" flex justify-center">
-            <form className="">
+        <div className="border rounded-2xl border-amber-400 my-5 py-5">
+          <div>
+            <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
+              Guardian Details
+            </span>
+            <div className=" flex justify-center">
               <div className="inline-block">
                 <label htmlFor="grdName">Guardian Full Name:</label>
                 <input
                   type="text"
                   name="grdName"
                   id="grdName"
-                  //   value={contactData.fullName}
-                  //   onChange={handleChange}
+                  value={personal.grdName}
+                  onChange={handleChange}
                   placeholder="Enter Guardian Full Name"
                   className="text-primary mx-5 border rounded-2xl border-amber-500  py-3 px-3 my-2"
                   required
@@ -282,37 +339,35 @@ const Home = () => {
                   type="number"
                   name="grdphone"
                   id="grdphone"
-                  //   value={contactData.phone}
-                  //   onChange={handleChange}
+                  value={personal.grdphone}
+                  onChange={handleChange}
                   placeholder="Enter Guardian phone"
                   className="text-primary mx-5 border rounded-2xl px-3 border-amber-500   py-3 my-2"
                   required
                 />
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="border rounded-2xl border-amber-400 my-5 py-5">
-        <div>
-          <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
-            Additional Information
-          </span>
-          <div className=" flex justify-center">
-            <form className="">
+        <div className="border rounded-2xl border-amber-400 my-5 py-5">
+          <div>
+            <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
+              Additional Information
+            </span>
+            <div className=" flex justify-center">
               <div className="inline-block">
                 <label htmlFor="hear">How Did You Hear About Us:</label>
 
                 <select
                   name="hear"
                   id="hear"
+                  onChange={handleChange}
+                  value={personal.hear}
                   className="text-primary mx-5 border rounded-2xl border-amber-500   px-3 py-3 my-2"
                   required
                 >
-                  <option value="">
-                    ---How Did You Hear About Us--
-                  </option>
+                  <option value="">---How Did You Hear About Us--</option>
                   <option value="Friends">Friends</option>
                   <option value="Social Media">Social Media</option>
                   <option value="News Paper">News Paper</option>
@@ -326,28 +381,33 @@ const Home = () => {
                   type="text"
                   name="spcl"
                   id="spcl"
-                  //   value={contactData.phone}
-                  //   onChange={handleChange}
+                  value={personal.spcl}
+                  onChange={handleChange}
                   placeholder="Enter Any Special Requirment"
                   className="text-primary mx-5 border rounded-2xl px-3 border-amber-500   py-3 my-2"
                   required
                 />
               </div>
-            </form>
+            </div>
           </div>
         </div>
-      </div>
 
-
-      <div className="flex gap-5 justify-center border-amber-400 rounded-2xl my-5 py-5">
-        <button type="submit" className="w-30 h-10  border-2 border-black rounded-2xl bg-green-500 text-2xl">Submit</button>
-        <button type="resrt" className="w-30 h-10  border-2 border-black rounded-2xl bg-red-600 text-2xl">Clear</button>
-
-      </div>
+        <div className="flex gap-5 justify-center border-amber-400 rounded-2xl my-5 py-5">
+          <button
+            type="submit"
+            className="w-30 h-10  border-2 border-black rounded-2xl bg-green-500 text-2xl"
+          >
+            Submit
+          </button>
+          <button
+            type="resrt"
+            className="w-30 h-10  border-2 border-black rounded-2xl bg-red-600 text-2xl"
+          >
+            Clear
+          </button>
+        </div>
+      </form>
     </>
   );
 };
 export default Home;
-
-
-
