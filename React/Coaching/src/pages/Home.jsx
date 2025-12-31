@@ -18,22 +18,41 @@ const Home = () => {
     spcl: "",
   });
 
+  //   const handleChange = (e) => {
+  //     const { name, value, type, checked } = e.target;
+  //     if (type === "checkbox") {
+  //       let temp = personal.btch;
+  //       if (checked) {
+  //         temp.push(value);
+  //         setPersonal((previousData) => ({ ...previousData, [name]: temp }));
+  //       } else {
+  //         temp = Object.values(temp); //Convert to Array
+  //         temp = temp.filter((word) => word !== value); //Remove the Undersired Value
+  //         setPersonal((previousData) => ({ ...previousData, [name]: temp }));
+  //       }
+  //     } else {
+  //       setPersonal((previousData) => ({ ...previousData, [name]: value }));
+  //     }
+  //   };
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
     if (type === "checkbox") {
-      let temp = personal.btch;
-      if (checked) {
-        temp.push(value);
-        setPersonal((previousData) => ({ ...previousData, [name]: temp }));
-      } else {
-        temp = Object.values(temp); //Convert to Array
-        temp = temp.filter((word) => word !== value); //Remove the Undersired Value
-        setPersonal((previousData) => ({ ...previousData, [name]: temp }));
-      }
+      setPersonal((prev) => ({
+        ...prev,
+        [name]: checked
+          ? [...prev[name], value]
+          : prev[name].filter((v) => v !== value),
+      }));
     } else {
-      setPersonal((previousData) => ({ ...previousData, [name]: value }));
+      setPersonal((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
     }
   };
+
   const handleClearForm = () => {
     setPersonal({
       fullName: "",
@@ -66,7 +85,7 @@ const Home = () => {
 
   return (
     <>
-      <form action="" onSubmit={handleSubmit}>
+      <form action="" onSubmit={handleSubmit} onReset={handleClearForm}>
         <div className="flex justify-center text-3xl text-green-500 mb-5">
           Registartion Form
         </div>
@@ -212,10 +231,11 @@ const Home = () => {
                 <div className="inline-block">
                   <input
                     type="checkbox"
-                    name="batch"
+                    name="btch"
                     id="morning"
                     value="morning"
                     class="form-check-input"
+                    onChange={handleChange}
                     required
                     checked={Object.values(personal.btch).includes("morning")}
                   />
@@ -224,10 +244,11 @@ const Home = () => {
                 <div className="inline-block">
                   <input
                     type="checkbox"
-                    name="batch"
+                    name="btch"
                     id="evening"
                     value="evening"
                     class="form-check-input"
+                    onChange={handleChange}
                     checked={Object.values(personal.btch).includes("evening")}
                     required
                   />
@@ -236,10 +257,11 @@ const Home = () => {
                 <div className="inline-block">
                   <input
                     type="checkbox"
-                    name="batch"
+                    name="btch"
                     id="afternoon"
                     value="afternoon"
                     class="form-check-input"
+                    onChange={handleChange}
                     checked={Object.values(personal.btch).includes("afternoon")}
                     required
                   />
@@ -248,10 +270,11 @@ const Home = () => {
                 <div className="inline-block">
                   <input
                     type="checkbox"
-                    name="batch"
+                    name="btch"
                     id="night"
                     value="night"
                     class="form-check-input"
+                    onChange={handleChange}
                     checked={Object.values(personal.btch).includes("night")}
                     required
                   />
