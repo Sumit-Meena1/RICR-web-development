@@ -236,7 +236,6 @@ const Home = () => {
                     value="morning"
                     class="form-check-input"
                     onChange={handleChange}
-                    required
                     checked={Object.values(personal.btch).includes("morning")}
                   />
                   <span class="ms-2 me-4">Morning</span>
@@ -250,7 +249,6 @@ const Home = () => {
                     class="form-check-input"
                     onChange={handleChange}
                     checked={Object.values(personal.btch).includes("evening")}
-                    required
                   />
                   <span class="ms-2 me-4">Evening</span>
                 </div>
@@ -263,7 +261,6 @@ const Home = () => {
                     class="form-check-input"
                     onChange={handleChange}
                     checked={Object.values(personal.btch).includes("afternoon")}
-                    required
                   />
                   <span class="ms-2 me-4">Afternoon</span>
                 </div>
@@ -276,7 +273,6 @@ const Home = () => {
                     class="form-check-input"
                     onChange={handleChange}
                     checked={Object.values(personal.btch).includes("night")}
-                    required
                   />
                   <span class="ms-2 me-4">Night</span>
                 </div>
@@ -423,7 +419,7 @@ const Home = () => {
             Submit
           </button>
           <button
-            type="resrt"
+            type="reset"
             className="w-30 h-10  border-2 border-black rounded-2xl bg-red-600 text-2xl"
           >
             Clear
