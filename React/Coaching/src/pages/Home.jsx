@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 const Home = () => {
   const [personal, setPersonal] = useState({
     fullName: "",
@@ -34,6 +35,9 @@ const Home = () => {
   //       setPersonal((previousData) => ({ ...previousData, [name]: value }));
   //     }
   //   };
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState({});
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -73,31 +77,54 @@ const Home = () => {
     });
   };
 
+  const validate =()=>{
+    
+  }
+
+
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    isLoading(true);
+
+    if (!validate()) {
+      setIsLoading(false);
+      return;
+    }
+
     try {
       console.log(personal);
+      toast.success("Registration Successfull");
+      handleClearForm();
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
     }
-    handleClearForm();
   };
 
   return (
     <>
-      <form action="" onSubmit={handleSubmit} onReset={handleClearForm}>
+      <form
+        action=""
+        onSubmit={handleSubmit}
+        onReset={handleClearForm}
+        className="bg-yellow-200 max-w-4xl mx-auto px-5"
+      >
         <div className="flex justify-center text-3xl text-green-500 mb-5">
-          Registartion Form
+          Student Registartion Form
         </div>
-        <div className="border rounded-2xl border-amber-400">
+        <div className="border-2 rounded-2xl border-amber-400 p-5 bg-amber-100">
           <div>
-            <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4 py-5">
+            <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
               Personal Information
             </span>
             <div className=" flex justify-center">
-              <div>
+              <div className="">
                 <div className="inline-block">
-                  <label htmlFor="fullName">Full Name:</label>
+                  <label htmlFor="fullName"></label>
                   <input
                     type="text"
                     name="fullName"
@@ -105,13 +132,13 @@ const Home = () => {
                     value={personal.fullName}
                     onChange={handleChange}
                     placeholder="Enter your Name"
-                    className="text-primary mx-5 border rounded-2xl border-amber-500  py-3 px-3 my-2"
+                    className="text-primary mx-5 border-2 rounded-2xl border-amber-500  py-3 px-3 my-2 focus:outline-none focus:border-orange-700"
                     required
                   />
                 </div>
 
                 <div className="inline-block">
-                  <label htmlFor="email">Email:</label>
+                  <label htmlFor="email"></label>
                   <input
                     type="email"
                     name="email"
@@ -119,56 +146,58 @@ const Home = () => {
                     value={personal.email}
                     onChange={handleChange}
                     placeholder="Enter your Email"
-                    className="text-primary mx-5 border rounded-2xl border-amber-500   px-3 py-3 my-2"
+                    className="text-primary mx-5 border-2 rounded-2xl border-amber-500   px-3 py-3 my-2 focus:outline-none focus:border-orange-700"
                     required
                   />
                 </div>
               </div>
 
-              <div className="inline-block">
-                <label htmlFor="phone">Phone:</label>
-                <input
-                  type="number"
-                  name="phone"
-                  id="phone"
-                  value={personal.phone}
-                  onChange={handleChange}
-                  placeholder="Enter your phone"
-                  className="text-primary mx-5 border rounded-2xl px-3 border-amber-500   py-3 my-2"
-                  required
-                />
-              </div>
+              <div className="inline">
+                <div className="inline-block">
+                  <label htmlFor="phone"></label>
+                  <input
+                    type="number"
+                    name="phone"
+                    id="phone"
+                    value={personal.phone}
+                    onChange={handleChange}
+                    placeholder="Enter your phone"
+                    className="text-primary mx-5 border-2 rounded-2xl px-3 border-amber-500   py-3 my-2 focus:border-orange-700"
+                    required
+                  />
+                </div>
 
-              <div className="inline-block">
-                <label htmlFor="dob">Date Of Birth:</label>
-                <input
-                  type="date"
-                  name="dob"
-                  id="dob"
-                  value={personal.dob}
-                  onChange={handleChange}
-                  className="text-primary mx-5 border rounded-2xl border-amber-500 px-3 py-3 my-2"
-                  required
-                />
+                <div className="inline-block">
+                  <label htmlFor="dob"></label>
+                  <input
+                    type="date"
+                    name="dob"
+                    id="dob"
+                    value={personal.dob}
+                    onChange={handleChange}
+                    className="text-primary mx-5 border-2 rounded-2xl border-amber-500 px-3 py-3 my-2 focus:border-orange-700"
+                    required
+                  />
+                </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border rounded-2xl border-amber-400 my-5 py-5">
+        <div className="border-2 rounded-2xl border-amber-400 my-5 py-5 bg-amber-100">
           <div>
             <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
               Academic Details
             </span>
             <div className=" flex justify-center">
               <div className="inline-block">
-                <label htmlFor="qlf">Qualification :</label>
+                <label htmlFor="qlf"></label>
                 <select
                   name="qlf"
                   id="qlf"
                   onChange={handleChange}
                   value={personal.qlf}
-                  className="text-primary mx-5 border rounded-2xl border-amber-500   px-3 py-3 my-2"
+                  className="text-primary mx-5 border-2 rounded-2xl border-amber-500   px-3 py-3 my-2 focus:border-orange-700"
                   required
                 >
                   <option value="">---Select Qualification---</option>
@@ -182,7 +211,7 @@ const Home = () => {
               </div>
 
               <div className="inline-block">
-                <label htmlFor="grd">Grade:</label>
+                <label htmlFor="grd"></label>
                 <input
                   type="number"
                   name="grd"
@@ -190,7 +219,7 @@ const Home = () => {
                   value={personal.grd}
                   onChange={handleChange}
                   placeholder="Enter your Grade"
-                  className="text-primary mx-5 border rounded-2xl border-amber-500   px-3 py-3 my-2"
+                  className="text-primary mx-5 border-2 rounded-2xl border-amber-500   px-3 py-3 my-2 focus:border-orange-700"
                   required
                 />
               </div>
@@ -198,21 +227,21 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="border rounded-2xl border-amber-400 my-5 py-5">
+        <div className="border-2 rounded-2xl border-amber-400 my-5 py-5 bg-amber-100">
           <div>
             <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
               Course Information
             </span>
             <div className=" flex justify-center">
               <div className="inline-block">
-                <label htmlFor="crs">course :</label>
+                <label htmlFor="crs"></label>
 
                 <select
                   name="crs"
                   id="crs"
                   onChange={handleChange}
                   value={personal.crs}
-                  className="text-primary mx-5 border rounded-2xl border-amber-500   px-3 py-3 my-2"
+                  className="text-primary mx-5 border-2 rounded-2xl border-amber-500   px-3 py-3 my-2focus:border-orange-700"
                   required
                 >
                   <option value="">---Select Qualification---</option>
@@ -225,9 +254,7 @@ const Home = () => {
               </div>
 
               <div className="inline-block">
-                <label htmlFor="btch" className="mx-5">
-                  Batch:
-                </label>
+                <label htmlFor="btch" className="mx-5"></label>
                 <div className="inline-block">
                   <input
                     type="checkbox"
@@ -238,7 +265,7 @@ const Home = () => {
                     onChange={handleChange}
                     checked={Object.values(personal.btch).includes("morning")}
                   />
-                  <span class="ms-2 me-4">Morning</span>
+                  <span className="mx-3 text-0xl">Morning</span>
                 </div>
                 <div className="inline-block">
                   <input
@@ -250,7 +277,7 @@ const Home = () => {
                     onChange={handleChange}
                     checked={Object.values(personal.btch).includes("evening")}
                   />
-                  <span class="ms-2 me-4">Evening</span>
+                  <span className="mx-3 text-0xl">Evening</span>
                 </div>
                 <div className="inline-block">
                   <input
@@ -262,7 +289,7 @@ const Home = () => {
                     onChange={handleChange}
                     checked={Object.values(personal.btch).includes("afternoon")}
                   />
-                  <span class="ms-2 me-4">Afternoon</span>
+                  <span className="mx-3 text-0xl">Afternoon</span>
                 </div>
                 <div className="inline-block">
                   <input
@@ -274,21 +301,21 @@ const Home = () => {
                     onChange={handleChange}
                     checked={Object.values(personal.btch).includes("night")}
                   />
-                  <span class="ms-2 me-4">Night</span>
+                  <span className="mx-3 text-0xl">Night</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="border rounded-2xl border-amber-400 my-5 py-5">
+        <div className="border-2 rounded-2xl border-amber-400 my-5 py-5 bg-amber-100">
           <div>
             <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
               Address
             </span>
             <div className=" flex justify-center">
               <div className="inline-block">
-                <label htmlFor="adrs">Address:</label>
+                <label htmlFor="adrs"></label>
                 <input
                   type="text"
                   name="adrs"
@@ -296,13 +323,13 @@ const Home = () => {
                   value={personal.adrs}
                   onChange={handleChange}
                   placeholder="Enter your Address"
-                  className="text-primary mx-5 border rounded-2xl border-amber-500  py-3 px-3 my-2"
+                  className="text-primary mx-5 border-2 rounded-2xl border-amber-500  py-3 px-3 my-2 focus:border-orange-700"
                   required
                 />
               </div>
 
               <div className="inline-block">
-                <label htmlFor="city">City:</label>
+                <label htmlFor="city"></label>
                 <input
                   type="text"
                   name="city"
@@ -310,13 +337,13 @@ const Home = () => {
                   value={personal.city}
                   onChange={handleChange}
                   placeholder="Enter your City"
-                  className="text-primary mx-5 border rounded-2xl border-amber-500  py-3 px-3 my-2"
+                  className="text-primary mx-5 border-2 rounded-2xl border-amber-500  py-3 px-3 my-2 focus:border-orange-700"
                   required
                 />
               </div>
 
               <div className="inline-block">
-                <label htmlFor="pin">Pin Code:</label>
+                <label htmlFor="pin"></label>
                 <input
                   type="number"
                   name="pin"
@@ -324,7 +351,7 @@ const Home = () => {
                   value={personal.pin}
                   onChange={handleChange}
                   placeholder="Enter your Pin Code"
-                  className="text-primary mx-5 border rounded-2xl border-amber-500   px-3 py-3 my-2"
+                  className="text-primary mx-5 border-2 rounded-2xl border-amber-500   px-3 py-3 my-2 focus:border-orange-700"
                   required
                 />
               </div>
@@ -332,14 +359,14 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="border rounded-2xl border-amber-400 my-5 py-5">
+        <div className="border-2 rounded-2xl border-amber-400 my-5 py-5 bg-amber-100">
           <div>
             <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
               Guardian Details
             </span>
             <div className=" flex justify-center">
               <div className="inline-block">
-                <label htmlFor="grdName">Guardian Full Name:</label>
+                <label htmlFor="grdName"></label>
                 <input
                   type="text"
                   name="grdName"
@@ -347,13 +374,13 @@ const Home = () => {
                   value={personal.grdName}
                   onChange={handleChange}
                   placeholder="Enter Guardian Full Name"
-                  className="text-primary mx-5 border rounded-2xl border-amber-500  py-3 px-3 my-2"
+                  className="text-primary mx-5 border-2 rounded-2xl border-amber-500  py-3 px-3 my-2 focus:border-orange-700"
                   required
                 />
               </div>
 
               <div className="inline-block">
-                <label htmlFor="grdphone">Guarduin Phone:</label>
+                <label htmlFor="grdphone"></label>
                 <input
                   type="number"
                   name="grdphone"
@@ -361,7 +388,7 @@ const Home = () => {
                   value={personal.grdphone}
                   onChange={handleChange}
                   placeholder="Enter Guardian phone"
-                  className="text-primary mx-5 border rounded-2xl px-3 border-amber-500   py-3 my-2"
+                  className="text-primary mx-5 border-2 rounded-2xl px-3 border-amber-500   py-3 my-2 focus:border-orange-700"
                   required
                 />
               </div>
@@ -369,24 +396,26 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="border rounded-2xl border-amber-400 my-5 py-5">
+        <div className="border-2 rounded-2xl border-amber-400 my-5 py-5 bg-amber-100">
           <div>
             <span className="text-amber-500 border-b-amber-300 text-2xl flex justify-center my-4">
               Additional Information
             </span>
             <div className=" flex justify-center">
               <div className="inline-block">
-                <label htmlFor="hear">How Did You Hear About Us:</label>
+                <label htmlFor="hear"></label>
 
                 <select
                   name="hear"
                   id="hear"
                   onChange={handleChange}
                   value={personal.hear}
-                  className="text-primary mx-5 border rounded-2xl border-amber-500   px-3 py-3 my-2"
+                  className="text-primary mx-5 border-2 rounded-2xl border-amber-500   px-3 py-3 my-2 focus:border-orange-700"
                   required
                 >
-                  <option value="">---How Did You Hear About Us--</option>
+                  <option value="" className="opacity-75">
+                    ---How Did You Hear About Us--
+                  </option>
                   <option value="Friends">Friends</option>
                   <option value="Social Media">Social Media</option>
                   <option value="News Paper">News Paper</option>
@@ -395,7 +424,7 @@ const Home = () => {
               </div>
 
               <div className="inline-block">
-                <label htmlFor="spcl">Special Requirment:</label>
+                <label htmlFor="spcl"></label>
                 <input
                   type="text"
                   name="spcl"
@@ -403,7 +432,7 @@ const Home = () => {
                   value={personal.spcl}
                   onChange={handleChange}
                   placeholder="Enter Any Special Requirment"
-                  className="text-primary mx-5 border rounded-2xl px-3 border-amber-500   py-3 my-2"
+                  className="text-primary mx-5 border-2 rounded-2xl px-3 border-amber-500   py-3 my-2"
                   required
                 />
               </div>
