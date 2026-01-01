@@ -77,34 +77,88 @@ const Home = () => {
     });
   };
 
-  const validate =()=>{
-    let Error = {}
+  const validate = () => {
+    let errors = {};
 
-    if(personal.fullName.length<3)
-    {
-        Error.fullName = "Name should have more then 3 characters"
+    if (!/^[A-Za-z ]{3,}$/.test(personal.fullName)) {
+      errors.fullName = "Enter valid full name (min 3 letters)";
     }
-  }
 
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(personal.email)) {
+      errors.email = "Enter valid email address";
+    }
 
+    if (!/^[6-9]\d{9}$/.test(personal.phone)) {
+      errors.phone = "Enter valid 10-digit mobile number";
+    }
 
+    if (!personal.dob) {
+      errors.dob = "Date of birth is required";
+    }
+
+    if (!personal.qlf) {
+      errors.qlf = "Qualification is required";
+    }
+
+    if (!/^(100|[1-9]?\d)$/.test(personal.grd)) {
+      errors.grd = "Grade must be between 0 and 100";
+    }
+
+    if (!personal.crs) {
+      errors.crs = "Course selection is required";
+    }
+
+    if (personal.btch.length === 0) {
+      errors.btch = "Select at least one batch";
+    }
+
+    if (personal.adrs.length < 5) {
+      errors.adrs = "Address must be at least 5 characters";
+    }
+
+    if (!/^[A-Za-z ]{3,}$/.test(personal.city)) {
+      errors.city = "City name should contain only letters";
+    }
+
+    if (!/^\d{6}$/.test(personal.pin)) {
+      errors.pin = "Enter valid 6-digit pin code";
+    }
+
+    if (!/^[A-Za-z ]{3,}$/.test(personal.grdName)) {
+      errors.grdName = "Enter valid guardian name";
+    }
+
+    if (!/^[6-9]\d{9}$/.test(personal.grdphone)) {
+      errors.grdphone = "Enter valid guardian mobile number";
+    }
+
+    if (!personal.hear) {
+      errors.hear = "This field is required";
+    }
+
+    if (personal.spcl.length < 3) {
+      errors.spcl = "Minimum 3 characters required";
+    }
+
+    setError(errors);
+    return Object.keys(errors).length === 0;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    isLoading(true);
+    setIsLoading(true);
 
     if (!validate()) {
       setIsLoading(false);
-      toast.error("Fill The Form Correctly!")
+      toast.error("Fill the form correctly!");
       return;
     }
 
     try {
       console.log(personal);
-      toast.success("Registration Successfull");
+      toast.success("Registration Successful 🎉");
       handleClearForm();
     } catch (error) {
-      console.log(error);
       toast.error(error.message);
     } finally {
       setIsLoading(false);
