@@ -183,7 +183,7 @@ const Home = () => {
             </span>
             <div className=" flex justify-center">
               <div className="">
-                <div className="inline-block">
+                <div className="inline">
                   <label htmlFor="fullName"></label>
                   <input
                     type="text"
@@ -196,8 +196,12 @@ const Home = () => {
                     required
                   />
                 </div>
+                {error.fullName && (
+                    <span className="text-red-600 text-xs">{error.fullName}</span>
+                )}
+                
 
-                <div className="inline-block">
+                <div className="inline">
                   <label htmlFor="email"></label>
                   <input
                     type="email"
@@ -210,6 +214,9 @@ const Home = () => {
                     required
                   />
                 </div>
+              {error.email && (
+                    <span className="text-red-600 text-xs">{error.email}</span>
+                )}
               </div>
 
               <div className="inline">
@@ -226,8 +233,11 @@ const Home = () => {
                     required
                   />
                 </div>
+              {error.phone && (
+                    <span className="text-red-600 text-xs">{error.phone}</span>
+                )}
 
-                <div className="inline-block">
+                <div className="inline">
                   <label htmlFor="dob"></label>
                   <input
                     type="date"
@@ -239,6 +249,9 @@ const Home = () => {
                     required
                   />
                 </div>
+              {error.dob && (
+                    <span className="text-red-600 text-xs">{error.dob}</span>
+                )}
               </div>
             </div>
           </div>
@@ -269,6 +282,9 @@ const Home = () => {
                   <option value="Other">Other</option>
                 </select>
               </div>
+              {error.qlf && (
+                    <span className="text-red-600 text-xs">{error.qlf}</span>
+                )}
 
               <div className="inline-block">
                 <label htmlFor="grd"></label>
@@ -283,6 +299,9 @@ const Home = () => {
                   required
                 />
               </div>
+              {error.grd && (
+                    <span className="text-red-600 text-xs">{error.grd}</span>
+                )}
             </div>
           </div>
         </div>
@@ -312,6 +331,9 @@ const Home = () => {
                   <option value="Other">Other</option>
                 </select>
               </div>
+              {error.crs && (
+                    <span className="text-red-600 text-xs">{error.crs}</span>
+                )}
 
               <div className="inline-block">
                 <label htmlFor="btch" className="mx-5"></label>
@@ -387,6 +409,9 @@ const Home = () => {
                   required
                 />
               </div>
+              {error.adrs && (
+                    <span className="text-red-600 text-xs">{error.adrs}</span>
+                )}
 
               <div className="inline-block">
                 <label htmlFor="city"></label>
@@ -401,6 +426,9 @@ const Home = () => {
                   required
                 />
               </div>
+              {error.city && (
+                    <span className="text-red-600 text-xs">{error.city}</span>
+                )}
 
               <div className="inline-block">
                 <label htmlFor="pin"></label>
@@ -415,6 +443,9 @@ const Home = () => {
                   required
                 />
               </div>
+              {error.pin && (
+                    <span className="text-red-600 text-xs">{error.pin}</span>
+                )}
             </div>
           </div>
         </div>
@@ -438,6 +469,9 @@ const Home = () => {
                   required
                 />
               </div>
+              {error.grdName && (
+                    <span className="text-red-600 text-xs">{error.grdName}</span>
+                )}
 
               <div className="inline-block">
                 <label htmlFor="grdphone"></label>
@@ -452,6 +486,9 @@ const Home = () => {
                   required
                 />
               </div>
+              {error.grdphone && (
+                    <span className="text-red-600 text-xs">{error.grdphone}</span>
+                )}
             </div>
           </div>
         </div>
@@ -482,6 +519,9 @@ const Home = () => {
                   <option value="Other">Other</option>
                 </select>
               </div>
+              {error.hear && (
+                    <span className="text-red-600 text-xs">{error.hear}</span>
+                )}
 
               <div className="inline-block">
                 <label htmlFor="spcl"></label>
@@ -496,6 +536,9 @@ const Home = () => {
                   required
                 />
               </div>
+              {error.spcl && (
+                    <span className="text-red-600 text-xs">{error.spcl}</span>
+                )}
             </div>
           </div>
         </div>
