@@ -1,35 +1,97 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import { useState } from 'react'
+// import reactLogo from './assets/react.svg'
+// import viteLogo from '/vite.svg'
+
+
+// // https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json
+
+// function App() {
+//   const [count, setCount] = useState(0)
+
+//   return (
+//     <>
+//     </>
+//   )
+// }
+
+// export default App
+
+
+import { useEffect, useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [currencies, setCurrencies] = useState([]);
+  const [from, setFrom] = useState("usd");
+  const [to, setTo] = useState("inr");
+  const [amount, setAmount] = useState(1);
+  const [result, setResult] = useState(null);
+
+  // Fetch currency list
+  useEffect(() => {
+    fetch(
+      "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setCurrencies(Object.keys(data));
+      });
+  }, []);
+
+  // Convert currency
+  const convert = () => {
+    fetch(
+      `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${from}.json`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const rate = data[from][to];
+        setResult((amount * rate).toFixed(2));
+      });
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div style={{ padding: "40px", fontFamily: "sans-serif" }}>
+      <h2>💱 Currency Converter</h2>
+
+      <input
+        type="number"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+        placeholder="Amount"
+      />
+
+      <br /><br />
+
+      <select value={from} onChange={(e) => setFrom(e.target.value)}>
+        {currencies.map((cur) => (
+          <option key={cur} value={cur}>
+            {cur.toUpperCase()}
+          </option>
+        ))}
+      </select>
+
+      <span style={{ margin: "0 10px" }}>→</span>
+
+      <select value={to} onChange={(e) => setTo(e.target.value)}>
+        {currencies.map((cur) => (
+          <option key={cur} value={cur}>
+            {cur.toUpperCase()}
+          </option>
+        ))}
+      </select>
+
+      <br /><br />
+
+      <button onClick={convert}>Convert</button>
+
+      {result && (
+        <h3>
+          Result: {amount} {from.toUpperCase()} = {result}{" "}
+          {to.toUpperCase()}
+        </h3>
+      )}
+    </div>
+  );
 }
 
-export default App
+export default App;
