@@ -78,7 +78,12 @@ const Home = () => {
   };
 
   const validate =()=>{
-    
+    let Error = {}
+
+    if(personal.fullName.length<3)
+    {
+        Error.fullName = "Name should have more then 3 characters"
+    }
   }
 
 
@@ -90,6 +95,7 @@ const Home = () => {
 
     if (!validate()) {
       setIsLoading(false);
+      toast.error("Fill The Form Correctly!")
       return;
     }
 
