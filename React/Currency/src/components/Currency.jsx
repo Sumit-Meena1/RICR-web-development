@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CountryData from "../assets/CountryData.json";
 import toast from "react-hot-toast";
 import axios from "axios";
+import { AiOutlineSwap } from "react-icons/ai";
 
 const Currency = () => {
   const [from, setFrom] = useState("");
@@ -88,6 +89,14 @@ const Currency = () => {
                   </option>
                 ))}
               </select>
+            </div>
+             <div className="absolute left-1/2 -translate-x-[50%] top-3">
+              <button
+                className="text-2xl hover:scale-150 hover:duration-300 scale-100 duration-300 hover:text-green-500"
+                onClick={swap}
+              >
+                <AiOutlineSwap />
+              </button>
             </div>
           </div>
           <div className="flex gap-3 items-center">
