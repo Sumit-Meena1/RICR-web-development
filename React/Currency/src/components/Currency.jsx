@@ -9,6 +9,14 @@ const Currency = () => {
   const [fromAmt, setFromAmt] = useState("");
   const [toAmt, setToAmt] = useState("");
 
+  const swap = () => {
+    //Swap from and to
+
+    let temp = from;
+    setFrom(to);
+    setTo(temp);
+  };
+
   const Convert = async () => {
     if (!from || !to || !fromAmt) {
       toast.error("Some Fields Missing");
