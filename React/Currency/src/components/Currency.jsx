@@ -11,7 +11,7 @@ const Currency = () => {
   const [toAmt, setToAmt] = useState("");
 
   const swap = () => {
-    //Swap from and to
+  
 
     let temp = from;
     setFrom(to);
