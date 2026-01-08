@@ -8,6 +8,8 @@ app.get("/", (req, res) => {
   res.json({ message: "server is running susseccfully on" , port });
 });
 
+
+
 const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
