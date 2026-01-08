@@ -6,6 +6,7 @@ const app = express();
 app.get("/", (req, res) => {
   console.log("server is running");
   res.json({ message: "server is running susseccfully on"  });
+  res.json({ message: "server is also running susseccfully on"  });
 });
 
 
