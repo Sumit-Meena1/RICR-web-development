@@ -5,7 +5,7 @@ import express from "express";
 const app = express();
 app.get("/", (req, res) => {
   console.log("server is running");
-  res.json({ message: "server is running susseccfully on" , port });
+  res.json({ message: "server is running susseccfully on"  });
 });
 
 
