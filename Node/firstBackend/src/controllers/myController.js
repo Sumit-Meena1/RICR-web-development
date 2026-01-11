@@ -80,7 +80,7 @@ export const UserLogout = (req, res, next) => {
 export const UserUpdate = async (req, res, next) => {
   try {
     const { fullName, phone, email } = req.body;
-    if (!fullName || !phone ||email) {
+    if (!fullName || !phone || !email) {
       // return res.status(400).json({ message: "All fields are required" });
       const error = new Error("All fields are required");
       error.statusCode = 400;
