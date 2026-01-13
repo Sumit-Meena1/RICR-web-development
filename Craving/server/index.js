@@ -21,7 +21,8 @@ app.get("/", (req, res) => {
 
 app.use((err, req, res, next) => {
   const ErrorMessage = err.message || "Internal Servar Error";
-  const StatusCode = err.StatusCode || 500;
+  const StatusCode = err.statusCode || 500;
+
 
   res.status(StatusCode).json({ message: ErrorMessage });
 });

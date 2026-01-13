@@ -14,6 +14,8 @@ export const UserRegister = async (req, res, next) => {
     if (existingUser) {
       const error = new Error("Email Already Existed");
       error.statusCode = 409;
+      toast.error(error.response?.data?.message || "Something went wrong");
+
       return next(error);
     }
 
@@ -44,14 +46,14 @@ export const UserLogin = async (req, res, next) => {
     const existingUser = await User.findOne({email});
     if (!existingUser) {
       const error = new Error("Email Not Registered");
-      error.statusCode = 402;
+      error.statusCode = 404;
       return next(error);
     }
 
     const isVerified = await bcrypt.compare(password, existingUser.password);
     if (!isVerified) {
       const error = new Error("Password didn't Match");
-      error.statusCode = 402;
+      error.statusCode = 404;
       return next(error);
     }
 
