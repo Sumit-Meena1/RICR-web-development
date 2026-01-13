@@ -1,6 +1,7 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
 
+
 export const UserRegister = async (req, res, next) => {
   try {
     const { fullName, email, mobileNumber, password } = req.body;
@@ -14,7 +15,9 @@ export const UserRegister = async (req, res, next) => {
     if (existingUser) {
       const error = new Error("Email Already Existed");
       error.statusCode = 409;
-      toast.error(error.response?.data?.message || "Something went wrong");
+      // toast.error(error.response?.data?.message || "Uknown Error");
+      console.log();
+      
 
       return next(error);
     }

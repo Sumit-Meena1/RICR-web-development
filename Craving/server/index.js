@@ -23,11 +23,14 @@ app.use((err, req, res, next) => {
   const ErrorMessage = err.message || "Internal Servar Error";
   const StatusCode = err.statusCode || 500;
 
-
   res.status(StatusCode).json({ message: ErrorMessage });
+  console.log(ErrorMessage, StatusCode);
+  
 });
 
 const port = process.env.PORT || 5000;
+
+
 app.listen(port, () => {
   console.log("server strated at port: ", port);
   connectDB();
