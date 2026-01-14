@@ -15,7 +15,6 @@ export const UserRegister = async (req, res, next) => {
     if (existingUser) {
       const error = new Error("Email Already Existed");
       error.statusCode = 409;
-      // toast.error(error.response?.data?.message || "Uknown Error");
       console.log();
       
 
