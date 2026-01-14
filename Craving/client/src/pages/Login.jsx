@@ -127,7 +127,7 @@ const Login = () => {
 
           {/* Footer Note */}
           <p className="text-center text-gray-600 mt-8 text-sm">
-            All fields marked are mandatory. We respect your privacy.
+            Enter Your Registered Gmail.
           </p>
         </div>
       </div>
