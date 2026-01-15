@@ -53,8 +53,7 @@ const Login = () => {
       toast.success(res.data.message);
       handleClearForm();
     } catch (error) {
-      console.log(error);
-      toast.error(error.message);
+      toast.error(error.response?.data?.message || "Login Failed");
     } finally {
       setIsLoading(false);
     }

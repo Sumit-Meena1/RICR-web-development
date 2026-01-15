@@ -64,6 +64,12 @@ export const UserLogin = async (req, res, next) => {
     next(error);
   }
 };
+
+
+
+
+
+
 export const UserLogout = async (req, res, next) => {
   try {
     res.status(200).json({ message: "Logout Successfull" });

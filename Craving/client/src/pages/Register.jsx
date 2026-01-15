@@ -1,5 +1,3 @@
-
-
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import api from "../config/Api";
@@ -52,6 +50,9 @@ const Register = () => {
     if (!/^[6-9]\d{9}$/.test(formData.mobileNumber)) {
       Error.mobileNumber = "Only Indian Mobile Number allowed";
     }
+    if (formData.password != formData.confirmPassword) {
+      Error.password = "Password Didnt Matched";
+    }
 
     setValidationError(Error);
 
@@ -74,7 +75,7 @@ const Register = () => {
       handleClearForm();
     } catch (error) {
       console.log(error);
-      toast.error(error.message);
+      toast.error(error.response?.data?.message || "Technical Error");
     } finally {
       setIsLoading(false);
     }
@@ -172,7 +173,7 @@ const Register = () => {
                   disabled={isLoading}
                   className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 disabled:scale-100 disabled:bg-gray-300 shadow-lg disabled:cursor-not-allowed"
                 >
-                  {isLoading?"submitting":"submit"}
+                  {isLoading ? "submitting" : "submit"}
                 </button>
                 <button
                   type="reset"
