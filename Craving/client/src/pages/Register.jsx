@@ -51,7 +51,7 @@ const Register = () => {
       Error.mobileNumber = "Only Indian Mobile Number allowed";
     }
     if (formData.password != formData.confirmPassword) {
-      Error.password = "Password Didnt Matched";
+      Error.password = "Password Didn't Matched";
     }
 
     setValidationError(Error);
