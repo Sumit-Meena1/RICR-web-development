@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import api from "../config/Api";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -53,6 +54,7 @@ const Login = () => {
       const res = await api.post("/auth/login", formData);
       toast.success(res.data.message);
       handleClearForm();
+      navigate("/user-dashboard");
     } catch (error) {
       toast.error(error.response?.data?.message || "Login Failed");
     } finally {
@@ -63,7 +65,6 @@ const Login = () => {
     <>
       <div className="min-h-screen bg-linear-to-br from-blue-50 to-indigo-100 py-6 px-4">
         <div className="max-w-xl mx-auto">
-          {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-2">Log-In</h1>
             <p className="text-lg text-gray-600">
@@ -71,14 +72,12 @@ const Login = () => {
             </p>
           </div>
 
-          {/* Form Container */}
           <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
             <form
               onSubmit={handleSubmit}
               onReset={handleClearForm}
               className="p-8"
             >
-              {/* Personal Information */}
               <div className="mb-10">
                 <div className="space-y-4">
                   <input
@@ -105,7 +104,6 @@ const Login = () => {
                 </div>
               </div>
 
-              {/* Submit Button */}
               <div className="flex gap-4 pt-8 border-t-2 border-gray-200">
                 <button
                   type="submit"
@@ -125,9 +123,7 @@ const Login = () => {
             </form>
           </div>
 
-          {/* Footer Note */}
           <p className="text-center text-gray-600 mt-8 text-sm">
-            {/* Enter Your Registered Gmail. */}
             don't have an account?
             <Link
               to={"/register"}

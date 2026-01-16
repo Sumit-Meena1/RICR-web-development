@@ -9,8 +9,7 @@ const Header = () => {
         <Link to={"/"}>
           <img
             src={trans2}
-            alt=""
-            className="h-12 w-20 object-cover invert-100"
+            className="h-12 w-20 object-cover invert-100 animate-bounce"
           />
         </Link>
         <div className="flex gap-4">
