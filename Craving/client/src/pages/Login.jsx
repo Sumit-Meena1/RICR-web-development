@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import api from "../config/Api";
+import { Link, Navigate } from "react-router-dom";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -126,7 +127,14 @@ const Login = () => {
 
           {/* Footer Note */}
           <p className="text-center text-gray-600 mt-8 text-sm">
-            Enter Your Registered Gmail.
+            {/* Enter Your Registered Gmail. */}
+            don't have an account?
+            <Link
+              to={"/register"}
+              className="text-decoration-none text-blue-700 mx-3 hover:text-blue-900"
+            >
+              Sign-Up
+            </Link>
           </p>
         </div>
       </div>
