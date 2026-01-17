@@ -1,6 +1,13 @@
 import React from "react";
 import trans2 from "../assets/trans2.png";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } 
+from "react-router-dom";
+import { IoHomeOutline } from "react-icons/io5";
+import { FaRegSquarePlus } from "react-icons/fa6";
+import { GrContact } from "react-icons/gr";
+
+
+
 const Header = () => {
   const navigate = useNavigate();
   return (
@@ -12,23 +19,27 @@ const Header = () => {
             className="h-12 w-20 object-cover invert-100 animate-bounce"
           />
         </Link>
-        <div className="flex gap-4">
+        <div className="flex gap-6">
           <Link
             to={"/"}
-            className="text-decoration-none text-white hover:text-(--color-accent)"
-          >
+            className="text-decoration-none flex items-center gap-2 text-white hover:text-(--color-accent)"
+          ><IoHomeOutline />
+
             Home
           </Link>
           <Link
             to={"/about"}
-            className="text-decoration-none text-white hover:text-(--color-accent)"
-          >
+            className="text-decoration-none flex items-center gap-2 text-white hover:text-(--color-accent)"
+          ><FaRegSquarePlus />
+
+
             About
           </Link>
           <Link
             to={"/contact"}
-            className="text-decoration-none text-white hover:text-(--color-accent)"
-          >
+            className="text-decoration-none flex items-center gap-2 text-white hover:text-(--color-accent)"
+          ><GrContact />
+
             Contact
           </Link>
         </div>

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { FaMagnifyingGlassChart } from "react-icons/fa6";
 import { CgProfile } from "react-icons/cg";
 import { FaCartShopping } from "react-icons/fa6";
@@ -6,20 +6,30 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { RiCustomerServiceFill } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 
+const SideBar = ({ active, setActive, collapse, setCollapse }) => {
+  console.log(collapse);
 
-const SideBar = ({ active, setActive }) => {
-  
-    
+  const handleCollapse = () => {
+    setCollapse(false);
+  };
+
   return (
     <>
       <div className="p-3">
-        <div className="text-xl font-bold flex gap-3 items-center"><GiHamburgerMenu onClick={}/> User Dashboard</div>
+        <div
+          className="text-xl font-bold flex gap-3 items-center"
+          onClick={handleCollapse}
+        >
+          <GiHamburgerMenu /> User Dashboard
+        </div>
         <hr />
         <div className="grid gap-3 p-6">
           <button
-            className={`flex gap-3 rounded-xl p-3 items-center hover:bg-amber-500
+            className={`flex gap-3 rounded-xl p-3 items-center 
               ${
-                active === "overview" ? "bg-(--color-secondary) text-white" : ""
+                active === "overview"
+                  ? "bg-(--color-secondary) text-white"
+                  : "hover:bg-amber-500"
               }
               `}
             onClick={() => setActive("overview")}
@@ -28,8 +38,12 @@ const SideBar = ({ active, setActive }) => {
             Overview
           </button>
           <button
-            className={`flex gap-3 rounded-xl p-3 items-center hover:bg-amber-500
-              ${active === "profile" ? "bg-(--color-secondary) text-white" : ""}
+            className={`flex gap-3 rounded-xl p-3 items-center 
+              ${
+                active === "profile"
+                  ? "bg-(--color-secondary) text-white"
+                  : "hover:bg-amber-500"
+              }
               `}
             onClick={() => setActive("profile")}
           >
@@ -37,19 +51,23 @@ const SideBar = ({ active, setActive }) => {
             Profile
           </button>
           <button
-            className={`flex gap-3 rounded-xl p-3 items-center hover:bg-amber-500
-              ${active === "orders" ? "bg-(--color-secondary) text-white" : ""}
+            className={`flex gap-3 rounded-xl p-3 items-center 
+              ${
+                active === "orders"
+                  ? "bg-(--color-secondary) text-white"
+                  : "hover:bg-amber-500"
+              }
               `}
             onClick={() => setActive("orders")}
           >
             <FaCartShopping /> Orders
           </button>
           <button
-            className={`flex gap-3 rounded-xl p-3 items-center hover:bg-amber-500
+            className={`flex gap-3 rounded-xl p-3 items-center 
               ${
                 active === "transection"
                   ? "bg-(--color-secondary) text-white"
-                  : ""
+                  : "hover:bg-amber-500"
               }
               `}
             onClick={() => setActive("transection")}
@@ -57,8 +75,12 @@ const SideBar = ({ active, setActive }) => {
             <GiReceiveMoney /> Transections
           </button>
           <button
-            className={`flex gap-3 rounded-xl p-3 items-center hover:bg-amber-500
-              ${active === "help" ? "bg-(--color-secondary) text-white" : ""}
+            className={`flex gap-3 rounded-xl p-3 items-center 
+              ${
+                active === "help"
+                  ? "bg-(--color-secondary) text-white"
+                  : "hover:bg-amber-500"
+              }
               `}
             onClick={() => setActive("help")}
           >
