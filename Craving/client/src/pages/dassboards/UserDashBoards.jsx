@@ -16,7 +16,7 @@ const UserDashBoards = () => {
       <div className="w-full h-[90vh] flex">
         {collapse && (
           <div
-            className={`bg-(--color-background) w-1/7
+            className={`bg-(--color-background) w-1/7 
           `}
           >
             <SideBar
@@ -29,7 +29,7 @@ const UserDashBoards = () => {
         )}
         <div
           className={`border border-amber-700 ${
-            collapse ? "w-6/7" : "w-full"
+            collapse ? "w-6/7 p-4" : "w-full"
           } `}
         >
           {!collapse && (
