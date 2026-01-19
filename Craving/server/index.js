@@ -9,7 +9,7 @@ import AuthRouter from "./src/routers/authRouter.js";
 import PublicRouter from "./src/routers/publicRouter.js"
 
 const app = express();
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "http://localhost:5173", credentials:true }));
 
 app.use(express.json());
 app.use(morgan("dev"));

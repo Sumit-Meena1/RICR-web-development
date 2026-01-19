@@ -29,7 +29,7 @@ const UserDashBoards = () => {
         )}
         <div
           className={`border border-amber-700 ${
-            collapse ? "w-6/7 p-4" : "w-full"
+            collapse ? "w-6/7 p-4 transform duration-600" : "w-full"
           } `}
         >
           {!collapse && (

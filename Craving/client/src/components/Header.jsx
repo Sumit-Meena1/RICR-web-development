@@ -4,8 +4,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoHomeOutline } from "react-icons/io5";
 import { FaRegSquarePlus } from "react-icons/fa6";
 import { GrContact } from "react-icons/gr";
+import { useAuth } from "../context/AuthContext";
 
 const Header = () => {
+  const { user, isLogin } = useAuth();
   const navigate = useNavigate();
   return (
     <>
@@ -40,18 +42,24 @@ const Header = () => {
           </Link>
         </div>
         <div className="flex gap-3">
-          <button
-            onClick={() => navigate("/login")}
-            className="bg-(--color-secondary) py-2 px-4 rounded-2xl font-bold hover:bg-(--color-secondary-hover) hover:text-white"
-          >
-            LogIn
-          </button>
-          <button
-            onClick={() => navigate("/register")}
-            className="bg-(--color-secondary) py-2 px-4 rounded-2xl  font-bold hover:bg-(--color-secondary-hover) hover:text-white"
-          >
-            Register
-          </button>
+          {isLogin ? (
+            <span className="text-red-500">{user.fullName}</span>
+          ) : (
+            <>
+              <button
+                onClick={() => navigate("/login")}
+                className="bg-(--color-secondary) py-2 px-4 rounded-2xl font-bold hover:bg-(--color-secondary-hover) hover:text-white"
+              >
+                LogIn
+              </button>
+              <button
+                onClick={() => navigate("/register")}
+                className="bg-(--color-secondary) py-2 px-4 rounded-2xl  font-bold hover:bg-(--color-secondary-hover) hover:text-white"
+              >
+                Register
+              </button>
+            </>
+          )}
         </div>
       </div>
     </>

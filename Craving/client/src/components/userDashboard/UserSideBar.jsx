@@ -25,7 +25,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
         <hr />
         <div className="grid gap-3 p-6">
           <button
-            className={`flex gap-3 rounded-xl p-3 items-center 
+            className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
               ${
                 active === "overview"
                   ? "bg-(--color-secondary) text-white"
@@ -38,7 +38,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
             Overview
           </button>
           <button
-            className={`flex gap-3 rounded-xl p-3 items-center 
+            className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
               ${
                 active === "profile"
                   ? "bg-(--color-secondary) text-white"
@@ -51,7 +51,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
             Profile
           </button>
           <button
-            className={`flex gap-3 rounded-xl p-3 items-center 
+            className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
               ${
                 active === "orders"
                   ? "bg-(--color-secondary) text-white"
@@ -63,7 +63,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
             <FaCartShopping /> Orders
           </button>
           <button
-            className={`flex gap-3 rounded-xl p-3 items-center 
+            className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
               ${
                 active === "transection"
                   ? "bg-(--color-secondary) text-white"
@@ -75,7 +75,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
             <GiReceiveMoney /> Transections
           </button>
           <button
-            className={`flex gap-3 rounded-xl p-3 items-center 
+            className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
               ${
                 active === "help"
                   ? "bg-(--color-secondary) text-white"
