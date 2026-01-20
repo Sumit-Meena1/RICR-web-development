@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { FaMagnifyingGlassChart } from "react-icons/fa6";
-import { CgProfile } from "react-icons/cg";
-import { FaCartShopping } from "react-icons/fa6";
-import { GiReceiveMoney } from "react-icons/gi";
-import { RiCustomerServiceFill } from "react-icons/ri";
+// import { FaMagnifyingGlassChart } from "react-icons/fa6";
+// import { CgProfile } from "react-icons/cg";
+// import { FaCartShopping } from "react-icons/fa6";
+// import { GiReceiveMoney } from "react-icons/gi";
+// import { RiCustomerServiceFill } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 const SideBar = ({ active, setActive, collapse, setCollapse }) => {
