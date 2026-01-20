@@ -23,40 +23,42 @@ const Header = () => {
             to={"/"}
             className="text-decoration-none flex items-center gap-2 text-white hover:text-(--color-accent)"
           >
-            <IoHomeOutline />
+            {/* <IoHomeOutline /> */}
+            🏠
             Home
           </Link>
           <Link
             to={"/about"}
             className="text-decoration-none flex items-center gap-2 text-white hover:text-(--color-accent)"
           >
-            <FaRegSquarePlus />
+            {/* <FaRegSquarePlus /> */}
+            📠
             About
           </Link>
           <Link
             to={"/contact"}
             className="text-decoration-none flex items-center gap-2 text-white hover:text-(--color-accent)"
           >
-            <GrContact />
+            {/* <GrContact /> */}☎️
             Contact
           </Link>
         </div>
         <div className="flex gap-3">
           {isLogin ? (
-            <span className="text-red-500">{user.fullName}</span>
+            <span className="text-white shadow-2xl shadow-black text-xl">Hy {user?.fullName}🖐️</span>
           ) : (
             <>
               <button
                 onClick={() => navigate("/login")}
                 className="bg-(--color-secondary) py-2 px-4 rounded-2xl font-bold hover:bg-(--color-secondary-hover) hover:text-white"
               >
-                LogIn
+               🔑 LogIn
               </button>
               <button
                 onClick={() => navigate("/register")}
                 className="bg-(--color-secondary) py-2 px-4 rounded-2xl  font-bold hover:bg-(--color-secondary-hover) hover:text-white"
               >
-                Register
+                🔐Register
               </button>
             </>
           )}

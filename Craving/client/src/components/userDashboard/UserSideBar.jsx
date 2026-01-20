@@ -34,11 +34,11 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
               `}
             onClick={() => setActive("overview")}
           >
-            <FaMagnifyingGlassChart />
-            Overview
+            {/* <FaMagnifyingGlassChart /> */}
+            🔍 Overview
           </button>
           <button
-            className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
+            className={`flex gap-3 text-nowrap overflow-hidden rounded-xl  p-3 items-center 
               ${
                 active === "profile"
                   ? "bg-(--color-secondary) text-white"
@@ -47,8 +47,8 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
               `}
             onClick={() => setActive("profile")}
           >
-            <CgProfile />
-            Profile
+            {/* <CgProfile /> */}
+            👨‍💻 Profile
           </button>
           <button
             className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
@@ -60,7 +60,8 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
               `}
             onClick={() => setActive("orders")}
           >
-            <FaCartShopping /> Orders
+            {/* <FaCartShopping /> */}
+            🛒 Orders
           </button>
           <button
             className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
@@ -72,7 +73,8 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
               `}
             onClick={() => setActive("transection")}
           >
-            <GiReceiveMoney /> Transections
+            {/* <GiReceiveMoney />  */}
+            💸 Transections
           </button>
           <button
             className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
@@ -84,7 +86,8 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
               `}
             onClick={() => setActive("help")}
           >
-            <RiCustomerServiceFill /> HelpDesk
+            {/* <RiCustomerServiceFill /> */}
+            🕹️ HelpDesk
           </button>
         </div>
       </div>
