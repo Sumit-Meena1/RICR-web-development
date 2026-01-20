@@ -1,9 +1,9 @@
 import React from "react";
 import trans2 from "../assets/trans2.png";
 import { Link, useNavigate } from "react-router-dom";
-import { IoHomeOutline } from "react-icons/io5";
-import { FaRegSquarePlus } from "react-icons/fa6";
-import { GrContact } from "react-icons/gr";
+// import { IoHomeOutline } from "react-icons/io5";
+// import { FaRegSquarePlus } from "react-icons/fa6";
+// import { GrContact } from "react-icons/gr";
 import { useAuth } from "../context/AuthContext";
 
 const Header = () => {
