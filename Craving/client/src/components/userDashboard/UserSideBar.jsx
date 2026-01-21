@@ -29,7 +29,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
               ${
                 active === "overview"
                   ? "bg-(--color-secondary) text-white"
-                  : "hover:bg-amber-500"
+                  : "hover:bg-amber-500  hover:border-b-3"
               }
               `}
             onClick={() => setActive("overview")}
@@ -42,7 +42,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
               ${
                 active === "profile"
                   ? "bg-(--color-secondary) text-white"
-                  : "hover:bg-amber-500"
+                  : "hover:bg-amber-500  hover:border-b-3"
               }
               `}
             onClick={() => setActive("profile")}
@@ -55,7 +55,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
               ${
                 active === "orders"
                   ? "bg-(--color-secondary) text-white"
-                  : "hover:bg-amber-500"
+                  : "hover:bg-amber-500  hover:border-b-3"
               }
               `}
             onClick={() => setActive("orders")}
@@ -68,7 +68,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
               ${
                 active === "transection"
                   ? "bg-(--color-secondary) text-white"
-                  : "hover:bg-amber-500"
+                  : "hover:bg-amber-500  hover:border-b-3"
               }
               `}
             onClick={() => setActive("transection")}
@@ -81,7 +81,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
               ${
                 active === "help"
                   ? "bg-(--color-secondary) text-white"
-                  : "hover:bg-amber-500"
+                  : "hover:bg-amber-500  hover:border-b-3"
               }
               `}
             onClick={() => setActive("help")}
