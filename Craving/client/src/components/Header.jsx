@@ -42,7 +42,7 @@ const Header = () => {
         </div>
         <div className="flex gap-3">
           {isLogin ? (
-            <span className="text-white shadow-2xl shadow-black text-xl">
+            <span className="text-white shadow-2xl shadow-black text-xl hover:animate-pulse">
               Hy {user?.fullName}🖐️
             </span>
           ) : (

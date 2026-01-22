@@ -28,7 +28,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
             className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
               ${
                 active === "overview"
-                  ? "bg-(--color-secondary) text-white"
+                  ? "bg-(--color-secondary) border-black border-b-3 text-white"
                   : "hover:bg-amber-500  hover:border-b-3"
               }
               `}
@@ -41,7 +41,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
             className={`flex gap-3 text-nowrap overflow-hidden rounded-xl  p-3 items-center 
               ${
                 active === "profile"
-                  ? "bg-(--color-secondary) text-white"
+                  ? "bg-(--color-secondary) border-black border-b-3 text-white"
                   : "hover:bg-amber-500  hover:border-b-3"
               }
               `}
@@ -54,7 +54,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
             className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
               ${
                 active === "orders"
-                  ? "bg-(--color-secondary) text-white"
+                  ? "bg-(--color-secondary) border-black border-b-3 text-white"
                   : "hover:bg-amber-500  hover:border-b-3"
               }
               `}
@@ -67,7 +67,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
             className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
               ${
                 active === "transection"
-                  ? "bg-(--color-secondary) text-white"
+                  ? "bg-(--color-secondary) border-black border-b-3 text-white"
                   : "hover:bg-amber-500  hover:border-b-3"
               }
               `}
@@ -80,7 +80,7 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
             className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
               ${
                 active === "help"
-                  ? "bg-(--color-secondary) text-white"
+                  ? "bg-(--color-secondary) border-black border-b-3 text-white"
                   : "hover:bg-amber-500  hover:border-b-3"
               }
               `}
