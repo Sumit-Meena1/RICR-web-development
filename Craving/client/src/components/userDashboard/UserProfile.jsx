@@ -1,9 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useAuth } from '../../context/AuthContext'
+import EditProfileModal from './modals/EditProfileModal';
 
 const UserProfile = () => {
+  const {user} = useAuth();
+  const [isEditProModalOpen , setIsEditProModalOpen] = useState(false);
   return (
     <>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab dolorem aliquid architecto voluptas, magnam, ipsam laboriosam quis accusamus dicta facilis accusantium. Odit sed fugit sunt numquam voluptate autem odio laboriosam ab provident, delectus laudantium vel. Harum iure qui itaque deleniti.
+      <div className='flex gap-10'>
+        <div>
+          <span>Name:</span> <span>{user.fullName}</span>
+        </div>
+        <div>
+          <span>email:</span> <span>{user.email}</span>
+        </div>
+        <div>
+          <span>Number:</span> <span>{user.mobileNumber}</span>
+        </div>
+        <button onClick={()=>setIsEditProModalOpen(true)} className='border px-5 py-2 bg-amber-400'>
+          Edit Profile
+        </button>
+      </div>
+      {isEditProModalOpen && <EditProfileModal onClose={()=>setIsEditProModalOpen(false)} /> }
+
+      
+   
     </>
   )
 }
