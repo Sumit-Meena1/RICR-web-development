@@ -10,12 +10,12 @@ const UserProfile = () => {
       <div className="grid justify-center max-w my-7 bg-blue-500 py-5 rounded-2xl shadow-2xl shadow-amber-500">
         <div className="flex justify-between  mb-10 gap-60 ">
           <div className="">
-            <span className="text-2xl "> 👨‍💼 User Profile </span>
+            <span className="text-2xl border-b py-2 hover:text-white"> 👨‍💼 User Profile </span>
           </div>
           <div>
             <button
               onClick={() => setIsEditProModalOpen(true)}
-              className="border px-5 py-2 bg-amber-400 rounded-xl hover:bg-green-500 hover:text-white"
+              className="border-b-3 px-5 py-2 bg-amber-400 rounded-xl hover:bg-green-500 hover:text-white"
             >
              ✏️ Edit Profile
             </button>
