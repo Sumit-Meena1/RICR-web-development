@@ -1,32 +1,46 @@
-import React, { useState } from 'react'
-import { useAuth } from '../../context/AuthContext'
-import EditProfileModal from './modals/EditProfileModal';
+import React, { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
+import EditProfileModal from "./modals/EditProfileModal";
 
 const UserProfile = () => {
-  const {user} = useAuth();
-  const [isEditProModalOpen , setIsEditProModalOpen] = useState(false);
+  const { user } = useAuth();
+  const [isEditProModalOpen, setIsEditProModalOpen] = useState(false);
   return (
     <>
-      <div className='flex gap-10'>
-        <div>
-          <span>Name:</span> <span>{user.fullName}</span>
+      <div className="grid justify-center max-w my-7 bg-blue-500 py-5 rounded-2xl shadow-2xl shadow-amber-500">
+        <div className="flex justify-between  mb-10 gap-60 ">
+          <div className="">
+            <span className="text-2xl "> 👨‍💼 User Profile </span>
+          </div>
+          <div>
+            <button
+              onClick={() => setIsEditProModalOpen(true)}
+              className="border px-5 py-2 bg-amber-400 rounded-xl hover:bg-green-500 hover:text-white"
+            >
+             ✏️ Edit Profile
+            </button>
+          </div>
         </div>
-        <div>
-          <span>email:</span> <span>{user.email}</span>
+        <div className="grid gap-7 text-white">
+          <div className="border-black border-b flex gap-7 px-4 py-4 text-xl">
+            <span>Name:</span> <span>{user.fullName}</span>
+          </div>
+          <div className="border-black border-b flex gap-7 px-4 py-4 text-xl">
+            <span>Email:</span> <span>{user.email}</span>
+          </div>
+          <div className="border-black border-b flex gap-7 px-4 py-4 text-xl">
+            <span>Number:</span> <span>{user.mobileNumber}</span>
+          </div>
+        
+          
         </div>
-        <div>
-          <span>Number:</span> <span>{user.mobileNumber}</span>
-        </div>
-        <button onClick={()=>setIsEditProModalOpen(true)} className='border px-5 py-2 bg-amber-400'>
-          Edit Profile
-        </button>
       </div>
-      {isEditProModalOpen && <EditProfileModal onClose={()=>setIsEditProModalOpen(false)} /> }
 
-      
-   
+      {isEditProModalOpen && (
+        <EditProfileModal onClose={() => setIsEditProModalOpen(false)} />
+      )}
     </>
-  )
-}
+  );
+};
 
-export default UserProfile
+export default UserProfile;
