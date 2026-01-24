@@ -1,18 +1,24 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState, useContext, use } from "react";
 const AuthContext = React.createContext();
 
 export const AuthProvider = (props) => {
-  const [user, setUser] = useState( JSON.parse(sessionStorage.getItem("cravingUser")) || "");
+  const [user, setUser] = useState(
+    JSON.parse(sessionStorage.getItem("cravingUser")) || "",
+  );
   const [isLogin, setIsLogin] = useState(!!user);
+  const [role, setRole] = useState(user?.role || "");
 
   useEffect(() => {
     setIsLogin(!!user);
+    setRole(user?.role || "");
   }, [user]);
   const value = {
     user,
     setUser,
     isLogin,
     setIsLogin,
+    role,
+    setRole
   };
 
   return (

@@ -1,0 +1,9 @@
+User : fullName , email , mobileNumber , password , gender , dob , address , city , state , pin , photo
+
+Admin : 
+
+Manager : restaurantName , geoLocation , cuisine , document{GST , Fssai, BankAC , IFSC}, menu{} , 
+
+Partner: document(DL , adharCard , PAN , AC , IFSC , RC )
+
+Customer: appetite , favourite{},

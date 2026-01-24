@@ -7,7 +7,7 @@ import UserTransection from "../../components/userDashboard/UserTransection";
 import UserHelpDesk from "../../components/userDashboard/UserHelpDesk";
 import { GiHamburgerMenu } from "react-icons/gi";
 
-const UserDashBoards = () => {
+const UserDashBoard = () => {
   const [active, setActive] = useState("overview");
   const [collapse, setCollapse] = useState(true);
 
@@ -48,4 +48,4 @@ const UserDashBoards = () => {
   );
 };
 
-export default UserDashBoards;
+export default UserDashBoard;

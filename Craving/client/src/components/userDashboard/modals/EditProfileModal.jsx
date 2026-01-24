@@ -23,9 +23,11 @@ const EditProfileModal = ({ onClose }) => {
       toast.success(res.data.message);
       setUser(res.data.data);
       sessionStorage.setItem("cravingUser", JSON.stringify(res.data.data));
-       onClose();
-    } catch (error) {}
-   
+    } catch (error) {
+      console.log(error);
+    } finally {
+      onClose();
+    }
   };
 
   return (
@@ -36,7 +38,10 @@ const EditProfileModal = ({ onClose }) => {
             <div>
               <div className="flex justify-between mx-3">
                 <p className=" py-3 font-bold"> ✏️ Edit Details</p>
-                <button className="hover:bg-red-700 h-7 w-7 mt-1" onClick={() => onClose()}>
+                <button
+                  className="hover:bg-red-500 h-7 w-7 mt-1"
+                  onClick={() => onClose()}
+                >
                   ❌
                 </button>
               </div>
