@@ -18,32 +18,29 @@ const EditProfileModal = ({ onClose }) => {
 
   const handleSave = async (e) => {
     toast.success("Changes Done");
-    user.fullName = formData.fullName;
-    user.mobileNumber = formData.mobileNumber;
-    setUser.fullName = formData.fullName;
-    setUser.mobileNumber = formData.mobileNumber;
     try {
       const res = await api.put("/user/update", formData);
       toast.success(res.data.message);
       setUser(res.data.data);
       sessionStorage.setItem("cravingUser", JSON.stringify(res.data.data));
+       onClose();
     } catch (error) {}
-    onClose();
+   
   };
 
   return (
     <>
       <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-100">
         <form action="">
-          <div className="bg-blue-400 w-5xl max-h-[85vh] overflow-y-auto rounded-xl py-5 shadow-2xl shadow-amber-500">
+          <div className="bg-blue-400 w-5xl max-h-[85vh] overflow-y-auto rounded-xl pb-5 shadow-2xl shadow-amber-500">
             <div>
-              <div className="flex justify-between mx-20">
-                <p className=" py-3 ps-93 font-bold"> ✏️ Edit Details</p>
-                <button className="" onClick={() => onClose()}>
+              <div className="flex justify-between mx-3">
+                <p className=" py-3 font-bold"> ✏️ Edit Details</p>
+                <button className="hover:bg-red-700 h-7 w-7 mt-1" onClick={() => onClose()}>
                   ❌
                 </button>
               </div>
-              <div className="mb-10 flex justify-center">
+              <div className="my-10 flex justify-center">
                 <div className="space-y-4 flex gap-10">
                   <input
                     type="text"
@@ -76,13 +73,13 @@ const EditProfileModal = ({ onClose }) => {
             </div>
             <div className="flex justify-center gap-5">
               <button
-                className="flex justify-center bg-gray-400 border-b border-white text-center text-xl rounded-xl py-1 px-3 hover:bg-green-600 text-white"
+                className="flex justify-center bg-gray-500 border-b-2 border-black text-center text-xl rounded-xl py-1 px-3 hover:bg-green-600 text-white"
                 onClick={() => onClose()}
               >
                 Cancel
               </button>
               <button
-                className="flex justify-center bg-blue-800 border-b text-center text-xl rounded-xl py-1 px-3 hover:bg-green-600 text-white"
+                className="flex justify-center bg-blue-800 border-b-2 border-black text-center text-xl rounded-xl py-1 px-3 hover:bg-green-600 text-white"
                 onClick={handleSave}
               >
                 Save Changes
