@@ -79,6 +79,7 @@ export const UserLogin = async (req, res, next) => {
 
 export const UserLogout = async (req, res, next) => {
   try {
+    res.clearCookie("parleG");
     res.status(200).json({ message: "Logout Successfull" });
   } catch (error) {
     next(error);

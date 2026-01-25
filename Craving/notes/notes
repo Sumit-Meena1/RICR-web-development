@@ -7,3 +7,9 @@ Manager : restaurantName , geoLocation , cuisine , document{GST , Fssai, BankAC 
 Partner: document(DL , adharCard , PAN , AC , IFSC , RC )
 
 Customer: appetite , favourite{},
+
+
+Frontend : 
+
+
+backend : Authcontroller 

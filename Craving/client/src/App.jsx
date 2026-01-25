@@ -28,7 +28,7 @@ const App = () => {
           <Route path="/admin-dashboard" element={<AdminDashBoard/>}/>
           <Route path="/restaurant-dashboard" element={<RestaurantDashBoard/>}/>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> 
     </>
   );
 };

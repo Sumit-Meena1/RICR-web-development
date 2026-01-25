@@ -21,3 +21,7 @@ export const UserUpdate = async (req, res, next) => {
     console.log("updating the user");
   } catch (error) {}
 };
+
+export const UserChangePhoto = async()=>{
+  
+}
