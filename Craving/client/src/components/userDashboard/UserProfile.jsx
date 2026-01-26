@@ -1,53 +1,97 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import EditProfileModal from "./modals/EditProfileModal";
+import UserImage from "../../assets/userImage.png";
+import { FaCamera } from "react-icons/fa";
+import api from "../../config/Api";
+import toast from "react-hot-toast";
 
 const UserProfile = () => {
   const { user } = useAuth();
-  const [isEditProModalOpen, setIsEditProModalOpen] = useState(false);
+  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
+  const [preview, setPreview] = useState("");
+  const [photo, setPhoto] = useState("");
+
+  const changePhoto = async () => {
+    const form_Data = new FormData();
+
+    form_Data.append("image", photo);
+    form_Data.append("imageURL", preview);
+
+    try {
+      const res = await api.patch("/user/changePhoto", form_Data);
+
+      toast.success(res.data.message);
+    } catch (error) {
+      toast.error(error?.response?.data?.message || "Unknown Error");
+    }
+  };
+
+  const handlePhotoChange = (e) => {
+    const file = e.target.files[0];
+    const newPhotoURL = URL.createObjectURL(file);
+    //console.log(newPhotoURL);
+    setPreview(newPhotoURL);
+    setTimeout(() => {
+      setPhoto(file);
+      changePhoto();
+    }, 5000);
+  };
+
   return (
     <>
-      <div className="grid justify-center max-w my-7 bg-blue-500 py-5 rounded-2xl shadow-2xl shadow-amber-500">
-        <div className="flex justify-between  mb-10 gap-60 ">
-          <div className="">
-            <span className="text-2xl border-b py-2 hover:text-white">
-              {" "}
-              👨‍💼 User Profile{" "}
-            </span>
+      <div className="bg-(--color-primary)/10 rounded-lg shadow-md p-6 md:p-8 h-full">
+        <div className="flex justify-between border p-3 rounded-3xl items-center border-gray-300 bg-white">
+          <div className="flex gap-5 items-center">
+            <div className="relative">
+              <div className=" border rounded-full w-36 h-36 overflow-hidden">
+                <img
+                  src={preview || user.photo.url || UserImage}
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute bottom-2 left-[75%] border bg-white p-2 rounded-full group flex gap-3">
+                <label
+                  htmlFor="imageUpload"
+                  className="text-(--color-primary) group-hover:text-(--color-secondary)"
+                >
+                  <FaCamera />
+                </label>
+                <input
+                  type="file"
+                  id="imageUpload"
+                  className="hidden"
+                  accept="image/*"
+                  onChange={handlePhotoChange}
+                />
+              </div>
+            </div>
+            <div>
+              <div className="text-3xl text-(--color-primary) font-bold">
+                {user.fullName}
+              </div>
+              <div className="text-gray-600 text-lg font-semibold">
+                {user.email}
+              </div>
+              <div className="text-gray-600 text-lg font-semibold">
+                {user.mobileNumber}
+              </div>
+            </div>
           </div>
-          <div>
-            <button
-              onClick={() => setIsEditProModalOpen(true)}
-              className="border-b-3 px-5 py-2 bg-amber-400 rounded-xl hover:bg-green-500 hover:text-white"
-            >
-              ✏️ Edit Profile
+          <div className="flex flex-col gap-2">
+            <button className="px-4 py-2 rounded bg-(--color-secondary) text-white">
+              Edit
             </button>
-          </div>
-        </div>
-        <div className="grid gap-7 text-white">
-          <div className="border-black border-b flex gap-7 px-4 py-4 text-xl">
-            <span>Name:</span> <span>{user.fullName}</span>
-          </div>
-          <div className="border-black border-b flex gap-7 px-4 py-4 text-xl">
-            <span>Email:</span> <span>{user.email}</span>
-          </div>
-          <div className="border-black border-b flex gap-7 px-4 py-4 text-xl">
-            <span>Number:</span> <span>{user.mobileNumber}</span>
-          </div>
-          <div className="border-black border-b flex gap-7 px-4 py-4 text-xl">
-            <span>Gender:</span> <span>{user.gender}</span>
-          </div>
-          <div className="border-black border-b flex gap-7 px-4 py-4 text-xl">
-            <span>Address:</span> <span>{user.address}</span>
-          </div>
-          <div className="border-black border-b flex gap-7 px-4 py-4 text-xl">
-            <span>City:</span> <span>{user.city}</span>
+            <button className="px-4 py-2 rounded bg-(--color-secondary) text-white">
+              Reset
+            </button>
           </div>
         </div>
       </div>
 
-      {isEditProModalOpen && (
-        <EditProfileModal onClose={() => setIsEditProModalOpen(false)} />
+      {isEditProfileModalOpen && (
+        <EditProfileModal onClose={() => setIsEditProfileModalOpen(false)} />
       )}
     </>
   );

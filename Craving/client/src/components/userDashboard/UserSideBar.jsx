@@ -1,118 +1,90 @@
-import React, { useState } from "react";
-// import { FaMagnifyingGlassChart } from "react-icons/fa6";
-// import { CgProfile } from "react-icons/cg";
-// import { FaCartShopping } from "react-icons/fa6";
-// import { GiReceiveMoney } from "react-icons/gi";
-// import { RiCustomerServiceFill } from "react-icons/ri";
+import React from "react";
+import { TbChartTreemap } from "react-icons/tb";
+import { ImProfile } from "react-icons/im";
+import { TiShoppingCart } from "react-icons/ti";
+import { TbTransactionRupee } from "react-icons/tb";
+import { RiCustomerService2Fill } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
-import api from "../../config/Api.jsx"
+import { MdLogout } from "react-icons/md";
+import api from "../../config/Api";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/AuthContext";
 
-const SideBar = ({ active, setActive, collapse, setCollapse }) => {
-  console.log(collapse);
+const UserSideBar = ({ active, setActive, isCollapsed, setIsCollapsed }) => {
+  const { setUser, setIsLogin } = useAuth();
 
-  const handleCollapse = () => {
-    setCollapse(false);
-  };
+  const menuItems = [
+    { key: "overview", title: "OverView", icon: <TbChartTreemap /> },
+    { key: "profile", title: "Profile", icon: <ImProfile /> },
+    { key: "orders", title: "Orders", icon: <TiShoppingCart /> },
+    {
+      key: "transactions",
+      title: "Transactions",
+      icon: <TbTransactionRupee />,
+    },
+    { key: "helpdesk", title: "Help Desk", icon: <RiCustomerService2Fill /> },
+  ];
 
-  const handleLogout = async()=>{
-    try{
-      const res = await api.get("/auth/logout")
-      toast.success(res.data.data);
-    }catch(error){
-      toast.error(error.response?.data?.message || "Technical Error");
-
+  const handleLogout = async () => {
+    try {
+      const res = await api.get("/auth/logout");
+      toast.success(res.data.message);
+      setUser("");
+      setIsLogin(false);
+      sessionStorage.removeItem("CravingUser");
+    } catch (error) {
+      toast.error(error?.response?.data?.message || "Unknown Error");
     }
-
-  }
+  };
 
   return (
     <>
-      <div className="p-2 flex flex-col justify-between h-full ">
-        <div className="p">
-          <div
-            className="text-xl font-bold flex gap-3 items-center"
-            onClick={handleCollapse}
-          >
-            <GiHamburgerMenu /> User Dashboard
+      <div className="p-2 flex flex-col justify-between h-full">
+        <div>
+          <div className="h-10 text-xl font-bold flex gap-5 items-center mb-3">
+            <button
+              className="ms-2 hover:scale-105"
+              onClick={() => setIsCollapsed(!isCollapsed)}
+            >
+              <GiHamburgerMenu />
+            </button>{" "}
+            {!isCollapsed && (
+              <span className="overflow-hidden text-nowrap">
+                User Dashboard
+              </span>
+            )}
           </div>
           <hr />
-          <div className="grid gap-3 p-6">
-            <button
-              className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
-              ${
-                active === "overview"
-                  ? "bg-(--color-secondary) border-black border-b-3 text-white"
-                  : "hover:bg-amber-500  hover:border-b-3"
-              }
+
+          <div className="py-6 space-y-5 w-full">
+            {menuItems.map((item, idx) => (
+              <button
+                className={`flex gap-3 items-center text-lg ps-2 rounded-xl h-10 w-full text-nowrap overflow-hidden duration-300
+                ${
+                  active === item.key
+                    ? "bg-(--color-secondary) text-white"
+                    : "hover:bg-gray-100/70 "
+                } 
               `}
-              onClick={() => setActive("overview")}
-            >
-              {/* <FaMagnifyingGlassChart /> */}
-              🔍 Overview
-            </button>
-            <button
-              className={`flex gap-3 text-nowrap overflow-hidden rounded-xl  p-3 items-center 
-              ${
-                active === "profile"
-                  ? "bg-(--color-secondary) border-black border-b-3 text-white"
-                  : "hover:bg-amber-500  hover:border-b-3"
-              }
-              `}
-              onClick={() => setActive("profile")}
-            >
-              {/* <CgProfile /> */}
-              👨‍💻 Profile
-            </button>
-            <button
-              className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
-              ${
-                active === "orders"
-                  ? "bg-(--color-secondary) border-black border-b-3 text-white"
-                  : "hover:bg-amber-500  hover:border-b-3"
-              }
-              `}
-              onClick={() => setActive("orders")}
-            >
-              {/* <FaCartShopping /> */}
-              🛒 Orders
-            </button>
-            <button
-              className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
-              ${
-                active === "transection"
-                  ? "bg-(--color-secondary) border-black border-b-3 text-white"
-                  : "hover:bg-amber-500  hover:border-b-3"
-              }
-              `}
-              onClick={() => setActive("transection")}
-            >
-              {/* <GiReceiveMoney />  */}
-              💸 Transections
-            </button>
-            <button
-              className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 items-center 
-              ${
-                active === "help"
-                  ? "bg-(--color-secondary) border-black border-b-3 text-white"
-                  : "hover:bg-amber-500  hover:border-b-3"
-              }
-              `}
-              onClick={() => setActive("help")}
-            >
-              {/* <RiCustomerServiceFill /> */}
-              🕹️ HelpDesk
-            </button>
+                onClick={() => setActive(item.key)}
+                key={idx}
+              >
+                {" "}
+                {item.icon}
+                {!isCollapsed && item.title}
+              </button>
+            ))}
           </div>
         </div>
+
         <div>
           <button
-            className={`flex gap-3 text-nowrap overflow-hidden rounded-xl p-3 text-red-600 bg-gray-500 hover:text-white items-center  hover:border-b-3`}
+            className="flex gap-3 items-center text-lg ps-2 rounded-xl h-10 w-full text-nowrap overflow-hidden duration-300 hover:bg-red-500 hover:text-white text-red-600"
             onClick={handleLogout}
           >
-            {/* <GiReceiveMoney />  */}
-            ✈️ Log-Out
+            {" "}
+            <MdLogout />
+            {!isCollapsed && "Logout"}
           </button>
         </div>
       </div>
@@ -120,4 +92,4 @@ const SideBar = ({ active, setActive, collapse, setCollapse }) => {
   );
 };
 
-export default SideBar;
+export default UserSideBar;

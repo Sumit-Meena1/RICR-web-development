@@ -1,51 +1,63 @@
-import React, { useState } from "react";
-import SideBar from "../../components/userDashboard/UserSideBar";
+import React, { useState, useEffect } from "react";
+import UserSideBar from "../../components/userDashboard/UserSideBar";
 import UserOverview from "../../components/userDashboard/userOverview";
 import UserProfile from "../../components/userDashboard/UserProfile";
 import UserOrders from "../../components/userDashboard/UserOrders";
-import UserTransection from "../../components/userDashboard/UserTransection";
 import UserHelpDesk from "../../components/userDashboard/UserHelpDesk";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { useAuth } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import UserTransection from "../../components/userDashboard/userTransection";
 
-const UserDashBoard = () => {
+const UserDashboard = () => {
+  const { role, isLogin } = useAuth();
+  const navigate = useNavigate();
   const [active, setActive] = useState("overview");
-  const [collapse, setCollapse] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+
+  useEffect(() => {
+    if (!isLogin) {
+      navigate("/login");
+    }
+  });
+
+  if (role !== "customer") {
+    return (
+      <>
+        <div className="p-3">
+          <div className="border rounded shadow p-5 w-4xl mx-auto text-center bg-gray-100">
+            <div className="text-5xl text-red-600">⊗</div>
+            <div className="text-xl">
+              You are not login as Customer. Please Login again.
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   return (
     <>
       <div className="w-full h-[90vh] flex">
-        {collapse && (
-          <div
-            className={`bg-(--color-background) w-1/7 
-          `}
-          >
-            <SideBar
-              active={active}
-              setActive={setActive}
-              collapse={collapse}
-              setCollapse={setCollapse}
-            />
-          </div>
-        )}
         <div
-          className={`border border-amber-700 ${
-            collapse ? "w-6/7 p-4  duration-300" : "w-full  "
-          } `}
+          className={`bg-(--color-background) duration-300 ${isCollapsed ? "w-2/60" : "w-12/60"}`}
         >
-          {!collapse && (
-            <button onClick={() => setCollapse(true)} className="p-3 text-xl items-center">
-              <GiHamburgerMenu />
-            </button>
-          )}
+          <UserSideBar
+            active={active}
+            setActive={setActive}
+            isCollapsed={isCollapsed}
+            setIsCollapsed={setIsCollapsed}
+          />
+        </div>
+        <div className={`${isCollapsed ? "w-58/60" : "w-48/60"} duration-300`}>
           {active === "overview" && <UserOverview />}
           {active === "profile" && <UserProfile />}
           {active === "orders" && <UserOrders />}
-          {active === "transection" && <UserTransection />}
-          {active === "help" && <UserHelpDesk />}
+          {active === "transactions" && <UserTransection/>}
+          {active === "helpdesk" && <UserHelpDesk />}
         </div>
       </div>
     </>
   );
 };
 
-export default UserDashBoard;
+export default UserDashboard;

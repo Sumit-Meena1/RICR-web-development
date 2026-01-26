@@ -53,11 +53,9 @@ const Register = () => {
     if (!/^[6-9]\d{9}$/.test(formData.mobileNumber)) {
       Error.mobileNumber = "Only Indian Mobile Number allowed";
     }
-    if (formData.password != formData.confirmPassword) {
-      Error.password = "Password Didn't Matched";
-    }
+
     if (!formData.role) {
-      Error.role = "Please Choose Any One";
+      Error.role = "Please choose any one";
     }
 
     setValidationError(Error);
@@ -75,13 +73,15 @@ const Register = () => {
       return;
     }
 
+    console.log(formData);
+
     try {
       const res = await api.post("/auth/register", formData);
       toast.success(res.data.message);
       handleClearForm();
     } catch (error) {
       console.log(error);
-      toast.error(error.response?.data?.message || "Technical Error");
+      toast.error(error?.response?.data?.message || "Unknown Error");
     } finally {
       setIsLoading(false);
     }
@@ -94,7 +94,7 @@ const Register = () => {
           {/* Header */}
           <div className="text-center mb-8">
             <h1 className="text-4xl font-bold text-gray-900 mb-2">
-              🔐 Registration
+              Registration
             </h1>
             <p className="text-lg text-gray-600">
               You are 1 step away to stop your Cavings
@@ -112,8 +112,8 @@ const Register = () => {
               <div className="mb-10">
                 <div className="space-y-4">
                   <div>
-                    <div className="flex items-center justify-around">
-                      <label htmlFor="">I Am</label>
+                    <div className="flex items-center justify-between">
+                      <label>I am </label>
                       <div className="flex items-center gap-2">
                         <input
                           type="radio"
@@ -123,18 +123,7 @@ const Register = () => {
                           value={"manager"}
                           onChange={handleChange}
                         />
-                        <label htmlFor="manager">Restaurant Manager</label>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <input
-                          type="radio"
-                          name="role"
-                          id="customer"
-                          checked={formData.role === "customer"}
-                          value={"customer"}
-                          onChange={handleChange}
-                        />
-                        <label htmlFor="customer">Customer</label>
+                        <label htmlFor="manager">Resturant Manager</label>
                       </div>
                       <div className="flex items-center gap-2">
                         <input
@@ -147,15 +136,24 @@ const Register = () => {
                         />
                         <label htmlFor="partner">Delivery Partner</label>
                       </div>
-
+                      <div className="flex items-center gap-2">
+                        <input
+                          type="radio"
+                          name="role"
+                          id="customer"
+                          checked={formData.role === "customer"}
+                          value={"customer"}
+                          onChange={handleChange}
+                        />
+                        <label htmlFor="customer">Customer</label>
+                      </div>
                     </div>
-                    {validationError.fullName && (
+                    {validationError.role && (
                       <span className="text-xs text-red-500">
                         {validationError.role}
                       </span>
                     )}
                   </div>
-
                   <div>
                     <input
                       type="text"
@@ -165,7 +163,7 @@ const Register = () => {
                       onChange={handleChange}
                       required
                       disabled={isLoading}
-                      className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed"
+                      className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-200"
                     />
                     {validationError.fullName && (
                       <span className="text-xs text-red-500">
@@ -181,7 +179,7 @@ const Register = () => {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed "
+                    className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-200"
                   />
                   <input
                     type="tel"
@@ -192,7 +190,7 @@ const Register = () => {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-200"
                   />
                   <input
                     type="password"
@@ -202,7 +200,7 @@ const Register = () => {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-200"
                   />
                   <input
                     type="password"
@@ -212,7 +210,7 @@ const Register = () => {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-200"
                   />
                 </div>
               </div>
@@ -220,18 +218,18 @@ const Register = () => {
               {/* Submit Button */}
               <div className="flex gap-4 pt-8 border-t-2 border-gray-200">
                 <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 disabled:scale-100 disabled:bg-gray-300 shadow-lg disabled:cursor-not-allowed"
-                >
-                  {isLoading ? "submitting" : "submit"}
-                </button>
-                <button
                   type="reset"
                   disabled={isLoading}
-                  className="flex-1 bg-gray-300 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-400 transition duration-300 transform hover:scale-105 disabled:scale-100 disabled:bg-gray-300 shadow-lg disabled:cursor-not-allowed"
+                  className="flex-1 bg-gray-300 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-400 transition duration-300 transform hover:scale-105 disabled:scale-100 disabled:bg-gray-300 disabled:cursor-not-allowed"
                 >
                   Clear Form
+                </button>
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 shadow-lg disabled:scale-100 disabled:bg-gray-300  disabled:cursor-not-allowed"
+                >
+                  {isLoading ? "Submitting" : "Submit"}
                 </button>
               </div>
             </form>
