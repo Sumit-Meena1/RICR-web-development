@@ -52,7 +52,7 @@ const UserDashboard = () => {
           {active === "overview" && <UserOverview />}
           {active === "profile" && <UserProfile />}
           {active === "orders" && <UserOrders />}
-          {active === "transactions" && <UserTransection/>}
+          {active === "transactions" && <UserTransection />}
           {active === "helpdesk" && <UserHelpDesk />}
         </div>
       </div>
