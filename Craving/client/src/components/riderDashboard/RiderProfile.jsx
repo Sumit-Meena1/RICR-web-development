@@ -1,53 +1,54 @@
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import EditProfileModal from "./modals/EditProfileModal";
+import EditRiderProfileModal from "./modals/EditRiderProfileModal";
 import UserImage from "../../assets/userImage.png";
 import { FaCamera } from "react-icons/fa";
 import api from "../../config/Api";
 import toast from "react-hot-toast";
+import User from "../../../../server/src/models/userModel";
 
-const UserProfile = () => {
-  const { user, setUser } = useAuth();
-  const [isEditProfileModalOpen, setIsEditProfileModalOpen] = useState(false);
-  const [preview, setPreview] = useState("");
+const RiderProfile = () => {
+//   const { user, setUser } = useAuth();
+//   const [isRiderEditProfileModalOpen, setIsRiderEditProfileModalOpen] = useState(false);
+//   const [preview, setPreview] = useState("");
 
-  const changePhoto = async (photo) => {
-    const form_Data = new FormData();
+//   const changePhoto = async (photo) => {
+//     const form_Data = new FormData();
 
-    // console.log("Printing photo", photo);
+//     // console.log("Printing photo", photo);
 
-    form_Data.append("image", photo);
-    // form_Data.append("imageURL", preview);
+//     form_Data.append("image", photo);
+//     // form_Data.append("imageURL", preview);
 
-    try {
-      const res = await api.patch("/user/changePhoto", form_Data);
+//     try {
+//       const res = await api.patch("/user/changePhoto", form_Data);
 
-      toast.success(res.data.message);
+//       toast.success(res.data.message);
 
-      setUser(res.data.data);
-      sessionStorage.setItem("CravingUser", JSON.stringify(res.data.data));
-    } catch (error) {
-      toast.error(error?.response?.data?.message || "Unknown Error");
-    }
-  };
+//       setUser(res.data.data);
+//       sessionStorage.setItem("CravingUser", JSON.stringify(res.data.data));
+//     } catch (error) {
+//       toast.error(error?.response?.data?.message || "Unknown Error");
+//     }
+//   };
 
-  const handlePhotoChange = (e) => {
-    const file = e.target.files[0];
-    const newPhotoURL = URL.createObjectURL(file);
-    console.log(newPhotoURL);
-    setPreview(newPhotoURL);
-    changePhoto(file);
-  };
+//   const handlePhotoChange = (e) => {
+//     const file = e.target.files[0];
+//     const newPhotoURL = URL.createObjectURL(file);
+//     console.log(newPhotoURL);
+//     setPreview(newPhotoURL);
+//     changePhoto(file);
+//   };
 
   return (
     <>
-      <div className="bg-(--color-primary)/10 rounded-lg shadow-md p-6 md:p-8 h-full">
+      {/* <div className="bg-(--color-primary)/10 rounded-lg shadow-md p-6 md:p-8 h-full">
         <div className="flex justify-between border p-3 rounded-3xl items-center border-gray-300 bg-white">
           <div className="flex gap-5 items-center">
             <div className="relative">
               <div className=" border rounded-full w-36 h-36 overflow-hidden">
                 <img
-                  src={preview || user?.photo?.url || UserImage}
+                  src={preview || User?.photo?.url || UserImage}
                   alt=""
                   className="w-full h-full object-cover"
                 />
@@ -91,11 +92,11 @@ const UserProfile = () => {
         </div>
       </div>
 
-      {isEditProfileModalOpen && (
-        <EditProfileModal onClose={() => setIsEditProfileModalOpen(false)} />
-      )}
+      {isRiderEditProfileModalOpen && (
+        <EditRiderProfileModal onClose={() => setIsRiderEditProfileModalOpen(false)} />
+      )} */}
     </>
   );
 };
 
-export default UserProfile;
+export default RiderProfile;
