@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const RiderOverview = () => {
-  return (
-    <div>RiderOverview</div>
-  )
-}
+  return <div>RiderOverview</div>;
+};
 
-export default RiderOverview
+export default RiderOverview;

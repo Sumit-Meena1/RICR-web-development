@@ -81,7 +81,7 @@ const UserProfile = () => {
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <button className="px-4 py-2 rounded bg-(--color-secondary) text-white">
+            <button onClick={setIsEditProfileModalOpen} className="px-4 py-2 rounded bg-(--color-secondary) text-white">
               Edit
             </button>
             <button className="px-4 py-2 rounded bg-(--color-secondary) text-white">
