@@ -8,25 +8,24 @@ const EditProfileModal = ({ onClose }) => {
     fullName: user.fullName,
     email: user.email,
     mobileNumber: user.mobileNumber,
-    gender:user.gender,
-    dob:user.dob,
-    address:user.address,
-    city:user.city,
-    pin:user.pin,
-    documents:{
-      uidai:"N/A",
-      pan:"N/A"
+    gender: user.gender,
+    dob: user.dob,
+    address: user.address,
+    city: user.city,
+    pin: user.pin,
+    documents: {
+      uidai: "N/A",
+      pan: "N/A",
     },
-    paymentDetails:{
-      upi:"N/A",
-      account_number:"N/A",
-      ifs_Code:"N/A"
+    paymentDetails: {
+      upi: "N/A",
+      account_number: "N/A",
+      ifs_Code: "N/A",
     },
-    Geolocation:{
-      lat:"N/A",
-      lan:"N/A",
-    }
-
+    Geolocation: {
+      lat: "N/A",
+      lan: "N/A",
+    },
   });
 
   const handleSubmit = async (e) => {
