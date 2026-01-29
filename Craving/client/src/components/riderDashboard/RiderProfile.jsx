@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { useAuth } from "../../context/AuthContext";
-import EditRiderProfileModal from "./modals/EditRiderProfileModal";
-import UserImage from "../../assets/userImage.png";
-import { FaCamera } from "react-icons/fa";
-import api from "../../config/Api";
-import toast from "react-hot-toast";
-import User from "../../../../server/src/models/userModel";
+// import React, { useEffect, useState } from "react";
+// import { useAuth } from "../../context/AuthContext";
+// import EditRiderProfileModal from "./modals/EditRiderProfileModal";
+// import UserImage from "../../assets/userImage.png";
+// import { FaCamera } from "react-icons/fa";
+// import api from "../../config/Api";
+// import toast from "react-hot-toast";
+// import User from "../../../../server/src/models/userModel";
 
 const RiderProfile = () => {
 //   const { user, setUser } = useAuth();

@@ -15,20 +15,23 @@ const App = () => {
   return (
     <>
       <BrowserRouter>
-      <Toaster/>
+        <Toaster />
         <Header />
         <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/about" element={<About/>}/>
-          <Route path="/contact" element={<Contact/>}/>
-          <Route path="/login" element={<Login/>}/>
-          <Route path="/register" element={<Register/>}/>
-          <Route path="/user-dashboard" element={<UserDashBoards/>}/>
-          <Route path="/rider-dashboard" element={<RiderDashBoard/>}/>
-          <Route path="/admin-dashboard" element={<AdminDashBoard/>}/>
-          <Route path="/restaurant-dashboard" element={<RestaurantDashBoard/>}/>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/user-dashboard" element={<UserDashBoards />} />
+          <Route path="/rider-dashboard" element={<RiderDashBoard />} />
+          <Route path="/admin-dashboard" element={<AdminDashBoard />} />
+          <Route
+            path="/restaurant-dashboard"
+            element={<RestaurantDashBoard />}
+          />
         </Routes>
-      </BrowserRouter> 
+      </BrowserRouter>
     </>
   );
 };

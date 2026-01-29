@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useAuth } from "../../../context/AuthContext";
-import api from "../../../config/Api";
+// import React, { useState } from "react";
+// import { useAuth } from "../../../context/AuthContext";
+// import api from "../../../config/Api";
 
 const EditRiderProfileModal = () => {
 //   const { user, setUser, setIsLogin } = useAuth();
