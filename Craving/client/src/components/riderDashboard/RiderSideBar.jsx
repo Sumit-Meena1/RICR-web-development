@@ -1,45 +1,45 @@
-// import React from "react";
-// import { TbChartTreemap } from "react-icons/tb";
-// import { ImProfile } from "react-icons/im";
-// import { TiShoppingCart } from "react-icons/ti";
-// import { TbTransactionRupee } from "react-icons/tb";
-// import { RiCustomerService2Fill } from "react-icons/ri";
-// import { GiHamburgerMenu } from "react-icons/gi";
-// import { MdLogout } from "react-icons/md";
-// import api from "../../config/Api";
-// import toast from "react-hot-toast";
-// import { useAuth } from "../../context/AuthContext";
+import React from "react";
+import { TbChartTreemap } from "react-icons/tb";
+import { ImProfile } from "react-icons/im";
+import { TiShoppingCart } from "react-icons/ti";
+import { TbTransactionRupee } from "react-icons/tb";
+import { RiCustomerService2Fill } from "react-icons/ri";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { MdLogout } from "react-icons/md";
+import api from "../../config/Api";
+import toast from "react-hot-toast";
+import { useAuth } from "../../context/AuthContext";
 
-const RiderSideBar = () => {
-//   const { setUser, setIsLogin } = useAuth();
+const RiderSideBar = ({ active, setActive, isCollapsed, setIsCollapsed }) => {
+  const { setUser, setIsLogin } = useAuth();
 
-//   const menuItems = [
-//     { key: "overview", title: "OverView", icon: <TbChartTreemap /> },
-//     { key: "profile", title: "Profile", icon: <ImProfile /> },
-//     { key: "orders", title: "Orders", icon: <TiShoppingCart /> },
-//     {
-//       key: "transactions",
-//       title: "Transactions",
-//       icon: <TbTransactionRupee />,
-//     },
-//     { key: "helpdesk", title: "Help Desk", icon: <RiCustomerService2Fill /> },
-//   ];
+  const menuItems = [
+    { key: "overview", title: "OverView", icon: <TbChartTreemap /> },
+    { key: "profile", title: "Profile", icon: <ImProfile /> },
+    { key: "orders", title: "Orders", icon: <TiShoppingCart /> },
+    {
+      key: "transactions",
+      title: "Transactions",
+      icon: <TbTransactionRupee />,
+    },
+    { key: "helpdesk", title: "Help Desk", icon: <RiCustomerService2Fill /> },
+  ];
 
-//   const handleLogout = async () => {
-//     try {
-//       const res = await api.get("/auth/logout");
-//       toast.success(res.data.message);
-//       setUser("");
-//       setIsLogin(false);
-//       sessionStorage.removeItem("CravingUser");
-//     } catch (error) {
-//       toast.error(error?.response?.data?.message || "Unknown Error");
-//     }
-//   };
+  const handleLogout = async () => {
+    try {
+      const res = await api.get("/auth/logout");
+      toast.success(res.data.message);
+      setUser("");
+      setIsLogin(false);
+      sessionStorage.removeItem("CravingUser");
+    } catch (error) {
+      toast.error(error?.response?.data?.message || "Unknown Error");
+    }
+  };
 
   return (
     <>
-      {/* <div className="p-2 flex flex-col justify-between h-full">
+      <div className="p-2 flex flex-col justify-between h-full">
         <div>
           <div className="h-10 text-xl font-bold flex gap-5 items-center mb-3">
             <button
@@ -87,7 +87,7 @@ const RiderSideBar = () => {
             {!isCollapsed && "Logout"}
           </button>
         </div>
-      </div> */}
+      </div>
     </>
   );
 };

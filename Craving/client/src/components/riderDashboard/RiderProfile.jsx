@@ -8,37 +8,39 @@
 // import User from "../../../../server/src/models/userModel";
 
 const RiderProfile = () => {
-//   const { user, setUser } = useAuth();
-//   const [isRiderEditProfileModalOpen, setIsRiderEditProfileModalOpen] = useState(false);
-//   const [preview, setPreview] = useState("");
+  // const { user, setUser } = useAuth();
+  // const [isRiderEditProfileModalOpen, setIsRiderEditProfileModalOpen] = useState(false);
+  // const [preview, setPreview] = useState("");
 
-//   const changePhoto = async (photo) => {
-//     const form_Data = new FormData();
+  // const changePhoto = async (photo) => {
+  //   const form_Data = new FormData();
 
-//     // console.log("Printing photo", photo);
+  //   // console.log("Printing photo", photo);
 
-//     form_Data.append("image", photo);
-//     // form_Data.append("imageURL", preview);
+  //   form_Data.append("image", photo);
+  //   // form_Data.append("imageURL", preview);
 
-//     try {
-//       const res = await api.patch("/user/changePhoto", form_Data);
+  //   try {
+  //     const res = await api.patch("/user/changePhoto", form_Data);
 
-//       toast.success(res.data.message);
+  //     toast.success(res?.data?.message);
 
-//       setUser(res.data.data);
-//       sessionStorage.setItem("CravingUser", JSON.stringify(res.data.data));
-//     } catch (error) {
-//       toast.error(error?.response?.data?.message || "Unknown Error");
-//     }
-//   };
+  //     setUser(res?.data?.data);
+  //     sessionStorage.setItem("CravingUser", JSON.stringify(res?.data?.data));
+  //   } catch (error) {
+  //     toast.error(error?.response?.data?.message || "Unknown Error");
+  //   }
+  // };
 
-//   const handlePhotoChange = (e) => {
-//     const file = e.target.files[0];
-//     const newPhotoURL = URL.createObjectURL(file);
-//     console.log(newPhotoURL);
-//     setPreview(newPhotoURL);
-//     changePhoto(file);
-//   };
+  // const handlePhotoChange = (e) => {
+  //   const file = e.target.files[0];
+  //   const newPhotoURL = URL.createObjectURL(file);
+  //   console.log(newPhotoURL);
+  //   setPreview(newPhotoURL);
+  //   setTimeout(() => {
+  //     changePhoto(file);
+  //   }, 5000);
+  // };
 
   return (
     <>
