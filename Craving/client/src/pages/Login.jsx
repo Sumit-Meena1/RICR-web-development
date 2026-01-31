@@ -5,7 +5,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const Login = () => {
-  const { setUser, setIsLogin , setRole } = useAuth();
+  const { setUser, setIsLogin, setRole } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
@@ -54,29 +54,29 @@ const Login = () => {
 
     try {
       const res = await api.post("/auth/login", formData);
-      toast.success(res.data.message);
-      setUser(res.data.data);
+      toast.success(res?.data?.message);
+      setUser(res?.data?.data);
       setIsLogin(true);
       sessionStorage.setItem("cravingUser", JSON.stringify(res.data.data));
       handleClearForm();
-      switch(res.data.data.role){
-        case "manager":{
-          setRole("manager")
+      switch (res?.data?.data.role) {
+        case "manager": {
+          setRole("manager");
           navigate("/restaurant-dashboard");
           break;
         }
-        case "admin":{
-          setRole("admin")
+        case "admin": {
+          setRole("admin");
           navigate("/admin-dashboard");
           break;
         }
-        case "partner":{
-          setRole("partner")
+        case "partner": {
+          setRole("partner");
           navigate("/rider-dashboard");
           break;
         }
-        case "customer":{
-          setRole("customer")
+        case "customer": {
+          setRole("customer");
           navigate("/user-dashboard");
           break;
         }
