@@ -6,7 +6,7 @@ import UserOrders from "../../components/userDashboard/UserOrders";
 import UserHelpDesk from "../../components/userDashboard/UserHelpDesk";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import UserTransection from "../../components/userDashboard/userTransection";
+import UserTransection from "../../components/userDashboard/UserTransection";
 
 const UserDashboard = () => {
   const { role, isLogin } = useAuth();
@@ -52,7 +52,7 @@ const UserDashboard = () => {
           {active === "overview" && <UserOverview />}
           {active === "profile" && <UserProfile />}
           {active === "orders" && <UserOrders />}
-          {active === "transactions" && <UserTransection />}
+          {active === "transactions" && <UserTransection/>}
           {active === "helpdesk" && <UserHelpDesk />}
         </div>
       </div>

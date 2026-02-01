@@ -27,10 +27,10 @@ const UserProfile = () => {
     try {
       const res = await api.patch("/user/changePhoto", form_Data);
 
-      toast.success(res.data.message);
+      toast.success(res?.data?.message);
 
-      setUser(res.data.data);
-      sessionStorage.setItem("CravingUser", JSON.stringify(res.data.data));
+      setUser(res?.data?.data);
+      sessionStorage.setItem("CravingUser", JSON.stringify(res?.data?.data));
     } catch (error) {
       toast.error(error?.response?.data?.message || "Unknown Error");
     }
@@ -54,7 +54,7 @@ const UserProfile = () => {
             <div className="relative">
               <div className=" border rounded-full w-36 h-36 overflow-hidden">
                 <img
-                  src={preview || user.photo.url || UserImage}
+                  src={preview || user?.photo?.url || UserImage}
                   alt=""
                   className="w-full h-full object-cover"
                 />

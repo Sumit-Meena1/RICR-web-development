@@ -39,15 +39,15 @@ const Login = () => {
     console.log(formData);
     try {
       const res = await api.post("/auth/login", formData);
-      toast.success(res.data.message);
-      setUser(res.data.data);
+      toast.success(res?.data?.message);
+      setUser(res?.data?.data);
       setIsLogin(true);
-      sessionStorage.setItem("CravingUser", JSON.stringify(res.data.data));
+      sessionStorage.setItem("CravingUser", JSON.stringify(res?.data?.data));
       handleClearForm();
       switch (res.data.data.role) {
         case "manager": {
           setRole("manager");
-          navigate("/resturant-dashboard");
+          navigate("/restaurant-dashboard");
           break;
         }
         case "partner": {

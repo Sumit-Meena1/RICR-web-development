@@ -1,4 +1,3 @@
-import React from "react";
 import { TbChartTreemap } from "react-icons/tb";
 import { ImProfile } from "react-icons/im";
 import { TiShoppingCart } from "react-icons/ti";
