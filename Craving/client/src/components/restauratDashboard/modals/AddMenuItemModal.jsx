@@ -11,10 +11,7 @@ const AddMenuItemModal = ({ onClose }) => {
     availability: "available",
     imageUrl: "",
     category: "",
-
   });
-
-  
 
   const [loading, setLoading] = useState(false);
   const handleInputChange = (e) => {
@@ -66,7 +63,7 @@ const AddMenuItemModal = ({ onClose }) => {
         <div className="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-lg shadow-lg">
           <div className="flex justify-between px-6 py-4 border-b border-gray-300 items-center sticky top-0 bg-white">
             <h2 className="text-xl font-semibold text-gray-800">
-              Add Menu Item 
+              Add Menu Item
             </h2>
             <button
               onClick={() => onClose()}
