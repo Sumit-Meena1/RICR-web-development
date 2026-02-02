@@ -18,6 +18,7 @@ const RestaurantSideBar = ({ active, setActive, isCollapsed, setIsCollapsed }) =
   const menuItems = [
     { key: "overview", title: "OverView", icon: <TbChartTreemap /> },
     { key: "profile", title: "Profile", icon: <ImProfile /> },
+    { key: "menu", title: "menu", icon: "😋" },
     { key: "orders", title: "Orders", icon: <TiShoppingCart /> },
     {
       key: "transactions",

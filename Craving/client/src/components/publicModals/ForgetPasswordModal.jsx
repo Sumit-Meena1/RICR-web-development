@@ -21,6 +21,10 @@ const ForgetPasswordModal = ({ onClose }) => {
     setLoading(true);
     try {
       console.log(formData);
+      if (formData.newPassword != formData.cfNewPassword) {
+        toast.error("New Password and Confirm New Password do not match");
+        return;
+      }
       let res;
       if (isOtpSent) {
         if (isOtpVerified) {

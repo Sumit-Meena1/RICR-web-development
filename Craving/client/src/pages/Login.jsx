@@ -42,7 +42,7 @@ const Login = () => {
       toast.success(res?.data?.message);
       setUser(res?.data?.data);
       setIsLogin(true);
-      sessionStorage.setItem("CravingUser", JSON.stringify(res?.data?.data));
+      sessionStorage.setItem("cravingUser", JSON.stringify(res?.data?.data));
       handleClearForm();
       switch (res.data.data.role) {
         case "manager": {
@@ -169,11 +169,19 @@ const Login = () => {
         </div>
       </div>
 
+
+
+
+
       {isForgetPasswordModelOpen && (
         <ForgetPasswordModal
           onClose={() => setIsForgetPasswordModelOpen(false)}
         />
       )}
+
+
+
+      
     </>
   );
 };

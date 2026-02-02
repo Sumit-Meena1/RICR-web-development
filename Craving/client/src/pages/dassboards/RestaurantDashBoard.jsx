@@ -7,6 +7,7 @@ import RestaurantOrders from "../../components/restauratDashboard/RestaurantOrde
 import RestaurantTransections from "../../components/restauratDashboard/RestaurantTransections";
 import RestaurantSideBar from "../../components/restauratDashboard/RestaurantSideBar";
 import RestaurantHelpDesk from "../../components/restauratDashboard/RestaurantHelpDesk";
+import RestaurantMenu from "../../components/restauratDashboard/RestaurantMenu";
 
 const RestaurantDashBoard = () => {
   const { role, isLogin } = useAuth();
@@ -51,6 +52,7 @@ const RestaurantDashBoard = () => {
         <div className={`${isCollapsed ? "w-58/60" : "w-48/60"} duration-300`}>
           {active === "overview" && <RestaurantOverview />}
           {active === "profile" && <RestaurantProfile />}
+          {active === "menu" && <RestaurantMenu/>}
           {active === "orders" && <RestaurantOrders/>}
           {active === "transactions" && <RestaurantTransections/>}
           {active === "helpdesk" && <RestaurantHelpDesk/>}
