@@ -21,9 +21,7 @@ export const UserUpdate = async (req, res, next) => {
 
     // Validation for required fields
     if (!fullName || !email || !mobileNumber) {
-      const error = new Error(
-        "Full Name, Email, and Mobile Number are required",
-      );
+      const error = new Error("Full Name, Email, and Mobile Number are required");
       error.statusCode = 400;
       return next(error);
     }

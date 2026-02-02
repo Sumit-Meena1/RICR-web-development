@@ -1,25 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import AddMenuItemModal from "./modals/AddMenuItemModal";
 
 const RestaurantMenu = () => {
-  const [isAddMenuModalOpen, setIsAddMenuModalOpen] =useState(false);
-
+  const [isAddItemModalOpen, setIsAddItemModalOpen] = React.useState(false);
   return (
     <>
-      <div className="p-5">
-        <div className="flex justify-between shadow rounded-xl p-4">
-          <p className="text-2xl font-bold">Menu Managment </p>
+      <div className="bg-gray-50 rounded-lg p-6 h-full overflow-y-auto">
+        <div className="bg-white rounded-lg shadow-md p-6 border border-gray-200 flex justify-between">
+          <h2 className="text-2xl font-bold text-gray-800 mb-4">
+            Menu Management
+          </h2>
           <button
-            onClick={() => setIsAddMenuModalOpen(true)}
-            className="rounded p-3 bg-amber-600 text-white shadow hover:bg-amber-300"
+            className="px-4 py-2 bg-(--color-secondary) text-white rounded-lg hover:bg-(--color-secondary-hover) transition font-semibold"
+            onClick={() => setIsAddItemModalOpen(true)}
           >
-            ➕ Add Items
+            Add Item
           </button>
         </div>
       </div>
 
-      {isAddMenuModalOpen && (
-        <AddMenuItemModal onClose={() => setIsAddMenuModalOpen(false)} />
+      {isAddItemModalOpen && (
+        <AddMenuItemModal onClose={() => setIsAddItemModalOpen(false)} />
       )}
     </>
   );

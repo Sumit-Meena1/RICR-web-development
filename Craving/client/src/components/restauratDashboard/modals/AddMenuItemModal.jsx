@@ -1,57 +1,56 @@
 import React, { useState } from "react";
+import { useAuth } from "../../../context/AuthContext";
+import api from "../../../config/Api";
+import toast from "react-hot-toast";
 
 const AddMenuItemModal = ({ onClose }) => {
-  const [formDta, setFormData] = useState({
-    dishName: "",
-    cuisine: "",
-    type: "",
-    servingSize: "",
+  const { user } = useAuth();
+  const [formData, setFormData] = useState({
+    itemName: "",
     description: "",
     price: "",
-    availability: "available",
-    imageUrl: "",
     category: "",
+    cuisine: "",
+    type: "",
+    preparationTime: "",
+    availability: true,
   });
 
+  const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formDta,
-      [name]: value,
-    });
+  const [images, setImages] = useState([]);
+  const [imagePreviews, setImagePreviews] = useState([]);
 
+  const handleInputChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData({
+      ...formData,
+      [name]: type === "checkbox" ? checked : value,
+    });
     if (errors[name]) {
       setErrors({ ...errors, [name]: "" });
     }
   };
 
+  const handleImageChange = (e) => {
+    // handle Files
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      setMessage({ type: "error", text: "Please fix the errors above" });
-      return;
-    }
-
     setLoading(true);
-    setMessage({ type: "", text: "" });
 
     try {
-      const res = await api.put("/user/update", formData);
-      if (res?.data?.data) {
-        sessionStorage.setItem("CravingUser", JSON.stringify(res?.data?.data));
-        setUser(res?.data?.data);
-        setIsLogin(true);
-        setMessage({ type: "success", text: "Profile updated successfully!" });
-        setTimeout(() => onClose(), 1500);
-      }
+      const form_data = new FormData();
+      //trasnfer MenuData to formData
+      const res = await api.post("/menu/add", form_data);
+      toast.success(res.data.message);
+
+      setTimeout(() => onClose(), 1500);
     } catch (error) {
       console.log(error);
-      setMessage({
-        type: "error",
-        text: error.response?.data?.message || "Failed to update profile",
-      });
+      toast.error(error.response?.data?.message || "Failed to add menu item");
     } finally {
       setLoading(false);
     }
@@ -60,7 +59,7 @@ const AddMenuItemModal = ({ onClose }) => {
   return (
     <>
       <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-100">
-        <div className="bg-white w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-lg shadow-lg">
+        <div className="bg-white w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-lg shadow-lg">
           <div className="flex justify-between px-6 py-4 border-b border-gray-300 items-center sticky top-0 bg-white">
             <h2 className="text-xl font-semibold text-gray-800">
               Add Menu Item
@@ -73,27 +72,210 @@ const AddMenuItemModal = ({ onClose }) => {
             </button>
           </div>
 
-          <form onSubmit={handleSubmit} action="">
+          <form onSubmit={handleSubmit} className="p-6 space-y-6">
+            {/* Item Image Section */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Full Name *
-              </label>
+              <h3 className="text-lg font-semibold text-gray-700 mb-4 pb-2 border-b border-gray-200">
+                Item Image
+              </h3>
               <input
-                type="text"
-                name="fullName"
-                value={formDta.dishName}
-                onChange={handleInputChange}
-                className={`w-full border rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 `}
-                placeholder="Enter your full name"
+                type="file"
+                name="image"
+                id="image"
+                onChange={handleImageChange}
+                accept="image/*"
+                multiple
               />
-              {/* ${
-                    errors?.dishName ? "border-red-500" : "border-gray-300"
-                  } */}
-              {/* {errors.dishName && (
-                  <p className="text-red-600 text-xs mt-1">{errors.dishName}</p>
-                )} */}
             </div>
 
+            {/* Basic Information Section */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-700 mb-4 pb-2 border-b border-gray-200">
+                Basic Information
+              </h3>
+              <div className="grid grid-cols-1 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Item Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="itemName"
+                    value={formData.itemName}
+                    onChange={handleInputChange}
+                    className={`w-full border rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      errors.itemName ? "border-red-500" : "border-gray-300"
+                    }`}
+                    placeholder="e.g., Butter Chicken"
+                  />
+                  {errors.itemName && (
+                    <p className="text-red-600 text-xs mt-1">
+                      {errors.itemName}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Description *
+                  </label>
+                  <textarea
+                    name="description"
+                    value={formData.description}
+                    onChange={handleInputChange}
+                    rows="3"
+                    className={`w-full border rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      errors.description ? "border-red-500" : "border-gray-300"
+                    }`}
+                    placeholder="Describe the dish, ingredients, and taste"
+                  />
+                  {errors.description && (
+                    <p className="text-red-600 text-xs mt-1">
+                      {errors.description}
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Pricing & Category Section */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-700 mb-4 pb-2 border-b border-gray-200">
+                Pricing & Category
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Price (₹) *
+                  </label>
+                  <input
+                    type="number"
+                    name="price"
+                    value={formData.price}
+                    onChange={handleInputChange}
+                    step="0.01"
+                    min="0"
+                    className={`w-full border rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      errors.price ? "border-red-500" : "border-gray-300"
+                    }`}
+                    placeholder="0.00"
+                  />
+                  {errors.price && (
+                    <p className="text-red-600 text-xs mt-1">{errors.price}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Category *
+                  </label>
+                  <input
+                    type="text"
+                    name="category"
+                    value={formData.category}
+                    onChange={handleInputChange}
+                    className={`w-full border rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      errors.category ? "border-red-500" : "border-gray-300"
+                    }`}
+                    placeholder="e.g., Main Course, Appetizer"
+                  />
+                  {errors.category && (
+                    <p className="text-red-600 text-xs mt-1">
+                      {errors.category}
+                    </p>
+                  )}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Cuisine
+                  </label>
+                  <input
+                    type="text"
+                    name="cuisine"
+                    value={formData.cuisine}
+                    onChange={handleInputChange}
+                    className="w-full border border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="e.g., Indian, Italian"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Attributes Section */}
+            <div>
+              <h3 className="text-lg font-semibold text-gray-700 mb-4 pb-2 border-b border-gray-200">
+                Item Attributes
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div className="">
+                  <label
+                    htmlFor="type"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Food Type
+                  </label>
+                  <select
+                    name="type"
+                    value={formData.type}
+                    onChange={handleInputChange}
+                    className="border w-full border-gray-300 rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  >
+                    <option value="">Select Type</option>
+                    <option value="veg">Vegetarian</option>
+                    <option value="non-veg">Non-Vegetarian</option>
+                    <option value="vegan">Vegan</option>
+                    <option value="egg">Egg</option>
+                    <option value="jain">Jain</option>
+                    <option value="gluten-free">Gluten-Free</option>
+                    <option value="contains-nuts">Contains Nuts</option>
+                    <option value="dairy">Dairy</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Preparation Time (minutes) *
+                  </label>
+                  <input
+                    type="number"
+                    name="preparationTime"
+                    value={formData.preparationTime}
+                    onChange={handleInputChange}
+                    min="0"
+                    className={`border rounded-md shadow-sm p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                      errors.preparationTime
+                        ? "border-red-500"
+                        : "border-gray-300"
+                    }`}
+                    placeholder="e.g., 15"
+                  />
+                  {errors.preparationTime && (
+                    <p className="text-red-600 text-xs mt-1">
+                      {errors.preparationTime}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex items-end gap-3 ">
+                  <input
+                    type="checkbox"
+                    name="availability"
+                    checked={formData.availability}
+                    onChange={handleInputChange}
+                    id="availability"
+                    className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                  />
+                  <label
+                    htmlFor="availability"
+                    className="text-sm font-medium text-gray-700 cursor-pointer"
+                  >
+                    Available
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            {/* Form Actions */}
             <div className="flex justify-end space-x-4 pt-6 border-t border-gray-300">
               <button
                 type="button"
@@ -110,10 +292,10 @@ const AddMenuItemModal = ({ onClose }) => {
               >
                 {loading ? (
                   <>
-                    <span className="animate-spin">⟳</span> Saving...
+                    <span className="animate-spin">⟳</span> Adding...
                   </>
                 ) : (
-                  "Save Changes"
+                  "Add Menu Item"
                 )}
               </button>
             </div>
