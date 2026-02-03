@@ -99,6 +99,7 @@ const EditRestaurantProfileModal = ({ onClose }) => {
       setErrors({ ...errors, [name]: "" });
     }
   };
+  
 
   const handleNestedChange = (parent, field, value) => {
     setFormData({
