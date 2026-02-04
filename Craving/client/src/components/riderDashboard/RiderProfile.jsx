@@ -23,7 +23,7 @@ const RiderProfile = () => {
     try {
       const res = await api.patch("/user/changePhoto", form_Data);
 
-      toast.success(res?.data?.message);
+      toast.success(res?.data?.message); 
 
       setUser(res?.data?.data);
       sessionStorage.setItem("CravingUser", JSON.stringify(res?.data?.data));
@@ -75,7 +75,7 @@ const RiderProfile = () => {
               <div className="text-3xl text-(--color-primary) font-bold">
                 {user?.fullName || "User Name"}
               </div>
-              <div className="text-gray-600 text-lg font-semibold">
+              <div className="text-gray-600 text-lg font-semibold">                
                 {user?.email || "user@example.com"}
               </div>
               <div className="text-gray-600 text-lg font-semibold">
