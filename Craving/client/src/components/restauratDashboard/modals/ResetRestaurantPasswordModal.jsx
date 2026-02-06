@@ -54,6 +54,7 @@ const ResetRestaurantPasswordModal = ({ onClose }) => {
               ⊗
             </button>
           </div>
+          
 
           {/* we will be taking old and new Password here */}
 

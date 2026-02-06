@@ -4,32 +4,34 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Login from "./pages/Login";
 import Register from "./pages/Register";
-import { ToastBar, Toaster } from "react-hot-toast";
-import UserDashBoards from "./pages/dassboards/UserDashBoard";
-import RiderDashBoard from "./pages/dassboards/RiderDashBoard";
-import AdminDashBoard from "./pages/dassboards/AdminDashBoard";
-import RestaurantDashBoard from "./pages/dassboards/RestaurantDashBoard";
+import Login from "./pages/Login";
+import { Toaster } from "react-hot-toast";
+import UserDashboard from "./pages/dassboards/UserDashBoard";
+import RiderDashboard from "./pages/dassboards/RiderDashBoard";
+import ResturantDashboard from "./pages/dassboards/RestaurantDashBoard";
+import AdminDashboard from "./pages/dassboards/AdminDashBoard";
+import OrderNow from "./pages/OrderNow";
+
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Toaster />
         <Header />
+
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/user-dashboard" element={<UserDashBoards />} />
-          <Route path="/rider-dashboard" element={<RiderDashBoard />} />
-          <Route path="/admin-dashboard" element={<AdminDashBoard />} />
-          <Route
-            path="/restaurant-dashboard"
-            element={<RestaurantDashBoard />}
-          />
+          <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route path="/rider-dashboard" element={<RiderDashboard />} />
+          <Route path="/restaurant-dashboard" element={<ResturantDashboard />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/order-now" element={<OrderNow />} />
+
         </Routes>
       </BrowserRouter>
     </>
