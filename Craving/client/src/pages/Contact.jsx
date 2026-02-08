@@ -21,7 +21,7 @@ const Contact = () => {
       fullName: "",
       email: "",
       mobileNumber: "",
-      message:"",
+      message: "",
     });
   };
 
@@ -29,13 +29,14 @@ const Contact = () => {
     e.preventDefault();
     setIsLoading(true);
 
+    console.log(formData);
     try {
       const res = await api.post("/public/new-contact", formData);
       toast.success(res.data.message);
       handleClearForm();
     } catch (error) {
       console.log(error);
-      toast.error(error.response?.data?.message || "Uknown Error");
+      toast.error(error?.response?.data?.message || "Unknown Error");
     } finally {
       setIsLoading(false);
     }
@@ -62,18 +63,17 @@ const Contact = () => {
               {/* Personal Information */}
               <div className="mb-10">
                 <div className="space-y-4">
-                  <div>
-                    <input
-                      type="text"
-                      name="fullName"
-                      placeholder="Full Name"
-                      value={formData.fullName}
-                      onChange={handleChange}
-                      required
-                      disabled={isLoading}
-                      className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed"
-                    />
-                  </div>
+                  <input
+                    type="text"
+                    name="fullName"
+                    placeholder="Full Name"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    required
+                    disabled={isLoading}
+                    className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-200"
+                  />
+
                   <input
                     type="email"
                     name="email"
@@ -82,7 +82,7 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed "
+                    className="w-full h-fit px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-200"
                   />
                   <input
                     type="tel"
@@ -93,38 +93,35 @@ const Contact = () => {
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition"
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-200"
                   />
-
                   <textarea
                     name="message"
-                    id="message"
                     value={formData.message}
-                    placeholder="Write Your Message"
-                    maxLength="10"
+                    placeholder="Write your Message"
                     onChange={handleChange}
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition"
-                  ></textarea>
+                    className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-indigo-500 transition disabled:cursor-not-allowed disabled:bg-gray-200"
+                  />
                 </div>
               </div>
 
               {/* Submit Button */}
               <div className="flex gap-4 pt-8 border-t-2 border-gray-200">
                 <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 disabled:scale-100 disabled:bg-gray-300 shadow-lg disabled:cursor-not-allowed"
-                >
-                  {isLoading ? "submitting" : "submit"}
-                </button>
-                <button
                   type="reset"
                   disabled={isLoading}
-                  className="flex-1 bg-gray-300 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-400 transition duration-300 transform hover:scale-105 disabled:scale-100 disabled:bg-gray-300 shadow-lg disabled:cursor-not-allowed"
+                  className="flex-1 bg-gray-300 text-gray-800 font-bold py-4 px-6 rounded-lg hover:bg-gray-400 transition duration-300 transform hover:scale-105 disabled:scale-100 disabled:bg-gray-300 disabled:cursor-not-allowed"
                 >
                   Clear Form
+                </button>
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="flex-1 bg-linear-to-r from-indigo-600 to-indigo-700 text-white font-bold py-4 px-6 rounded-lg hover:from-indigo-700 hover:to-indigo-800 transition duration-300 transform hover:scale-105 shadow-lg disabled:scale-100 disabled:bg-gray-300  disabled:cursor-not-allowed"
+                >
+                  {isLoading ? "Submitting" : "Submit"}
                 </button>
               </div>
             </form>
@@ -134,6 +131,19 @@ const Contact = () => {
           <p className="text-center text-gray-600 mt-8 text-sm">
             All fields marked are mandatory. We respect your privacy.
           </p>
+        </div>
+
+        <div>
+          <iframe
+            src={
+              "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3483.9331294936896!2d77.45477337509959!3d23.268962679001856!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c6967f58e0dbf%3A0x65d0724cf8368e2d!2sRICR%20-%20Raj%20Institute%20of%20Coding%20%26%20Robotics%20%7C%20Best%20Java%20Coding%20Classes%20In%20Bhopal!5e1!3m2!1sen!2sin!4v1770470878471!5m2!1sen!2sin"
+            }
+            width={"600"}
+            height={"450"}
+            allowFullScreen={""}
+            loading={"lazy"}
+            referrerPolicy={"no-referrer-when-downgrade"}
+          ></iframe>
         </div>
       </div>
     </>

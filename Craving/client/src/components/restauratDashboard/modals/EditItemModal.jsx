@@ -51,7 +51,7 @@ const EditItemModal = ({ onClose, selectedItem }) => {
 
     try {
       const form_data = new FormData();
-      //   form_data.append("itemID", selectedItem._id);
+    //   form_data.append("itemID", selectedItem._id);
       form_data.append("itemName", formData.itemName);
       form_data.append("description", formData.description);
       form_data.append("price", formData.price);
@@ -69,7 +69,7 @@ const EditItemModal = ({ onClose, selectedItem }) => {
         `/restaurant/updateMenuItem/${selectedItem._id}`,
         form_data,
       );
-      toast.success(res?.data?.message);
+      toast.success(res.data.message);
       setTimeout(handleClose, 1500);
     } catch (error) {
       console.log(error);

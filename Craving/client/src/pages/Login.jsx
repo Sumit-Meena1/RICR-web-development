@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import ForgetPasswordModal from "../components/publicModals/ForgetPasswordModal";
 import { Link } from "react-router-dom";
+import Loading from "../components/Loading";
 
 const Login = () => {
   const { setUser, setIsLogin, setRole } = useAuth();
@@ -76,6 +77,13 @@ const Login = () => {
       setIsLoading(false);
     }
   };
+  if (isLoading) {
+    return (
+      <div className="w-100 h-100 flex items-center justify-center">
+        <Loading />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -169,19 +177,11 @@ const Login = () => {
         </div>
       </div>
 
-
-
-
-
       {isForgetPasswordModelOpen && (
         <ForgetPasswordModal
           onClose={() => setIsForgetPasswordModelOpen(false)}
         />
       )}
-
-
-
-      
     </>
   );
 };
