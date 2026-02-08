@@ -69,7 +69,7 @@ const EditItemModal = ({ onClose, selectedItem }) => {
         `/restaurant/updateMenuItem/${selectedItem._id}`,
         form_data,
       );
-      toast.success(res.data.message);
+      toast.success(res?.data?.message);
       setTimeout(handleClose, 1500);
     } catch (error) {
       console.log(error);

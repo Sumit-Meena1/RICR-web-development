@@ -9,7 +9,7 @@ import {
   RestaurantChangePhoto,
   RestaurantResetPassword,
 } from "../controllers/restaurantController.js";
-import { ManagerProtect, Protect } from "../middlewares/authMiddleware.js";
+import { ManagerProtect, Protect } from "../middlewares/authMiddleWare.js";
 
 const router = express.Router();
 const upload = multer();
