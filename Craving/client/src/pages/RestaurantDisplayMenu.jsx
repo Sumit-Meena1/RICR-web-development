@@ -1,41 +1,4 @@
-// import React from "react";
-// import { useEffect } from "react";
-// import { useParams } from "react-router-dom";
-// import api from "../config/Api";
-// import { useState } from "react";
-// import toast from "react-hot-toast";
 
-// const RestaurantDisplayMenu = () => {
-//   const restaurantId = useParams().id;
-//   console.log("Menu Page", restaurantId);
-
-//   const [restaurantData, setRestaurantData] = useState();
-
-//   const fetchRestaurantMenu = async () => {
-//     try {
-//       const res = await api.get(`/public/restaurant-menu/${restaurantId}/1`);
-//       setRestaurantData(res.data.data);
-//     } catch (error) {
-//       console.log(error);
-//       toast.error(error?.response?.data?.message || "Unknown Error");
-//     }
-//   };
-
-//   useEffect(() => {
-//     fetchRestaurantMenu();
-//   }, [restaurantId]);
-
-//   console.log(restaurantData || "No data");
-
-//   return (
-//     <>
-//     <div>hy</div>
-
-//     </>
-//   );
-// };
-
-// export default RestaurantDisplayMenu;
 
 import React from "react";
 import { useEffect } from "react";
@@ -43,6 +6,7 @@ import { useParams } from "react-router-dom";
 import api from "../config/Api";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useCart } from "../context/CartContext";
 
 const RestaurantDisplayMenu = () => {
   const restaurantId = useParams().id;
@@ -86,6 +50,13 @@ const RestaurantDisplayMenu = () => {
       </div>
     );
   }
+
+  const { addToCart } = useCart();
+
+  const handleAdd = (item) => {
+    addToCart(item);
+    toast.success(`${item.itemName} added to cart`);
+  };
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-6">
@@ -143,6 +114,7 @@ const RestaurantDisplayMenu = () => {
               </div>
 
               <button
+                onClick={() => handleAdd(item)}
                 disabled={item.availability !== "available"}
                 className="mt-4 w-full py-2 text-sm rounded-lg border border-green-600 text-green-600 hover:bg-green-600 hover:text-white transition disabled:opacity-50 disabled:cursor-not-allowed"
               >
