@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../config/Api";
+import toast from "react-hot-toast";
 
 const OrderNow = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const OrderNow = () => {
     try {
       const res = await api.get("/public/allRestaurants");
       setRestaurants(res.data.data);
+      // console.log(res.data.data.photo);
     } catch (error) {
       console.log(error);
       toast.error(error?.response?.data?.message || "Unknown Error");
@@ -43,16 +45,18 @@ const OrderNow = () => {
         </div>
 
         {restaurants ? (
-          <div className="grid grid-cols-4 gap-3">
+          <div className="grid grid-cols-4 gap-3 mt-5 py-5">
             {restaurants.map((restaurant, idx) => (
               <div
                 key={idx}
-                className="rounded h-100 hover:shadow-lg p-3 shadow-xl shadow-amber-200"
+                className="rounded h-100 hover:shadow-lg p-2  shadow-xl shadow-amber-200"
                 onClick={() => {
                   handleResturantClick(restaurant._id);
                 }}
               >
-                <div className="bg-amber-300 rounded-xl p-2 my-2">{restaurant.restaurantName}</div>
+                <div className="bg-amber-300 rounded-xl p-2 my-2">
+                  {restaurant.restaurantName}
+                </div>
                 <div className="flex gap-2">
                   {restaurant.cuisine
                     .split(", ")
@@ -65,6 +69,13 @@ const OrderNow = () => {
                         {cusine.toLowerCase()}
                       </span>
                     ))}
+                </div>
+                <div className="">
+                  <img
+                    className="p-3 fit-cover mx-auto h-75 w-full max-w-75 rounded-2xl"
+                    src={restaurant?.photo?.url}
+                    alt="Restaurant Photo"
+                  />
                 </div>
               </div>
             ))}
