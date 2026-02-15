@@ -7,6 +7,7 @@ import api from "../config/Api";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useCart } from "../context/CartContext";
+import Loading from "../components/Loading";
 
 const RestaurantDisplayMenu = () => {
   const restaurantId = useParams().id;
@@ -38,7 +39,7 @@ const RestaurantDisplayMenu = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-[60vh] text-gray-500">
-        Loading menu...
+        <Loading/>
       </div>
     );
   }
