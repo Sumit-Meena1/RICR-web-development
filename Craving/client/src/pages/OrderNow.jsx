@@ -31,7 +31,7 @@ const OrderNow = () => {
 
   const handleRestaurantClick = (restaurantinfo) => {
     console.log("Restaurant Clicked");
-    navigate("/restaurantMenu", { state: restaurantinfo });
+    navigate("/restaurant", { state: restaurantinfo });
   };
 
   if (loading) {

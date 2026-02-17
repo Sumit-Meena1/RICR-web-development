@@ -47,8 +47,7 @@ export const GetAllRestaurants = async (req, res, next) => {
 
 export const GetRetaurantMenuData = async (req, res, next) => {
   try {
-    const { id, page } = req.params;
-    console.log(page);
+    const { id } = req.params;
 
     if (!id) {
       const error = new Error("All feilds required");

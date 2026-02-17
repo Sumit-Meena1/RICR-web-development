@@ -35,13 +35,33 @@ app.use((err, req, res, next) => {
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, async () => {
-  console.log("Server Started at Port: ", port);
-  connectDB();
+// app.listen(port, async () => {
+//   console.log("Server Started at Port: ", port);
+//   connectDB();
+//   try {
+//     const res = await cloudinary.api.ping();
+//     console.log("Clodinary API is Working :", res);
+//   } catch (error) {
+//     console.error("Error Connecting Clodinary API :", error);
+//   }
+// }
+
+// );
+
+const startServer = async () => {
   try {
+    await connectDB();
+    console.log("Database Connected");
+
     const res = await cloudinary.api.ping();
-    console.log("Clodinary API is Working :", res);
+    console.log("Cloudinary API is Working:", res);
+
+    app.listen(port, () => {
+      console.log("Server Started at Port:", port);
+    });
   } catch (error) {
-    console.error("Error Connecting Clodinary API :", error);
+    console.error("Startup Error:", error);
   }
-});
+};
+
+startServer();
